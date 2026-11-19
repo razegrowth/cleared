@@ -2038,3 +2038,98 @@ html[data-split='true'][data-nav='back']::view-transition-old(glance-reader) {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* --------------------------------------------------------------- text size
+   The person's text size scales what they read (rows' text, the open thread
+   and its mail) and leaves Glance's own controls as they are. */
+
+.row > .body,
+.reader .scroll > :not(.skeleton) {
+  zoom: var(--text-scale, 1);
+}
+
+/* --------------------------------------------------------------- long threads */
+
+/* "4 earlier messages": a rule across the thread with the count on it. */
+.msg-fold {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: calc(100% - 24px);
+  margin: 6px 12px;
+  height: 28px;
+}
+
+.msg-fold::before {
+  content: '';
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  top: 50%;
+  border-top: 1px solid var(--separator-strong);
+}
+
+.msg-fold span {
+  position: relative;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--bg);
+  box-shadow: inset 0 0 0 1px var(--separator-strong);
+  font: 500 10.5px var(--mono);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-2);
+  transition: color 0.15s, background 0.15s;
+}
+
+.msg-fold:hover span {
+  color: var(--text);
+  background: var(--bg-subtle);
+}
+
+/* --------------------------------------------------------------- signed out */
+
+.gh-signin {
+  flex: none;
+  height: 22px;
+  padding: 0 9px;
+  margin-right: 2px;
+  border-radius: var(--r-sm);
+  background: var(--ink);
+  color: var(--on-ink);
+  font: 500 11.5px var(--font);
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.gh-signin:hover {
+  opacity: 0.88;
+}
+
+/* --------------------------------------------------------------- undo send */
+
+.toast {
+  position: relative;
+  overflow: hidden;
+}
+
+/* How long Undo still works, draining left to right. */
+.toast .drain {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: color-mix(in srgb, var(--on-ink) 55%, transparent);
+  transform-origin: left;
+  animation: drain linear forwards;
+}
+
+@keyframes drain {
+  from {
+    transform: scaleX(1);
+  }
+  to {
+    transform: scaleX(0);
+  }
+}

@@ -6,6 +6,8 @@ export interface Toast {
   error?: boolean;
   action?: { label: string; key?: string; run: () => void };
   ms?: number;
+  /** A bar along the bottom that drains over `ms`: how long the action stays possible. */
+  countdown?: boolean;
 }
 
 type Push = (t: Omit<Toast, 'id'>) => number;
@@ -55,6 +57,7 @@ export function ToastProvider({ children }: { children: ReactNode }) {
             ) : (
               <span className="spacer" />
             )}
+            {t.countdown && <i className="drain" style={{ animationDuration: `${t.ms ?? 5000}ms` }} aria-hidden />}
           </div>
         ))}
       </div>

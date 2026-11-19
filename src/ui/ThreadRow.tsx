@@ -79,6 +79,8 @@ export function GroupHead({
   count,
   empty,
   primary,
+  signedOut,
+  onSignIn,
   leaving,
   entering,
   onOpen,
@@ -92,6 +94,9 @@ export function GroupHead({
   empty?: boolean;
   /** This account lists only its Primary tab. */
   primary?: boolean;
+  /** Google signed it out: its mail is stale until someone signs in again. */
+  signedOut?: boolean;
+  onSignIn?: () => void;
   leaving: boolean;
   entering: boolean;
   onOpen: () => void;
@@ -118,8 +123,13 @@ export function GroupHead({
         <span className="addr">{email}</span>
         {primary && <span className="gh-tag">Primary</span>}
         <ArrowUpRight className="out" aria-hidden />
-        {count > 0 && <span className="n">{count}</span>}
+        {count > 0 && !signedOut && <span className="n">{count}</span>}
       </button>
+      {signedOut && (
+        <button className="gh-signin" title={`Sign in to ${email} again`} tabIndex={off} onClick={onSignIn}>
+          Sign in again
+        </button>
+      )}
       {count > 0 && (
         <button className="gh-act" title={`Mark all read in ${email}`} aria-label={`Mark all read in ${email}`} tabIndex={off} onClick={onMarkAllRead}>
           <CheckCheck />

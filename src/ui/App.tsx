@@ -22,13 +22,16 @@ import {
   Star,
   Sun,
   Trash2,
+  Type,
   Undo2,
   X,
+  ZoomIn,
+  ZoomOut,
 } from 'lucide-react';
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { flushSync } from 'react-dom';
 import { clearDraft, Composer, loadDraft } from './Composer';
-import { MOD, typingIn, useLatest, useMail, useNow, useTheme, useWidth } from './hooks';
+import { MOD, stepScale, typingIn, useChecking, useLatest, useMail, useNow, useSpin, useTheme, useWidth } from './hooks';
 import { ActionMenu, Palette, SnoozeMenu, type Command } from './Palette';
 import { Reader } from './Reader';
 import { blankDraft, replyDraft } from './reply';
@@ -236,10 +239,24 @@ function MailApp({ state, layout }: { state: MailState; layout: Layout }) {
   const { accounts, threads, settings } = state;
   const byId = useMemo(() => new Map(accounts.map((a) => [a.id, a])), [accounts]);
   const monograms = useMemo(() => monogramsFor(accounts), [accounts]);
+  const checking = useChecking();
+  const [asked, setAsked] = useState(false);
+  const spin = useSpin(checking || asked || accounts.some((a) => a.status === 'syncing'));
 
   useEffect(() => {
     document.documentElement.dataset.split = String(split);
   }, [split]);
+
+  useEffect(() => {
+    document.documentElement.style.setProperty('--text-scale', String(settings.textScale ?? 1));
+  }, [settings.textScale]);
+
+  /** Bigger or smaller mail text (+1 / -1), or back to as designed (0). */
+  const scaleText = (dir: 1 | -1 | 0) => {
+    const textScale = dir === 0 ? 1 : stepScale(settings.textScale ?? 1, dir);
+    request({ type: 'updateSettings', patch: { textScale } }).catch(() => {});
+    push({ text: `Text size ${Math.round(textScale * 100)}%`, ms: 1400 });
+  };
 
   const [filter, setFilterState] = useState<string>(() => {
     try {
@@ -586,9 +603,12 @@ function MailApp({ state, layout }: { state: MailState; layout: Layout }) {
     setComposer(null);
     reloadSoon(d.threadId, res.delayMs + 1200);
     if (res.delayMs <= 0) return void push({ text: 'Sent', ms: 2000 });
+    let cancelled = false;
+    setTimeout(() => !cancelled && push({ text: 'Sent', ms: 1600 }), res.delayMs);
     const run = async () => {
       try {
         await request({ type: 'cancelSend', sendId: res.sendId });
+        cancelled = true;
         await chrome.storage.local.set({ [`draft:${d.accountId}:${d.threadId ?? 'new'}`]: d });
         setComposer(d);
         push({ text: 'Sending cancelled', ms: 2000 });
@@ -597,7 +617,7 @@ function MailApp({ state, layout }: { state: MailState; layout: Layout }) {
       }
     };
     lastUndo.current = run;
-    push({ text: 'Sending…', ms: res.delayMs, action: { label: 'Undo', key: 'Z', run } });
+    push({ text: 'Sending…', ms: res.delayMs, countdown: true, action: { label: 'Undo', key: 'Z', run } });
   };
 
   const discard = async () => {
@@ -639,7 +659,12 @@ function MailApp({ state, layout }: { state: MailState; layout: Layout }) {
   const reconnect = (a: Account) =>
     request({ type: 'reauth', accountId: a.id }).catch((e: Error) => push({ text: e.message, error: true }));
 
-  const refresh = () => request({ type: 'refresh' }).catch((e: Error) => push({ text: e.message, error: true }));
+  const refresh = () => {
+    setAsked(true);
+    return request({ type: 'refresh' })
+      .catch((e: Error) => push({ text: e.message, error: true }))
+      .finally(() => setAsked(false));
+  };
 
   // ------------------------------------------------------------ commands
 
@@ -725,6 +750,13 @@ function MailApp({ state, layout }: { state: MailState; layout: Layout }) {
       run: toggleFullAddresses,
     });
   }
+  commands.push(
+    { id: 'text-up', group: 'View', label: 'Larger text', icon: ZoomIn, keys: [MOD, '+'], run: () => scaleText(1) },
+    { id: 'text-down', group: 'View', label: 'Smaller text', icon: ZoomOut, keys: [MOD, '−'], run: () => scaleText(-1) },
+  );
+  if ((settings.textScale ?? 1) !== 1) {
+    commands.push({ id: 'text-reset', group: 'View', label: 'Actual text size', icon: Type, keys: [MOD, '0'], run: () => scaleText(0) });
+  }
   commands.push({
     id: 'full',
     group: 'View',
@@ -771,6 +803,12 @@ function MailApp({ state, layout }: { state: MailState; layout: Layout }) {
     if (mod && k === ',') {
       e.preventDefault();
       openSettings();
+      return;
+    }
+    // ⌘+ / ⌘− / ⌘0: mail text size. Taken before the browser zooms the whole page.
+    if (mod && !e.altKey && (k === '=' || k === '+' || k === '-' || k === '_' || k === '0')) {
+      e.preventDefault();
+      scaleText(k === '0' ? 0 : k === '-' || k === '_' ? -1 : 1);
       return;
     }
     if (palette || snoozing || inboxMenu) return;
@@ -913,7 +951,7 @@ function MailApp({ state, layout }: { state: MailState; layout: Layout }) {
   const syncingNow = accounts.some((a) => a.status === 'syncing');
   const errored = accounts.find((a) => a.status === 'error');
   const lastSync = Math.min(...accounts.map((a) => a.lastSync ?? 0));
-  const status = syncingNow
+  const status = syncingNow || checking
     ? 'Checking for mail…'
     : errored
       ? `Couldn’t check ${errored.email}: ${errored.error ?? 'unknown error'}`
@@ -947,6 +985,8 @@ function MailApp({ state, layout }: { state: MailState; layout: Layout }) {
       count={count}
       empty={empty}
       primary={ownPrimary(a)}
+      signedOut={a.status === 'needs-auth'}
+      onSignIn={() => reconnect(a)}
       leaving={leaving}
       entering={entering}
       onOpen={() => openInbox(a)}
@@ -1036,8 +1076,8 @@ function MailApp({ state, layout }: { state: MailState; layout: Layout }) {
                 </button>
               </>
             )}
-            <button className="icon-btn" title="Check for new mail (⇧R)" onClick={refresh}>
-              <RefreshCw className={syncingNow || searching ? 'spin' : ''} />
+            <button className="icon-btn" title={checking ? 'Checking for mail…' : 'Check for new mail (⇧R)'} aria-busy={checking || undefined} onClick={refresh}>
+              <RefreshCw className={searching ? 'spin' : spin.className} onAnimationIteration={spin.onAnimationIteration} />
             </button>
             <button className="icon-btn" title="New message (c)" onClick={compose}>
               <SquarePen />
@@ -1086,13 +1126,13 @@ function MailApp({ state, layout }: { state: MailState; layout: Layout }) {
           )}
 
           {troubled.map((a) => (
-            <div className="banner" key={a.id}>
+            <div className="banner" key={a.id} role="alert">
               <CircleAlert />
               <span>
-                <b>{a.email}</b> was signed out by Google.
+                <b>{a.email}</b> needs you to sign in again. Its mail won’t update until you do.
               </span>
               <button className="btn" onClick={() => reconnect(a)}>
-                Reconnect
+                Sign in
               </button>
             </div>
           ))}

@@ -1,7 +1,7 @@
 import { Check, CircleAlert, Copy, Plus, RefreshCw, Trash2 } from 'lucide-react';
 import { useEffect, useState, type ReactNode } from 'react';
 import { Avatar } from './Avatar';
-import { MOD, useMail, useTheme } from './hooks';
+import { MOD, TEXT_SCALES, useMail, useTheme } from './hooks';
 import { ToastProvider, useToasts } from './Toasts';
 import { request } from '../shared/store';
 import type { Account, Settings } from '../shared/types';
@@ -226,7 +226,16 @@ function Page({ accounts, settings }: { accounts: Account[]; settings: Settings 
             ]}
           />
         </Row>
-        <Row label="Undo send" hint="How long Glance waits before a message really goes.">
+        <Row label="Text size" hint="Mail in the list and the reader. ⌘+ and ⌘− change it too, and ⌘0 puts it back.">
+          <select value={settings.textScale ?? 1} onChange={(e) => set({ textScale: Number(e.target.value) })}>
+            {TEXT_SCALES.map((v) => (
+              <option key={v} value={v}>
+                {v === 1 ? '100% (default)' : `${Math.round(v * 100)}%`}
+              </option>
+            ))}
+          </select>
+        </Row>
+        <Row label="Undo send" hint="How long Glance waits before a message really goes. Undo, or Z, in that time brings it back.">
           <select value={settings.undoSendSeconds} onChange={(e) => set({ undoSendSeconds: Number(e.target.value) })}>
             {[0, 5, 10, 20].map((s) => (
               <option key={s} value={s}>

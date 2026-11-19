@@ -92,6 +92,8 @@ export interface Settings {
   undoSendSeconds: number;
   /** Show each thread's whole latest message in the list, not a two-line snippet. */
   fullPreviews: boolean;
+  /** How large mail text is drawn, in the list and the reader: 1 is as designed. */
+  textScale: number;
   /** Inbox tabs show the whole address (alex@northwind.example), not just the part before the @. */
   fullAddresses: boolean;
   /** Overrides for the build-time OAuth client, for teammates building without a .env. */
@@ -112,6 +114,7 @@ export const DEFAULT_SETTINGS: Settings = {
   undoSendSeconds: 5,
   fullPreviews: false,
   fullAddresses: false,
+  textScale: 1,
 };
 
 export interface Snooze {

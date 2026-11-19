@@ -60,3 +60,43 @@ export function typingIn(target: EventTarget | null): boolean {
 
 export const isMac = typeof navigator !== 'undefined' && /Mac|iPhone|iPad/.test(navigator.platform);
 export const MOD = isMac ? '⌘' : 'Ctrl';
+
+/**
+ * Whether Glance is checking for mail right now: one the person asked for, or
+ * a timed one. A mark older than a minute is a check whose worker went away.
+ */
+export function useChecking(): boolean {
+  const [since, setSince] = useState(0);
+  useEffect(() => {
+    chrome.storage.local.get('checking').then((v) => setSince(Number(v.checking) || 0)).catch(() => {});
+    const on = (changes: Record<string, chrome.storage.StorageChange>, area: string) => {
+      if (area === 'local' && 'checking' in changes) setSince(Number(changes.checking.newValue) || 0);
+    };
+    chrome.storage.onChanged.addListener(on);
+    return () => chrome.storage.onChanged.removeListener(on);
+  }, []);
+  return since > 0 && Date.now() - since < 60_000;
+}
+
+/**
+ * A spinning icon that, when the work ends, finishes its turn rather than
+ * snapping back, and always turns at least once so a quick check is seen.
+ */
+export function useSpin(active: boolean) {
+  const [on, setOn] = useState(active);
+  useEffect(() => {
+    if (active) setOn(true);
+  }, [active]);
+  return {
+    className: on ? 'spin' : '',
+    onAnimationIteration: () => !active && setOn(false),
+  };
+}
+
+export const TEXT_SCALES = [0.85, 0.92, 1, 1.08, 1.17, 1.25, 1.35, 1.5];
+
+/** The next text size up (+1) or down (-1) from the current one. */
+export function stepScale(current: number, dir: 1 | -1): number {
+  const i = TEXT_SCALES.reduce((best, s, j) => (Math.abs(s - current) < Math.abs(TEXT_SCALES[best] - current) ? j : best), 0);
+  return TEXT_SCALES[Math.max(0, Math.min(TEXT_SCALES.length - 1, i + dir))];
+}

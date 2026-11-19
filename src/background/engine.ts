@@ -108,6 +108,7 @@ export async function reauth(accountId: string) {
   if (account.demo) return syncAccount(accountId);
   const profile = await signIn(account.email);
   await upsertAccount(profile);
+  chrome.notifications.clear(`r|${accountId}`);
   await syncAccount(accountId);
 }
 
@@ -175,15 +176,48 @@ async function doSync(accountId: string) {
   } catch (e) {
     const message = e instanceof Error ? e.message : String(e);
     console.warn(`[glance] sync failed for ${accountId}:`, e);
-    await patchAccount(accountId, e instanceof AuthError ? { status: 'needs-auth', error: message } : { status: 'error', error: message });
+    const signedOut = e instanceof AuthError;
+    await patchAccount(accountId, signedOut ? { status: 'needs-auth', error: message } : { status: 'error', error: message });
     await updateBadge();
+    if (signedOut && account.status !== 'needs-auth') notifySignedOut(account);
   }
 }
 
+/**
+ * Says, once, that an account stopped working. Otherwise nobody finds out
+ * until they happen to open Glance and wonder why it's quiet.
+ */
+function notifySignedOut(account: Account) {
+  chrome.notifications.create(`r|${account.id}`, {
+    type: 'basic',
+    iconUrl: chrome.runtime.getURL('/icon/128.png'),
+    title: `Sign in to ${account.email} again`,
+    message: 'Google signed this account out of Glance. Its mail won’t update until you sign in.',
+    buttons: [{ title: 'Sign in' }],
+    requireInteraction: true,
+    priority: 2,
+  });
+}
+
+/**
+ * Whether a check is running, for the refresh button's spin. Kept in storage
+ * so every open Glance sees checks it didn't start: the timed ones too.
+ */
+let checks = 0;
+async function setChecking(delta: 1 | -1) {
+  checks = Math.max(0, checks + delta);
+  await chrome.storage.local.set({ checking: checks > 0 ? Date.now() : 0 }).catch(() => {});
+}
+
 export async function syncAll() {
-  await processSnoozes();
-  const accounts = await getAccounts();
-  await Promise.all(accounts.map((a) => syncAccount(a.id)));
+  await setChecking(1);
+  try {
+    await processSnoozes();
+    const accounts = await getAccounts();
+    await Promise.all(accounts.map((a) => syncAccount(a.id)));
+  } finally {
+    await setChecking(-1);
+  }
 }
 
 // ---------------------------------------------------------------- actions
@@ -492,6 +526,7 @@ async function notifyArrivals(account: Account, arrivals: ThreadSummary[], setti
 export async function onNotificationClicked(id: string) {
   chrome.notifications.clear(id);
   const [kind, accountId, threadId] = id.split('|');
+  if (kind === 'r') return reauth(accountId).catch((e) => console.warn('[glance] sign-in from notification failed', e));
   if (kind !== 't' && kind !== 's') return;
   const account = (await getAccounts()).find((a) => a.id === accountId);
   if (!account || account.demo) return;
@@ -501,6 +536,7 @@ export async function onNotificationClicked(id: string) {
 export async function onNotificationButton(id: string, index: number) {
   chrome.notifications.clear(id);
   const [kind, accountId, threadId] = id.split('|');
+  if (kind === 'r') return reauth(accountId).catch((e) => console.warn('[glance] sign-in from notification failed', e));
   const action = index === 0 ? 'read' : 'archive';
   if (kind === 't') return perform([{ accountId, threadId }], action);
   if (kind !== 's') return;
@@ -520,7 +556,8 @@ export async function updateBadge() {
   const trouble = accounts.some((a) => a.status === 'needs-auth');
   const text = total === 0 ? (trouble ? '!' : '') : total > 99 ? '99+' : String(total);
   await chrome.action.setBadgeText({ text });
-  await chrome.action.setBadgeBackgroundColor({ color: '#0a0a0a' });
+  // Red while an account needs signing in again: the one thing worth colour.
+  await chrome.action.setBadgeBackgroundColor({ color: trouble ? '#d93025' : '#0a0a0a' });
   chrome.action.setBadgeTextColor?.({ color: '#ffffff' });
   const lines = counts.map(({ a, n }) => `${a.email}: ${a.status === 'needs-auth' ? 'needs reconnecting' : `${n} unread`}`);
   await chrome.action.setTitle({ title: ['Glance', ...lines].join('\n') });

@@ -1,5 +1,5 @@
 import { Archive, ArrowLeft, Clock, ExternalLink, FileText, Image as ImageIcon, Mail, Reply, ReplyAll, Star, Trash2 } from 'lucide-react';
-import { useEffect, useState, type ReactNode } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState, type ReactNode } from 'react';
 import { Avatar } from './Avatar';
 import { EmailBody } from './EmailBody';
 import { fileSize, longDate, mediumDate, shortDate } from '../shared/format';
@@ -122,6 +122,21 @@ function Message({
   );
 }
 
+/**
+ * The messages to draw, with a run of folded ones replaced by how many there
+ * are. Gmail's way: the first message stays, so the thread's start is in
+ * view, then a count, then the last folded one before the open ones.
+ */
+export function foldThread<M extends { id: string }>(messages: M[], open: Set<string>, unfolded: boolean): (M | number)[] {
+  if (unfolded) return messages;
+  const firstOpen = messages.findIndex((m) => open.has(m.id));
+  const end = firstOpen < 0 ? messages.length : firstOpen;
+  // Hide messages 1 … end-2, keeping the first and the one just before the open ones.
+  const hidden = end - 2;
+  if (hidden < 2) return messages;
+  return [messages[0], hidden, ...messages.slice(end - 1)];
+}
+
 export function Reader({
   account,
   subject,
@@ -147,6 +162,23 @@ export function Reader({
     const open = new Set(msgs.filter((m, i) => m.unread || i === msgs.length - 1).map((m) => m.id));
     setExpanded(open);
   }, [detail?.id, detail?.messages.length]);
+
+  // Long threads: the folded messages between the first and the open ones hide behind one line.
+  const [unfolded, setUnfolded] = useState(false);
+  useEffect(() => setUnfolded(false), [detail?.id]);
+
+  // Start at the message worth reading (the first open one), not at the top of a long thread.
+  const scroller = useRef<HTMLDivElement>(null);
+  const placed = useRef<string | null>(null);
+  useLayoutEffect(() => {
+    const box = scroller.current;
+    if (!box || !detail || detail.messages.length < 3 || placed.current === detail.id || !expanded.size) return;
+    placed.current = detail.id;
+    const first = box.querySelector<HTMLElement>('.msg.expanded');
+    if (!first) return;
+    const top = first.getBoundingClientRect().top - box.getBoundingClientRect().top + box.scrollTop;
+    if (top > box.clientHeight * 0.4) box.scrollTop = top - 56;
+  }, [detail, expanded]);
 
   const toggle = (id: string) =>
     setExpanded((s) => {
@@ -192,7 +224,7 @@ export function Reader({
         )}
       </div>
 
-      <div className="scroll">
+      <div className="scroll" ref={scroller}>
         <h1 style={morph ? { viewTransitionName: 'glance-subject' } : undefined}>{detail?.subject ?? subject}</h1>
         <div className="thread-meta">
           <span>{account?.email}</span>
@@ -213,16 +245,22 @@ export function Reader({
           </div>
         ) : (
           <div className="reveal">
-            {detail.messages.map((m) => (
-              <Message
-                key={m.id}
-                m={m}
-                account={account}
-                expanded={expanded.has(m.id)}
-                onToggle={() => toggle(m.id)}
-                settings={settings}
-              />
-            ))}
+            {foldThread(detail.messages, expanded, unfolded).map((item) =>
+              typeof item === 'number' ? (
+                <button key="fold" className="msg-fold" onClick={() => setUnfolded(true)}>
+                  <span>{item} earlier messages</span>
+                </button>
+              ) : (
+                <Message
+                  key={item.id}
+                  m={item}
+                  account={account}
+                  expanded={expanded.has(item.id)}
+                  onToggle={() => toggle(item.id)}
+                  settings={settings}
+                />
+              ),
+            )}
           </div>
         )}
       </div>
