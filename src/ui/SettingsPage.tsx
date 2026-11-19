@@ -130,6 +130,16 @@ function Page({ accounts, settings }: { accounts: Account[]; settings: Settings 
               </div>
             </div>
             <div className="s-account-actions">
+              {settings.view !== 'unread-primary' && (
+                <label className="s-inline" title="List only this account's Primary tab, leaving out Promotions, Social, Updates and Forums">
+                  <span>Primary only</span>
+                  <Toggle
+                    label={`Primary only for ${a.email}`}
+                    checked={!!a.primaryOnly}
+                    onChange={(v) => request({ type: 'updateAccount', accountId: a.id, patch: { primaryOnly: v } }).catch(fail)}
+                  />
+                </label>
+              )}
               <label className="s-inline">
                 <span>Notify</span>
                 <Toggle
@@ -171,7 +181,7 @@ function Page({ accounts, settings }: { accounts: Account[]; settings: Settings 
       </Section>
 
       <Section title="Mailbox">
-        <Row label="Show">
+        <Row label="Show" hint="Primary leaves out Promotions, Social, Updates and Forums. To do that for some accounts only, use Primary only next to each one above.">
           <Segmented
             value={settings.view}
             onChange={(view) => set({ view })}

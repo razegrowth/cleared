@@ -1,4 +1,4 @@
-import { VIEW_QUERY, type Provider } from './provider';
+import { queryFor, type Provider } from './provider';
 import { getKey } from '../shared/store';
 import { escapeHtml, firstName, parseAddressList, textToHtml } from '../shared/mime';
 import type { Account, MessageDetail, Person, ThreadSummary } from '../shared/types';
@@ -227,10 +227,10 @@ function matches(t: DemoThread, query: string): boolean {
 const DEMO_PDF_NOTE = 'This is a sample attachment from Glance’s demo mailbox.';
 
 export const demo: Provider = {
-  async sync(account, view) {
+  async sync(account, spec) {
     const threads = await load(account.id);
     return threads
-      .filter((t) => matches(t, VIEW_QUERY[view]))
+      .filter((t) => matches(t, queryFor(spec)))
       .map((t) => summary(account, t))
       .sort((a, b) => b.date - a.date);
   },
@@ -255,6 +255,16 @@ export const demo: Provider = {
       }
     }
     await save(account.id, threads);
+  },
+
+  async markAllRead(account, spec) {
+    const ids = (await load(account.id)).filter((t) => matches(t, queryFor(spec, true))).map((t) => t.id);
+    await this.modify(account, ids, 'read');
+    return ids;
+  },
+
+  async restoreUnread(account, ids) {
+    await this.modify(account, ids, 'unread');
   },
 
   async getThread(account, threadId) {

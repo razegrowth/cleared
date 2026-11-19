@@ -16,6 +16,8 @@ export interface Account {
   error?: string;
   lastSync?: number;
   notify: boolean;
+  /** List only Gmail's Primary tab for this account, whatever the global view. */
+  primaryOnly?: boolean;
   /** Sample mail with no Google connection, for trying Glance out. */
   demo?: boolean;
 }
@@ -160,7 +162,8 @@ export type Request =
   | { type: 'addDemo' }
   | { type: 'removeAccount'; accountId: string }
   | { type: 'reauth'; accountId: string }
-  | { type: 'updateAccount'; accountId: string; patch: Partial<Pick<Account, 'color' | 'notify'>> }
+  | { type: 'updateAccount'; accountId: string; patch: Partial<Pick<Account, 'color' | 'notify' | 'primaryOnly'>> }
+  | { type: 'markAllRead'; accountId: string }
   | { type: 'act'; action: ThreadAction; items: ThreadRef[] }
   | { type: 'snooze'; items: ThreadRef[]; until: number }
   | { type: 'undo'; undoId: string }

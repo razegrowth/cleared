@@ -1,5 +1,5 @@
 import { accessToken, AuthError } from './auth';
-import { mapLimit, VIEW_LIST, type Provider } from './provider';
+import { listFor, mapLimit, queryFor, type Provider } from './provider';
 import {
   base64UrlToBytes,
   buildRawMessage,
@@ -241,13 +241,44 @@ async function modifyOne(accountId: string, threadId: string, action: ThreadActi
   }
 }
 
+/** Every unread message a search finds, up to a sane limit, by id. */
+async function unreadMessageIds(accountId: string, q: string, limit = 5000): Promise<string[]> {
+  const ids: string[] = [];
+  let pageToken: string | undefined;
+  do {
+    const page = await call<{ messages?: { id: string }[]; nextPageToken?: string }>(accountId, '/messages', {
+      query: { q, maxResults: 500, pageToken },
+    });
+    ids.push(...(page.messages ?? []).map((m) => m.id));
+    pageToken = page.nextPageToken;
+  } while (pageToken && ids.length < limit);
+  return ids.slice(0, limit);
+}
+
+/** Changes labels on many messages, a thousand at a time (Gmail's limit per call). */
+async function batchModify(accountId: string, ids: string[], body: { addLabelIds?: string[]; removeLabelIds?: string[] }) {
+  for (let i = 0; i < ids.length; i += 1000) {
+    await call(accountId, '/messages/batchModify', { method: 'POST', body: { ids: ids.slice(i, i + 1000), ...body } });
+  }
+}
+
 export const gmail: Provider = {
-  sync(account, view, previous) {
-    return listSummaries(account, VIEW_LIST[view], 100, previous);
+  sync(account, spec, previous) {
+    return listSummaries(account, listFor(spec), 100, previous);
   },
 
   async modify(account, threadIds, action) {
     await mapLimit(threadIds, 4, (id) => modifyOne(account.id, id, action));
+  },
+
+  async markAllRead(account, spec) {
+    const ids = await unreadMessageIds(account.id, queryFor(spec, true));
+    await batchModify(account.id, ids, { removeLabelIds: ['UNREAD'] });
+    return ids;
+  },
+
+  async restoreUnread(account, ids) {
+    await batchModify(account.id, ids, { addLabelIds: ['UNREAD'] });
   },
 
   async getThread(account, threadId) {

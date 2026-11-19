@@ -1,4 +1,4 @@
-import { Archive, ArrowUpRight, Check, Clock, Mail, MailOpen, Paperclip, Star, Trash2 } from 'lucide-react';
+import { Archive, ArrowUpRight, Check, CheckCheck, Clock, Ellipsis, Mail, MailOpen, Paperclip, Star, Trash2 } from 'lucide-react';
 import { memo, useEffect, useLayoutEffect, useRef, useState, type RefObject } from 'react';
 import { cachedPreview, loadPreview } from './preview';
 import { shortDate, tidySnippet, tidyText } from '../shared/format';
@@ -78,39 +78,57 @@ export function GroupHead({
   email,
   count,
   empty,
-  title,
+  primary,
   leaving,
   entering,
-  onClick,
+  onOpen,
+  onMarkAllRead,
+  onMenu,
 }: {
   monogram: string;
   email: string;
   count: number;
   /** Nothing to show under it: the heading stands alone, quieter. */
   empty?: boolean;
-  title: string;
+  /** This account lists only its Primary tab. */
+  primary?: boolean;
   leaving: boolean;
   entering: boolean;
-  onClick: () => void;
+  onOpen: () => void;
+  onMarkAllRead: () => void;
+  onMenu: () => void;
 }) {
-  const ref = useRef<HTMLButtonElement>(null);
+  const ref = useRef<HTMLDivElement>(null);
   useFold(ref, leaving, entering);
+  const off = leaving ? -1 : undefined;
   return (
-    <button
+    <div
       ref={ref}
       className="group-head"
       data-empty={empty || undefined}
-      title={title}
       aria-hidden={leaving || undefined}
-      tabIndex={leaving ? -1 : undefined}
       style={leaving ? { pointerEvents: 'none' } : undefined}
-      onClick={onClick}
+      onContextMenu={(e) => {
+        e.preventDefault();
+        onMenu();
+      }}
     >
-      <span className="monogram">{monogram}</span>
-      <span className="addr">{email}</span>
-      {count > 0 && <span className="n">{count}</span>}
-      <ArrowUpRight className="out" aria-hidden />
-    </button>
+      <button className="gh-main" title={`Open ${email} in Gmail`} tabIndex={off} onClick={onOpen}>
+        <span className="monogram">{monogram}</span>
+        <span className="addr">{email}</span>
+        {primary && <span className="gh-tag">Primary</span>}
+        <ArrowUpRight className="out" aria-hidden />
+        {count > 0 && <span className="n">{count}</span>}
+      </button>
+      {count > 0 && (
+        <button className="gh-act" title={`Mark all read in ${email}`} aria-label={`Mark all read in ${email}`} tabIndex={off} onClick={onMarkAllRead}>
+          <CheckCheck />
+        </button>
+      )}
+      <button className="gh-act" title="More" aria-label={`More for ${email}`} tabIndex={off} onClick={onMenu}>
+        <Ellipsis />
+      </button>
+    </div>
   );
 }
 

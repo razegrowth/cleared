@@ -1,7 +1,7 @@
 import { AuthError, forgetTokens, signIn } from './auth';
 import { demo, DEMO_ACCOUNTS, resetDemo } from './demo';
 import { gmail } from './gmail';
-import { findArrivals, fitsView, type Provider } from './provider';
+import { findArrivals, fits, specFor, type Provider } from './provider';
 import { gmailThreadUrl, inQuietHours, isVip } from '../shared/format';
 import { getKey, loadState, withDefaults } from '../shared/store';
 import type {
@@ -123,8 +123,10 @@ export async function removeAccount(accountId: string) {
   await updateSnoozes((s) => s.filter((x) => x.accountId !== accountId));
 }
 
-export async function updateAccount(accountId: string, patch: Partial<Pick<Account, 'color' | 'notify'>>) {
+export async function updateAccount(accountId: string, patch: Partial<Pick<Account, 'color' | 'notify' | 'primaryOnly'>>) {
+  const before = await getAccount(accountId);
   await patchAccount(accountId, patch);
+  if ('primaryOnly' in patch && !!patch.primaryOnly !== !!before.primaryOnly) await syncAccount(accountId);
 }
 
 // ---------------------------------------------------------------- sync
@@ -164,9 +166,8 @@ async function doSync(accountId: string) {
   if (account.status !== 'syncing' && !account.lastSync) await patchAccount(accountId, { status: 'syncing' });
 
   try {
-    const fresh = (await providerFor(account).sync(account, settings.view, previous)).filter(
-      (t) => !isHidden(t) && fitsView(t, settings.view),
-    );
+    const spec = specFor(settings.view, account);
+    const fresh = (await providerFor(account).sync(account, spec, previous)).filter((t) => !isHidden(t) && fits(t, spec));
     const arrivals = account.lastSync ? findArrivals(previous, fresh, account.lastSync) : [];
     await updateThreads((all) => ({ ...all, [accountId]: fresh }));
     await patchAccount(accountId, { status: 'ok', error: undefined, lastSync: Date.now() });
@@ -278,6 +279,35 @@ export async function act(action: ThreadAction, items: ThreadRef[]): Promise<Act
   return { undoId: registerUndo(() => perform(items, INVERSE[action])) };
 }
 
+/**
+ * Everything unread in one inbox, read: on the server, not just what Glance
+ * has listed, so an inbox with thousands unread is cleared in one go too.
+ */
+export async function markAllRead(accountId: string): Promise<ActResult & { count: number }> {
+  const account = await getAccount(accountId);
+  const settings = await getSettings();
+  const provider = providerFor(account);
+  const listed = ((await getKey<Record<string, ThreadSummary[]>>('threads')) ?? {})[accountId] ?? [];
+  const unread = listed.filter((t) => t.unread).map((t) => ({ accountId, threadId: t.id }));
+  await applyLocally(unread, 'read', settings);
+  let ids: string[];
+  try {
+    ids = await provider.markAllRead(account, specFor(settings.view, account));
+  } catch (e) {
+    unread.forEach((r) => hidden.delete(hideKey(r)));
+    await syncAccount(accountId);
+    throw e;
+  }
+  return {
+    count: unread.length,
+    undoId: registerUndo(async () => {
+      await provider.restoreUnread(account, ids);
+      unread.forEach((r) => hidden.delete(hideKey(r)));
+      await syncAccount(accountId);
+    }),
+  };
+}
+
 // ---------------------------------------------------------------- snooze
 
 export async function snooze(items: ThreadRef[], until: number): Promise<ActResult> {
@@ -326,6 +356,7 @@ export async function processSnoozes() {
             title: 'Back from snooze',
             message: s.subject || '(no subject)',
             contextMessage: account.email,
+            buttons: THREAD_BUTTONS,
             priority: 0,
           });
         }
@@ -417,6 +448,12 @@ export async function getAttachment(accountId: string, messageId: string, attach
 
 // ---------------------------------------------------------------- notifications
 
+/** The buttons on a notification about one conversation, in onNotificationButton's order. */
+const THREAD_BUTTONS = [{ title: 'Mark as read' }, { title: 'Archive' }];
+
+/** The conversations behind a summary notification, so its button can act on all of them. */
+const summaryKey = (id: string) => `notif:${id}`;
+
 async function notifyArrivals(account: Account, arrivals: ThreadSummary[], settings: Settings) {
   if (!settings.notifications || !account.notify || inQuietHours(settings)) return;
   const worth = settings.vipOnly ? arrivals.filter((t) => isVip(settings, t.from.email)) : arrivals;
@@ -426,12 +463,15 @@ async function notifyArrivals(account: Account, arrivals: ThreadSummary[], setti
     // A plain notification rather than type "list": the Mac shows only the
     // first item of a list, and Quo's notifications are the Mac's own.
     const names = [...new Set(worth.map((t) => t.from.name || t.from.email))];
-    chrome.notifications.create(`s|${account.id}|${Date.now()}`, {
+    const id = `s|${account.id}|${Date.now()}`;
+    await chrome.storage.session?.set({ [summaryKey(id)]: worth.map((t) => t.id) }).catch(() => {});
+    chrome.notifications.create(id, {
       type: 'basic',
       iconUrl: chrome.runtime.getURL('/icon/128.png'),
       title: `${worth.length} new emails`,
       message: names.length > 3 ? `${names.slice(0, 3).join(', ')} and ${names.length - 3} more` : names.join(', '),
       contextMessage: account.email,
+      buttons: [{ title: 'Mark all as read' }, { title: 'Archive all' }],
       priority: 0,
     });
     return;
@@ -443,7 +483,7 @@ async function notifyArrivals(account: Account, arrivals: ThreadSummary[], setti
       title: t.from.name || t.from.email,
       message: t.subject,
       contextMessage: account.email,
-      buttons: [{ title: 'Mark as read' }, { title: 'Archive' }],
+      buttons: THREAD_BUTTONS,
       priority: isVip(settings, t.from.email) ? 2 : 0,
     });
   }
@@ -461,8 +501,14 @@ export async function onNotificationClicked(id: string) {
 export async function onNotificationButton(id: string, index: number) {
   chrome.notifications.clear(id);
   const [kind, accountId, threadId] = id.split('|');
-  if (kind !== 't') return;
-  await perform([{ accountId, threadId }], index === 0 ? 'read' : 'archive');
+  const action = index === 0 ? 'read' : 'archive';
+  if (kind === 't') return perform([{ accountId, threadId }], action);
+  if (kind !== 's') return;
+  const key = summaryKey(id);
+  const stored = (await chrome.storage.session?.get(key).catch(() => ({}))) as Record<string, string[]> | undefined;
+  const ids = stored?.[key] ?? [];
+  await chrome.storage.session?.remove(key).catch(() => {});
+  if (ids.length) await perform(ids.map((threadId) => ({ accountId, threadId })), action);
 }
 
 // ---------------------------------------------------------------- badge

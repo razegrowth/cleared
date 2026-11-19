@@ -1,6 +1,8 @@
 import { assert, test } from 'vitest';
-import { fitsView } from '../src/background/provider.ts';
-import type { ThreadSummary } from '../src/shared/types.ts';
+import { fits, queryFor, specFor } from '../src/background/provider.ts';
+import type { MailView, ThreadSummary } from '../src/shared/types.ts';
+
+const fitsView = (t: ThreadSummary, view: MailView, primaryOnly = false) => fits(t, specFor(view, { primaryOnly }));
 
 const t = (unread: boolean, labelIds: string[]): ThreadSummary => ({
   id: 't',
@@ -35,6 +37,17 @@ test('Primary leaves out the other tabs but keeps inboxes without tabs', () => {
   assert.isTrue(fitsView(t(true, ['INBOX', 'UNREAD', 'CATEGORY_PERSONAL']), 'unread-primary'));
   assert.isTrue(fitsView(t(true, ['INBOX', 'UNREAD']), 'unread-primary'));
   assert.isFalse(fitsView(t(true, ['INBOX', 'UNREAD', 'CATEGORY_PROMOTIONS']), 'unread-primary'));
+});
+
+test('an account set to Primary only narrows whatever the global view is', () => {
+  const promo = t(true, ['INBOX', 'UNREAD', 'CATEGORY_PROMOTIONS']);
+  assert.isTrue(fitsView(promo, 'unread-inbox'));
+  assert.isFalse(fitsView(promo, 'unread-inbox', true));
+  assert.isFalse(fitsView({ ...promo, unread: false }, 'inbox', true));
+  assert.isTrue(fitsView(t(false, ['INBOX', 'CATEGORY_PERSONAL']), 'inbox', true));
+  assert.equal(queryFor(specFor('unread-inbox', { primaryOnly: true })), 'in:inbox is:unread category:primary');
+  assert.equal(queryFor(specFor('inbox', { primaryOnly: true }), true), 'in:inbox is:unread category:primary');
+  assert.equal(queryFor(specFor('inbox', {})), 'in:inbox');
 });
 
 import { stripQuotedText } from '../src/ui/preview.ts';

@@ -454,18 +454,16 @@ html[data-split='true'] .split.has-reader > .pane-reader {
   position: sticky;
   top: 0;
   z-index: 2;
-  width: 100%;
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 9px 16px;
+  gap: 2px;
+  padding-right: 10px;
   background: var(--bg-subtle);
   border-bottom: 1px solid var(--separator);
   font: 500 11px var(--mono);
   text-transform: uppercase;
   letter-spacing: 0.04em;
   color: var(--text);
-  text-align: left;
   transition: color 0.2s, background 0.2s;
 }
 
@@ -478,12 +476,25 @@ html[data-split='true'] .split.has-reader > .pane-reader {
   background: var(--bg-sunken);
 }
 
+/* The address: opens the inbox in Gmail. */
+.gh-main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 6px 9px 16px;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  text-align: left;
+}
+
 .group-head .monogram {
   color: var(--text);
 }
 
 .group-head .addr {
-  flex: 1;
   min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -493,7 +504,64 @@ html[data-split='true'] .split.has-reader > .pane-reader {
 }
 
 .group-head .n {
+  margin-left: auto;
   color: var(--text-2);
+}
+
+/* This account lists only its Primary tab. */
+.gh-tag {
+  flex: none;
+  padding: 1px 5px;
+  border-radius: 3px;
+  box-shadow: inset 0 0 0 1px var(--separator-strong);
+  font-size: 9.5px;
+  color: var(--text-2);
+}
+
+/* The way out to Gmail, shown when the address is pointed at. */
+.group-head .out {
+  flex: none;
+  width: 12px;
+  height: 12px;
+  margin: -2px 0;
+  opacity: 0;
+  transform: translate(-3px, 3px);
+  transition: opacity 0.15s, transform 0.2s var(--ease);
+}
+
+.gh-main:hover .out,
+.gh-main:focus-visible .out {
+  opacity: 1;
+  transform: none;
+}
+
+/* Mark all read and the inbox's menu: there when the heading is pointed at. */
+.gh-act {
+  flex: none;
+  width: 24px;
+  height: 24px;
+  display: grid;
+  place-items: center;
+  border-radius: var(--r-sm);
+  color: var(--text-2);
+  opacity: 0;
+  transition: opacity 0.15s, background 0.15s, color 0.15s;
+}
+
+.gh-act svg {
+  width: 14px;
+  height: 14px;
+  stroke-width: 1.8;
+}
+
+.group-head:hover .gh-act,
+.group-head:focus-within .gh-act {
+  opacity: 1;
+}
+
+.gh-act:hover {
+  background: var(--press);
+  color: var(--text);
 }
 
 /* An inbox with nothing in it: only its heading, quieter than the ones with mail. */
@@ -509,22 +577,6 @@ html[data-split='true'] .split.has-reader > .pane-reader {
 .group-head[data-empty]:hover {
   background: var(--hover);
   color: var(--text);
-}
-
-/* The way out to Gmail, shown when the heading is pointed at. */
-.group-head .out {
-  width: 12px;
-  height: 12px;
-  margin: -2px -2px -2px 0;
-  opacity: 0;
-  transform: translate(-3px, 3px);
-  transition: opacity 0.15s, transform 0.2s var(--ease);
-}
-
-.group-head:hover .out,
-.group-head:focus-visible .out {
-  opacity: 1;
-  transform: none;
 }
 
 .row {
@@ -1579,6 +1631,15 @@ kbd {
   padding: 0 8px;
   border-radius: var(--r-sm);
   text-align: left;
+}
+
+.menu .item svg {
+  flex: none;
+  color: var(--text-2);
+}
+
+.menu .item[data-active='true'] svg {
+  color: inherit;
 }
 
 .menu .item .when {

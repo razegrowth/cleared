@@ -1,5 +1,6 @@
 import {
   Archive,
+  CheckCheck,
   CircleAlert,
   Clock,
   Command as CommandIcon,
@@ -28,7 +29,7 @@ import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } fr
 import { flushSync } from 'react-dom';
 import { clearDraft, Composer, loadDraft } from './Composer';
 import { MOD, typingIn, useLatest, useMail, useNow, useTheme, useWidth } from './hooks';
-import { Palette, SnoozeMenu, type Command } from './Palette';
+import { ActionMenu, Palette, SnoozeMenu, type Command } from './Palette';
 import { Reader } from './Reader';
 import { blankDraft, replyDraft } from './reply';
 import { describeSnooze } from './snooze';
@@ -278,6 +279,8 @@ function MailApp({ state, layout }: { state: MailState; layout: Layout }) {
   const [composer, setComposer] = useState<(Draft & { failed?: string }) | null>(null);
   const [palette, setPalette] = useState(false);
   const [snoozing, setSnoozing] = useState<ThreadRef[] | null>(null);
+  /** The inbox whose menu is open (from its heading, its tab or the palette). */
+  const [inboxMenu, setInboxMenu] = useState<Account | null>(null);
   const lastUndo = useRef<(() => void) | null>(null);
   const windowId = useRef<number | undefined>(undefined);
   const openSeq = useRef(0);
@@ -455,6 +458,25 @@ function MailApp({ state, layout }: { state: MailState; layout: Layout }) {
     } catch (e) {
       push({ text: e instanceof Error ? e.message : String(e), error: true });
     }
+  };
+
+  /** Everything unread in one inbox, read, with an undo. */
+  const markAllRead = async (a: Account) => {
+    if (open?.accountId === a.id) closeReader();
+    setSelected(new Set());
+    try {
+      const r = await request<ActResult & { count: number }>({ type: 'markAllRead', accountId: a.id });
+      undoable(r.undoId, `Marked all read in ${nameOf(a)}`);
+    } catch (e) {
+      push({ text: e instanceof Error ? e.message : String(e), error: true });
+    }
+  };
+
+  const togglePrimary = (a: Account) => {
+    const primaryOnly = !a.primaryOnly;
+    request({ type: 'updateAccount', accountId: a.id, patch: { primaryOnly } })
+      .then(() => push({ text: primaryOnly ? `${nameOf(a)}: Primary only` : `${nameOf(a)}: every unread email`, ms: 2200 }))
+      .catch((e) => push({ text: e.message, error: true }));
   };
 
   const snooze = async (refs: ThreadRef[], until: number) => {
@@ -680,6 +702,20 @@ function MailApp({ state, layout }: { state: MailState; layout: Layout }) {
       }),
     );
   }
+  for (const a of accounts) {
+    if (unreadIn(a.id)) {
+      commands.push({ id: `allread-${a.id}`, group: 'Inboxes', label: `Mark all read in ${a.email}`, icon: CheckCheck, run: () => markAllRead(a) });
+    }
+    if (settings.view !== 'unread-primary') {
+      commands.push({
+        id: `primary-${a.id}`,
+        group: 'Inboxes',
+        label: a.primaryOnly ? `Show every unread email for ${a.email}` : `Primary only for ${a.email}`,
+        icon: Inbox,
+        run: () => togglePrimary(a),
+      });
+    }
+  }
   if (accounts.length > 1) {
     commands.push({
       id: 'addresses',
@@ -737,7 +773,7 @@ function MailApp({ state, layout }: { state: MailState; layout: Layout }) {
       openSettings();
       return;
     }
-    if (palette || snoozing) return;
+    if (palette || snoozing || inboxMenu) return;
     if (typingIn(e.target)) {
       if (k === 'Escape' && e.target === searchInput.current) {
         setSearchOpen(false);
@@ -900,6 +936,9 @@ function MailApp({ state, layout }: { state: MailState; layout: Layout }) {
     chrome.tabs.create({ url: gmailThreadUrl(a.email) });
   };
 
+  /** Whether an account's own Primary-only choice is doing anything (it isn't when every inbox is Primary). */
+  const ownPrimary = (a: Account) => !!a.primaryOnly && settings.view !== 'unread-primary';
+
   const groupHead = (a: Account, count: number, leaving: boolean, entering: boolean, empty = false) => (
     <GroupHead
       key={`head-${a.id}`}
@@ -907,10 +946,12 @@ function MailApp({ state, layout }: { state: MailState; layout: Layout }) {
       email={a.email}
       count={count}
       empty={empty}
-      title={`Open ${a.email} in Gmail`}
+      primary={ownPrimary(a)}
       leaving={leaving}
       entering={entering}
-      onClick={() => openInbox(a)}
+      onOpen={() => openInbox(a)}
+      onMarkAllRead={() => markAllRead(a)}
+      onMenu={() => setInboxMenu(a)}
     />
   );
 
@@ -1022,7 +1063,11 @@ function MailApp({ state, layout }: { state: MailState; layout: Layout }) {
                   className="tab"
                   aria-pressed={activeFilter === a.id}
                   onClick={() => setFilter(a.id)}
-                  title={`${a.email}${i < 9 ? ` (${i + 1})` : ''}`}
+                  onContextMenu={(e) => {
+                    e.preventDefault();
+                    setInboxMenu(a);
+                  }}
+                  title={`${a.email}${i < 9 ? ` (${i + 1})` : ''}${ownPrimary(a) ? ' · Primary only' : ''}`}
                 >
                   <span className="monogram">{monograms.get(a.id)}</span>
                   {nameOf(a)}
@@ -1061,7 +1106,7 @@ function MailApp({ state, layout }: { state: MailState; layout: Layout }) {
             </div>
           )}
 
-          {drawn.length === 0 && !everyInbox ? (
+          {drawn.length === 0 ? (
             <EmptyList searching={!!results || !!query} filtered={!!filterAccount} view={settings.view} />
           ) : (
             <div className={`list ${grouped ? 'grouped' : ''}`} role="listbox" aria-label="Conversations" aria-multiselectable>
@@ -1151,6 +1196,24 @@ function MailApp({ state, layout }: { state: MailState; layout: Layout }) {
       {composeSheet}
       {palette && <Palette commands={commands} onSearch={runSearch} onClose={() => setPalette(false)} />}
       {snoozing && <SnoozeMenu onPick={(at) => snooze(snoozing, at)} onClose={() => setSnoozing(null)} />}
+      {inboxMenu && (
+        <ActionMenu
+          title={inboxMenu.email}
+          onClose={() => setInboxMenu(null)}
+          items={[
+            { label: 'Open in Gmail', icon: ExternalLink, run: () => openInbox(inboxMenu) },
+            {
+              label: 'Mark all read',
+              icon: CheckCheck,
+              hint: unreadIn(inboxMenu.id) ? String(unreadIn(inboxMenu.id)) : undefined,
+              run: () => markAllRead(inboxMenu),
+            },
+            ...(settings.view !== 'unread-primary'
+              ? [{ label: 'Primary only', icon: Inbox, checked: !!inboxMenu.primaryOnly, run: () => togglePrimary(inboxMenu) }]
+              : []),
+          ]}
+        />
+      )}
     </div>
     </LinkContext.Provider>
   );
@@ -1173,8 +1236,16 @@ function EmptyList({ searching, filtered, view }: { searching: boolean; filtered
       <div className="mark">
         <Inbox />
       </div>
-      <h2>{view === 'inbox' ? 'Inbox empty' : 'All caught up'}</h2>
-      <p>{filtered ? 'Nothing unread in this inbox.' : 'Nothing unread across your inboxes.'}</p>
+      <h2>{view === 'inbox' ? 'Inbox empty' : 'All clear'}</h2>
+      <p>
+        {view === 'inbox'
+          ? filtered
+            ? 'Nothing in this inbox.'
+            : 'Nothing in any of your inboxes.'
+          : filtered
+            ? 'Nothing unread in this inbox.'
+            : 'Nothing unread in any of your inboxes.'}
+      </p>
     </div>
   );
 }

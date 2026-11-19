@@ -208,3 +208,61 @@ export function SnoozeMenu({ onPick, onClose }: { onPick: (at: number) => void; 
     </div>
   );
 }
+
+export interface MenuItem {
+  label: string;
+  icon: LucideIcon;
+  /** A tick, for an item that is a switch. */
+  checked?: boolean;
+  hint?: string;
+  run: () => void;
+}
+
+/** A short list of things to do to one thing, such as an inbox. Arrows or j/k to move, Return to choose. */
+export function ActionMenu({ title, items, onClose }: { title: string; items: MenuItem[]; onClose: () => void }) {
+  const [active, setActive] = useState(0);
+  const root = useRef<HTMLDivElement>(null);
+  useEffect(() => root.current?.focus(), []);
+
+  const choose = (i: number) => {
+    onClose();
+    items[i].run();
+  };
+
+  const onKey = (e: React.KeyboardEvent) => {
+    e.stopPropagation();
+    if (e.key === 'ArrowDown' || e.key === 'j') setActive((a) => Math.min(items.length - 1, a + 1));
+    else if (e.key === 'ArrowUp' || e.key === 'k') setActive((a) => Math.max(0, a - 1));
+    else if (e.key === 'Enter') choose(active);
+    else if (e.key === 'Escape') onClose();
+    else return;
+    e.preventDefault();
+  };
+
+  return (
+    <div className="scrim" onMouseDown={(e) => e.target === e.currentTarget && onClose()}>
+      <div className="menu" ref={root} tabIndex={-1} onKeyDown={onKey} role="menu" aria-label={title}>
+        <div className="title">{title}</div>
+        {items.map((item, i) => (
+          <button
+            key={item.label}
+            className="item"
+            role={item.checked === undefined ? 'menuitem' : 'menuitemcheckbox'}
+            aria-checked={item.checked}
+            data-active={i === active}
+            onMouseMove={() => setActive(i)}
+            onClick={() => choose(i)}
+          >
+            <item.icon size={14} />
+            {item.label}
+            {item.checked !== undefined ? (
+              <span className="when">{item.checked ? 'On' : 'Off'}</span>
+            ) : (
+              item.hint && <span className="when">{item.hint}</span>
+            )}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}

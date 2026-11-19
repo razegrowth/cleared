@@ -1,10 +1,35 @@
 import type { Account, Draft, MailView, ThreadAction, ThreadDetail, ThreadSummary } from '../shared/types';
 
+/** What one account lists: a view, narrowed to Gmail's Primary tab or not. */
+export interface ListSpec {
+  view: 'unread-inbox' | 'inbox';
+  primary: boolean;
+}
+
+/** The global view, with the account's own Primary-only choice on top. */
+export function specFor(view: MailView, account: Pick<Account, 'primaryOnly'>): ListSpec {
+  return {
+    view: view === 'inbox' ? 'inbox' : 'unread-inbox',
+    primary: view === 'unread-primary' || !!account.primaryOnly,
+  };
+}
+
+/** The Gmail search for a spec. `unread` asks for only the unread part, whatever the view. */
+export function queryFor(spec: ListSpec, unread = spec.view === 'unread-inbox'): string {
+  return ['in:inbox', unread ? 'is:unread' : '', spec.primary ? 'category:primary' : ''].filter(Boolean).join(' ');
+}
+
 /** One source of mail. Gmail for real accounts, an in-memory mailbox for the demo. */
 export interface Provider {
-  /** The current list for a view. `previous` lets a provider reuse what hasn't changed. */
-  sync(account: Account, view: MailView, previous: ThreadSummary[]): Promise<ThreadSummary[]>;
+  /** The current list for a spec. `previous` lets a provider reuse what hasn't changed. */
+  sync(account: Account, spec: ListSpec, previous: ThreadSummary[]): Promise<ThreadSummary[]>;
   modify(account: Account, threadIds: string[], action: ThreadAction): Promise<void>;
+  /**
+   * Marks every unread conversation the spec covers as read, not only the
+   * ones Glance has listed. Returns what it changed, for restoreUnread.
+   */
+  markAllRead(account: Account, spec: ListSpec): Promise<string[]>;
+  restoreUnread(account: Account, ids: string[]): Promise<void>;
   getThread(account: Account, threadId: string): Promise<ThreadDetail>;
   /** Standard base64 of the attachment's bytes. */
   getAttachment(account: Account, messageId: string, attachmentId: string): Promise<string>;
@@ -12,32 +37,24 @@ export interface Provider {
   search(account: Account, query: string): Promise<ThreadSummary[]>;
 }
 
-export const VIEW_QUERY: Record<MailView, string> = {
-  'unread-inbox': 'in:inbox is:unread',
-  'unread-primary': 'in:inbox is:unread category:primary',
-  inbox: 'in:inbox',
-};
-
 /**
- * How each view is listed. Labels where they can do it: Gmail's label index is
+ * How a spec is listed. Labels where they can do it: Gmail's label index is
  * always current, while its search index can lag, so `is:unread` may still
  * return a thread for a while after it was read. Primary has no label that
  * means "Primary" for people without inbox tabs, so it stays a search.
  */
-export const VIEW_LIST: Record<MailView, { labelIds?: string[]; q?: string }> = {
-  'unread-inbox': { labelIds: ['INBOX', 'UNREAD'] },
-  'unread-primary': { q: VIEW_QUERY['unread-primary'] },
-  inbox: { labelIds: ['INBOX'] },
-};
+export function listFor(spec: ListSpec): { labelIds?: string[]; q?: string } {
+  if (spec.primary) return { q: queryFor(spec) };
+  return { labelIds: spec.view === 'inbox' ? ['INBOX'] : ['INBOX', 'UNREAD'] };
+}
 
 const OTHER_TABS = ['CATEGORY_SOCIAL', 'CATEGORY_PROMOTIONS', 'CATEGORY_UPDATES', 'CATEGORY_FORUMS'];
 
-/** Whether a thread, by its own labels, belongs in a view. The last word over any list. */
-export function fitsView(t: ThreadSummary, view: MailView): boolean {
+/** Whether a thread, by its own labels, belongs in a spec's list. The last word over any list. */
+export function fits(t: ThreadSummary, spec: ListSpec): boolean {
   if (!t.labelIds.includes('INBOX')) return false;
-  if (view === 'inbox') return true;
-  if (!t.unread) return false;
-  return view === 'unread-inbox' || !t.labelIds.some((l) => OTHER_TABS.includes(l));
+  if (spec.view === 'unread-inbox' && !t.unread) return false;
+  return !spec.primary || !t.labelIds.some((l) => OTHER_TABS.includes(l));
 }
 
 /**

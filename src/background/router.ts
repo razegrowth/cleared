@@ -15,6 +15,8 @@ export async function handle(req: Request): Promise<unknown> {
       return engine.reauth(req.accountId);
     case 'updateAccount':
       return engine.updateAccount(req.accountId, req.patch);
+    case 'markAllRead':
+      return engine.markAllRead(req.accountId);
     case 'act':
       return engine.act(req.action, req.items);
     case 'snooze':
