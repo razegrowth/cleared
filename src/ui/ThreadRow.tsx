@@ -1,8 +1,10 @@
 import { Archive, ArrowUpRight, Check, CheckCheck, Clock, Ellipsis, Mail, MailOpen, Paperclip, Star, Trash2 } from 'lucide-react';
 import { memo, useEffect, useLayoutEffect, useRef, useState, type RefObject } from 'react';
+import { under, type MenuAnchor } from './Palette';
 import { cachedPreview, loadPreview } from './preview';
 import { shortDate, tidySnippet, tidyText } from '../shared/format';
-import type { ThreadAction, ThreadSummary } from '../shared/types';
+import type { Account, ThreadAction, ThreadSummary } from '../shared/types';
+import { Avatar } from './Avatar';
 
 interface Props {
   thread: ThreadSummary;
@@ -74,7 +76,7 @@ function useFold(ref: RefObject<HTMLElement | null>, leaving: boolean, entering:
 
 /** An inbox's heading in the All view. Clicking it opens that inbox in Gmail. */
 export function GroupHead({
-  monogram,
+  account,
   email,
   count,
   empty,
@@ -86,8 +88,9 @@ export function GroupHead({
   onOpen,
   onMarkAllRead,
   onMenu,
+  menuOpen,
 }: {
-  monogram: string;
+  account: Account;
   email: string;
   count: number;
   /** Nothing to show under it: the heading stands alone, quieter. */
@@ -101,7 +104,9 @@ export function GroupHead({
   entering: boolean;
   onOpen: () => void;
   onMarkAllRead: () => void;
-  onMenu: () => void;
+  /** Opens the inbox's menu at the button, or at the pointer for a right-click. */
+  onMenu: (anchor: MenuAnchor) => void;
+  menuOpen?: boolean;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   useFold(ref, leaving, entering);
@@ -111,15 +116,16 @@ export function GroupHead({
       ref={ref}
       className="group-head"
       data-empty={empty || undefined}
+      data-menu={menuOpen || undefined}
       aria-hidden={leaving || undefined}
       style={leaving ? { pointerEvents: 'none' } : undefined}
       onContextMenu={(e) => {
         e.preventDefault();
-        onMenu();
+        onMenu({ x: e.clientX, y: e.clientY, align: 'start' });
       }}
     >
       <button className="gh-main" title={`Open ${email} in Gmail`} tabIndex={off} onClick={onOpen}>
-        <span className="monogram">{monogram}</span>
+        <Avatar person={account} picture={account.picture} tint={account.color} size="xs" />
         <span className="addr">{email}</span>
         {primary && <span className="gh-tag">Primary</span>}
         <ArrowUpRight className="out" aria-hidden />
@@ -135,7 +141,15 @@ export function GroupHead({
           <CheckCheck />
         </button>
       )}
-      <button className="gh-act" title="More" aria-label={`More for ${email}`} tabIndex={off} onClick={onMenu}>
+      <button
+        className="gh-act"
+        title="More"
+        aria-label={`More for ${email}`}
+        aria-haspopup="menu"
+        aria-expanded={menuOpen || false}
+        tabIndex={off}
+        onClick={(e) => onMenu(under(e.currentTarget))}
+      >
         <Ellipsis />
       </button>
     </div>

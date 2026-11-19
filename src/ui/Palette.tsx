@@ -1,5 +1,5 @@
 import { Search, type LucideIcon } from 'lucide-react';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { snoozeOptions } from './snooze';
 
 export interface Command {
@@ -218,11 +218,53 @@ export interface MenuItem {
   run: () => void;
 }
 
-/** A short list of things to do to one thing, such as an inbox. Arrows or j/k to move, Return to choose. */
-export function ActionMenu({ title, items, onClose }: { title: string; items: MenuItem[]; onClose: () => void }) {
+/**
+ * Where a menu opens: a point in the window, with the menu's left or right
+ * edge on it. `end` hangs it under a button at the right; `start` puts it at
+ * the pointer for a right-click.
+ */
+export interface MenuAnchor {
+  x: number;
+  y: number;
+  align: 'start' | 'end';
+}
+
+/** Below a button, its right edges lined up. */
+export const under = (el: Element): MenuAnchor => {
+  const r = el.getBoundingClientRect();
+  return { x: r.right, y: r.bottom + 4, align: 'end' };
+};
+
+/**
+ * A short list of things to do to one thing, such as an inbox. Arrows or j/k
+ * to move, Return to choose. With an anchor it opens where it was asked for,
+ * kept inside the window; without one (from the palette) it opens at the top.
+ */
+export function ActionMenu({ title, items, anchor, onClose }: { title: string; items: MenuItem[]; anchor?: MenuAnchor; onClose: () => void }) {
   const [active, setActive] = useState(0);
   const root = useRef<HTMLDivElement>(null);
+  const [place, setPlace] = useState<{ left: number; top: number; origin: string } | null>(null);
   useEffect(() => root.current?.focus(), []);
+
+  useLayoutEffect(() => {
+    const menu = root.current;
+    const box = menu?.parentElement?.getBoundingClientRect();
+    if (!anchor || !menu || !box) return;
+    // Layout size, not the on-screen box: that is still scaled down by the opening animation.
+    const width = menu.offsetWidth;
+    const height = menu.offsetHeight;
+    const margin = 8;
+    let left = (anchor.align === 'end' ? anchor.x - width : anchor.x) - box.left;
+    let top = anchor.y - box.top;
+    let vertical = 'top';
+    // No room below: open upwards from the anchor instead.
+    if (top + height > box.height - margin) {
+      top = Math.max(margin, top - height - (anchor.align === 'end' ? 32 : 0));
+      vertical = 'bottom';
+    }
+    left = Math.min(Math.max(margin, left), box.width - width - margin);
+    setPlace({ left, top, origin: `${vertical} ${anchor.align === 'end' ? 'right' : 'left'}` });
+  }, [anchor]);
 
   const choose = (i: number) => {
     onClose();
@@ -240,8 +282,29 @@ export function ActionMenu({ title, items, onClose }: { title: string; items: Me
   };
 
   return (
-    <div className="scrim" onMouseDown={(e) => e.target === e.currentTarget && onClose()}>
-      <div className="menu" ref={root} tabIndex={-1} onKeyDown={onKey} role="menu" aria-label={title}>
+    <div
+      className={`scrim ${anchor ? 'anchored' : ''}`}
+      onMouseDown={(e) => e.target === e.currentTarget && onClose()}
+      onContextMenu={(e) => {
+        e.preventDefault();
+        if (e.target === e.currentTarget) onClose();
+      }}
+    >
+      <div
+        className="menu"
+        ref={root}
+        tabIndex={-1}
+        onKeyDown={onKey}
+        role="menu"
+        aria-label={title}
+        style={
+          anchor
+            ? place
+              ? { position: 'absolute', left: place.left, top: place.top, transformOrigin: place.origin }
+              : { position: 'absolute', visibility: 'hidden' }
+            : undefined
+        }
+      >
         <div className="title">{title}</div>
         {items.map((item, i) => (
           <button

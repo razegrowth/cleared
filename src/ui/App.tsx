@@ -32,7 +32,7 @@ import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } fr
 import { flushSync } from 'react-dom';
 import { clearDraft, Composer, loadDraft } from './Composer';
 import { MOD, stepScale, typingIn, useChecking, useLatest, useMail, useNow, useSpin, useTheme, useWidth } from './hooks';
-import { ActionMenu, Palette, SnoozeMenu, type Command } from './Palette';
+import { ActionMenu, Palette, SnoozeMenu, type Command, type MenuAnchor } from './Palette';
 import { Reader } from './Reader';
 import { blankDraft, replyDraft } from './reply';
 import { describeSnooze } from './snooze';
@@ -297,7 +297,10 @@ function MailApp({ state, layout }: { state: MailState; layout: Layout }) {
   const [palette, setPalette] = useState(false);
   const [snoozing, setSnoozing] = useState<ThreadRef[] | null>(null);
   /** The inbox whose menu is open (from its heading, its tab or the palette). */
-  const [inboxMenu, setInboxMenu] = useState<Account | null>(null);
+  const [menu, setMenu] = useState<{ account: Account; anchor?: MenuAnchor } | null>(null);
+  // The menu shows the account as it is now, so Primary only's tick follows a change.
+  const inboxMenu = menu ? (byId.get(menu.account.id) ?? null) : null;
+  const setInboxMenu = (account: Account | null, anchor?: MenuAnchor) => setMenu(account ? { account, anchor } : null);
   const lastUndo = useRef<(() => void) | null>(null);
   const windowId = useRef<number | undefined>(undefined);
   const openSeq = useRef(0);
@@ -980,7 +983,7 @@ function MailApp({ state, layout }: { state: MailState; layout: Layout }) {
   const groupHead = (a: Account, count: number, leaving: boolean, entering: boolean, empty = false) => (
     <GroupHead
       key={`head-${a.id}`}
-      monogram={monograms.get(a.id) ?? ''}
+      account={a}
       email={a.email}
       count={count}
       empty={empty}
@@ -991,7 +994,8 @@ function MailApp({ state, layout }: { state: MailState; layout: Layout }) {
       entering={entering}
       onOpen={() => openInbox(a)}
       onMarkAllRead={() => markAllRead(a)}
-      onMenu={() => setInboxMenu(a)}
+      onMenu={(anchor) => setInboxMenu(a, anchor)}
+      menuOpen={inboxMenu?.id === a.id && !!menu?.anchor}
     />
   );
 
@@ -1105,7 +1109,7 @@ function MailApp({ state, layout }: { state: MailState; layout: Layout }) {
                   onClick={() => setFilter(a.id)}
                   onContextMenu={(e) => {
                     e.preventDefault();
-                    setInboxMenu(a);
+                    setInboxMenu(a, { x: e.clientX, y: e.clientY, align: 'start' });
                   }}
                   title={`${a.email}${i < 9 ? ` (${i + 1})` : ''}${ownPrimary(a) ? ' · Primary only' : ''}`}
                 >
@@ -1149,7 +1153,13 @@ function MailApp({ state, layout }: { state: MailState; layout: Layout }) {
           {drawn.length === 0 ? (
             <EmptyList searching={!!results || !!query} filtered={!!filterAccount} view={settings.view} />
           ) : (
-            <div className={`list ${grouped ? 'grouped' : ''}`} role="listbox" aria-label="Conversations" aria-multiselectable>
+            <div
+              className={`list ${grouped ? 'grouped' : ''}`}
+              data-selecting={selected.size > 0 || undefined}
+              role="listbox"
+              aria-label="Conversations"
+              aria-multiselectable
+            >
               {everyInbox
                 ? // All inboxes: every inbox keeps its heading, in tab order, even with nothing in it.
                   accounts.flatMap((a) => {
@@ -1239,6 +1249,7 @@ function MailApp({ state, layout }: { state: MailState; layout: Layout }) {
       {inboxMenu && (
         <ActionMenu
           title={inboxMenu.email}
+          anchor={menu?.anchor}
           onClose={() => setInboxMenu(null)}
           items={[
             { label: 'Open in Gmail', icon: ExternalLink, run: () => openInbox(inboxMenu) },

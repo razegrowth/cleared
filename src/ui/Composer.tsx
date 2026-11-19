@@ -146,7 +146,7 @@ export function Composer({ initial, accounts, sheet, onSend, onClose, onDiscard 
           <Trash2 />
         </button>
         <button className="btn primary" onClick={send} disabled={sending}>
-          <Send /> Send <kbd style={{ background: 'rgba(255,255,255,.18)', color: '#fff', boxShadow: 'none' }}>{MOD}↵</kbd>
+          <Send /> Send <kbd>{MOD}↵</kbd>
         </button>
       </div>
     </div>

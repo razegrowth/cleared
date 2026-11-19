@@ -109,7 +109,7 @@ function Page({ accounts, settings }: { accounts: Account[]; settings: Settings 
         {accounts.length === 0 && <div className="s-empty">No accounts yet.</div>}
         {accounts.map((a) => (
           <div className="s-account" key={a.id}>
-            <Avatar person={a} picture={a.picture} size="md" />
+            <Avatar person={a} picture={a.picture} size="md" tint={a.color} />
             <div className="s-account-main">
               <div className="s-account-name">
                 {a.email}
