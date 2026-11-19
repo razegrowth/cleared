@@ -1,0 +1,34 @@
+{
+ "name": "Glance",
+ "title": "Lowercase g",
+ "idea": "Glance's g, set heavy and round so it reads like a glancing eye on a hook.",
+ "grid": 48,
+ "mark": [
+  {
+   "shape": "glyph",
+   "text": "g",
+   "font": "Bricolage Grotesque",
+   "weight": 800,
+   "x": 9,
+   "y": 31,
+   "cap": 30
+  }
+ ],
+ "wordmark": {
+  "text": "glance",
+  "font": "Bricolage Grotesque",
+  "weight": 700,
+  "tracking": -20
+ },
+ "palette": {
+  "ink": "#0f0f0f",
+  "paper": "#ffffff",
+  "accent": "#0f0f0f",
+  "neutral": "#8a8a8a",
+  "tint": "#ececec"
+ },
+ "lockup": {
+  "mark_scale": 1.6,
+  "gap": 0.7
+ }
+}

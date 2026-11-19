@@ -1,0 +1,63 @@
+{
+ "target_from": "world-abstract marks (31) - minimal symbols on black tiles; no personal references given",
+ "target": {
+  "aspect": 1.049,
+  "coverage": 0.434,
+  "solidity": 0.518,
+  "stroke": 134.7,
+  "stroke_contrast": 2.83,
+  "components": 3.0,
+  "counters": 0.0,
+  "symmetry": 0.83,
+  "compactness": 11.4,
+  "corners": 20.0
+ },
+ "range": {
+  "aspect": [
+   0.68,
+   2.059
+  ],
+  "coverage": [
+   0.155,
+   0.625
+  ],
+  "solidity": [
+   0.232,
+   0.742
+  ],
+  "stroke": [
+   21.17,
+   214.94
+  ],
+  "stroke_contrast": [
+   1.221,
+   11.678
+  ],
+  "components": [
+   1.0,
+   15.0
+  ],
+  "counters": [
+   0.0,
+   7.0
+  ],
+  "symmetry": [
+   0.26,
+   0.956
+  ],
+  "compactness": [
+   6.088,
+   92.651
+  ],
+  "corners": [
+   9.0,
+   166.1
+  ]
+ },
+ "leanings": [
+  "black and white only",
+  "mark only, knocked out white on a black rounded tile",
+  "must read at 16 px: few parts, stroke >= 1.5 px at 16",
+  "calm and settled over busy; one move per mark"
+ ]
+}

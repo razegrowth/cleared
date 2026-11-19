@@ -1,0 +1,4064 @@
+{
+ "unit": "per 1000 of the mark's height",
+ "references": [
+  {
+   "file": "refs/arena/design-logomark-wordmark-symbol/23467889.jpg",
+   "usable": true,
+   "separation": 0.9816783476722449,
+   "ink_colours": 2,
+   "reversed": true,
+   "aspect": 5.699,
+   "coverage": 0.458,
+   "solidity": 0.4844,
+   "stroke": 90.2,
+   "stroke_contrast": 1.2,
+   "components": 16,
+   "counters": 10,
+   "counter_shares": [
+    0.3936,
+    0.0426,
+    0.0371,
+    0.0307,
+    0.0271,
+    0.0193
+   ],
+   "symmetry": {
+    "mirror": 0.336,
+    "flip": 0.635,
+    "turn": 0.328
+   },
+   "compactness": 124.86,
+   "corners": 123,
+   "centre_offset": [
+    -0.034,
+    -0.09
+   ],
+   "kind": "wordmark"
+  },
+  {
+   "file": "refs/arena/design-logomark-wordmark-symbol/28711100.webp",
+   "usable": true,
+   "separation": 0.9893776817569561,
+   "ink_colours": 2,
+   "reversed": true,
+   "aspect": 3.747,
+   "coverage": 0.3096,
+   "solidity": 0.3292,
+   "stroke": 99.4,
+   "stroke_contrast": 3.25,
+   "components": 4,
+   "counters": 0,
+   "counter_shares": [],
+   "symmetry": {
+    "mirror": 0.204,
+    "flip": 0.296,
+    "turn": 0.139
+   },
+   "compactness": 30.91,
+   "corners": 34,
+   "centre_offset": [
+    -0.042,
+    0.016
+   ],
+   "kind": "wordmark"
+  },
+  {
+   "file": "refs/arena/design-logomark-wordmark-symbol/29015981.png",
+   "usable": true,
+   "separation": 0.9820357773885403,
+   "ink_colours": 3,
+   "reversed": true,
+   "aspect": 5.099,
+   "coverage": 0.255,
+   "solidity": 0.3283,
+   "stroke": 93.2,
+   "stroke_contrast": 1.25,
+   "components": 11,
+   "counters": 3,
+   "counter_shares": [
+    0.0697,
+    0.0694,
+    0.0223
+   ],
+   "symmetry": {
+    "mirror": 0.161,
+    "flip": 0.421,
+    "turn": 0.151
+   },
+   "compactness": 51.57,
+   "corners": 93,
+   "centre_offset": [
+    0.049,
+    0.065
+   ],
+   "kind": "wordmark"
+  },
+  {
+   "file": "refs/arena/design-logomark-wordmark-symbol/29016332.png",
+   "usable": true,
+   "separation": 0.9587103855998816,
+   "ink_colours": 4,
+   "reversed": false,
+   "aspect": 10.191,
+   "coverage": 0.3774,
+   "solidity": 0.3802,
+   "stroke": 153.4,
+   "stroke_contrast": 2.5,
+   "components": 10,
+   "counters": 6,
+   "counter_shares": [
+    0.1421,
+    0.1185,
+    0.052,
+    0.0513,
+    0.037,
+    0.0346
+   ],
+   "symmetry": {
+    "mirror": 0.209,
+    "flip": 0.506,
+    "turn": 0.218
+   },
+   "compactness": 58.42,
+   "corners": 83,
+   "centre_offset": [
+    -0.019,
+    0.012
+   ],
+   "kind": "wordmark"
+  },
+  {
+   "file": "refs/arena/design-logomark-wordmark-symbol/29016340.webp",
+   "usable": true,
+   "separation": 0.9908041670433876,
+   "ink_colours": 1,
+   "reversed": true,
+   "aspect": 11.23,
+   "coverage": 0.4623,
+   "solidity": 0.4697,
+   "stroke": 270.3,
+   "stroke_contrast": 1.11,
+   "components": 5,
+   "counters": 1,
+   "counter_shares": [
+    0.0117
+   ],
+   "symmetry": {
+    "mirror": 0.542,
+    "flip": 0.564,
+    "turn": 0.443
+   },
+   "compactness": 28.91,
+   "corners": 47,
+   "centre_offset": [
+    -0.092,
+    -0.008
+   ],
+   "kind": "wordmark"
+  },
+  {
+   "file": "refs/arena/design-logomark-wordmark-symbol/29159057.jpg",
+   "usable": true,
+   "separation": 0.9925796574432751,
+   "ink_colours": 1,
+   "reversed": true,
+   "aspect": 0.703,
+   "coverage": 0.4347,
+   "solidity": 0.4843,
+   "stroke": 39.3,
+   "stroke_contrast": 5.2,
+   "components": 6,
+   "counters": 5,
+   "counter_shares": [
+    0.3279,
+    0.013,
+    0.0107,
+    0.0095,
+    0.0052
+   ],
+   "symmetry": {
+    "mirror": 0.793,
+    "flip": 0.313,
+    "turn": 0.312
+   },
+   "compactness": 26.12,
+   "corners": 78,
+   "centre_offset": [
+    0.024,
+    -0.009
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/arena/design-logomark-wordmark-symbol/29159071.jpg",
+   "usable": true,
+   "separation": 0.9839021584180097,
+   "ink_colours": 2,
+   "reversed": false,
+   "aspect": 5.273,
+   "coverage": 0.3379,
+   "solidity": 0.354,
+   "stroke": 72.7,
+   "stroke_contrast": 2.02,
+   "components": 26,
+   "counters": 12,
+   "counter_shares": [
+    0.1149,
+    0.018,
+    0.018,
+    0.0176,
+    0.0169,
+    0.0156
+   ],
+   "symmetry": {
+    "mirror": 0.218,
+    "flip": 0.365,
+    "turn": 0.211
+   },
+   "compactness": 87.73,
+   "corners": 223,
+   "centre_offset": [
+    -0.005,
+    -0.012
+   ],
+   "kind": "wordmark"
+  },
+  {
+   "file": "refs/arena/design-logomark-wordmark-symbol/29457366.webp",
+   "usable": false,
+   "why": "too many colours (9), likely a photo"
+  },
+  {
+   "file": "refs/arena/design-logomark-wordmark-symbol/31838123.jpg",
+   "usable": true,
+   "separation": 0.9861366208284532,
+   "ink_colours": 2,
+   "reversed": false,
+   "aspect": 6.705,
+   "coverage": 0.2705,
+   "solidity": 0.2853,
+   "stroke": 100.7,
+   "stroke_contrast": 1.6,
+   "components": 6,
+   "counters": 3,
+   "counter_shares": [
+    0.2713,
+    0.2099,
+    0.0345
+   ],
+   "symmetry": {
+    "mirror": 0.186,
+    "flip": 0.459,
+    "turn": 0.215
+   },
+   "compactness": 59.57,
+   "corners": 51,
+   "centre_offset": [
+    0.009,
+    -0.003
+   ],
+   "kind": "wordmark"
+  },
+  {
+   "file": "refs/arena/design-logomark-wordmark-symbol/32170150.png",
+   "usable": true,
+   "separation": 0.9933438082416957,
+   "ink_colours": 1,
+   "reversed": false,
+   "aspect": 2.672,
+   "coverage": 0.4444,
+   "solidity": 0.5447,
+   "stroke": 153.0,
+   "stroke_contrast": 1.95,
+   "components": 6,
+   "counters": 4,
+   "counter_shares": [
+    0.0198,
+    0.0181,
+    0.017,
+    0.0103
+   ],
+   "symmetry": {
+    "mirror": 0.363,
+    "flip": 0.418,
+    "turn": 0.311
+   },
+   "compactness": 18.43,
+   "corners": 39,
+   "centre_offset": [
+    -0.006,
+    -0.009
+   ],
+   "kind": "wordmark"
+  },
+  {
+   "file": "refs/arena/design-logomark-wordmark-symbol/32691147.webp",
+   "usable": false,
+   "why": "not flat (separation 0.80)"
+  },
+  {
+   "file": "refs/arena/design-logomark-wordmark-symbol/32960273.png",
+   "usable": false,
+   "why": "no ink found"
+  },
+  {
+   "file": "refs/arena/design-logomark-wordmark-symbol/35717326.png",
+   "usable": true,
+   "separation": 0.9748588459829112,
+   "ink_colours": 2,
+   "reversed": true,
+   "aspect": 4.158,
+   "coverage": 0.3143,
+   "solidity": 0.3811,
+   "stroke": 71.9,
+   "stroke_contrast": 3.5,
+   "components": 8,
+   "counters": 34,
+   "counter_shares": [
+    0.0715,
+    0.0238,
+    0.0035,
+    0.0035,
+    0.0031,
+    0.0031
+   ],
+   "symmetry": {
+    "mirror": 0.298,
+    "flip": 0.413,
+    "turn": 0.274
+   },
+   "compactness": 66.39,
+   "corners": 116,
+   "centre_offset": [
+    -0.027,
+    -0.041
+   ],
+   "kind": "wordmark"
+  },
+  {
+   "file": "refs/arena/design-logomark-wordmark-symbol/35717356.png",
+   "usable": true,
+   "separation": 0.9828924806376338,
+   "ink_colours": 2,
+   "reversed": true,
+   "aspect": 5.32,
+   "coverage": 0.3872,
+   "solidity": 0.4274,
+   "stroke": 155.3,
+   "stroke_contrast": 1.49,
+   "components": 7,
+   "counters": 4,
+   "counter_shares": [
+    0.0842,
+    0.0842,
+    0.0335,
+    0.0334
+   ],
+   "symmetry": {
+    "mirror": 0.416,
+    "flip": 0.326,
+    "turn": 0.254
+   },
+   "compactness": 34.17,
+   "corners": 94,
+   "centre_offset": [
+    0.078,
+    0.001
+   ],
+   "kind": "wordmark"
+  },
+  {
+   "file": "refs/arena/design-logomark-wordmark-symbol/35717366.png",
+   "usable": true,
+   "separation": 0.9946360132049071,
+   "ink_colours": 1,
+   "reversed": true,
+   "aspect": 4.434,
+   "coverage": 0.7217,
+   "solidity": 0.7784,
+   "stroke": 215.4,
+   "stroke_contrast": 7.38,
+   "components": 2,
+   "counters": 0,
+   "counter_shares": [],
+   "symmetry": {
+    "mirror": 0.647,
+    "flip": 0.831,
+    "turn": 0.652
+   },
+   "compactness": 9.55,
+   "corners": 67,
+   "centre_offset": [
+    0.014,
+    0.016
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/arena/design-logomark-wordmark-symbol/45638845.jpeg",
+   "usable": false,
+   "why": "ground not plain or mark touches the edge (0.13)"
+  },
+  {
+   "file": "refs/arena/design-logomark-wordmark-symbol/47343340.png",
+   "usable": true,
+   "separation": 0.9779470368352592,
+   "ink_colours": 1,
+   "reversed": true,
+   "aspect": 0.839,
+   "coverage": 0.1901,
+   "solidity": 0.2461,
+   "stroke": 21.1,
+   "stroke_contrast": 2.41,
+   "components": 2,
+   "counters": 5,
+   "counter_shares": [
+    0.1562,
+    0.1459,
+    0.0889,
+    0.0768,
+    0.0621
+   ],
+   "symmetry": {
+    "mirror": 0.146,
+    "flip": 0.168,
+    "turn": 0.151
+   },
+   "compactness": 110.7,
+   "corners": 38,
+   "centre_offset": [
+    0.02,
+    0.042
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/arena/design-logomark-wordmark-symbol/51085792.jpg",
+   "usable": true,
+   "separation": 0.9818467731915368,
+   "ink_colours": 1,
+   "reversed": false,
+   "aspect": 7.217,
+   "coverage": 0.253,
+   "solidity": 0.2852,
+   "stroke": 98.1,
+   "stroke_contrast": 2.22,
+   "components": 11,
+   "counters": 7,
+   "counter_shares": [
+    0.1499,
+    0.1498,
+    0.0934,
+    0.0694,
+    0.0646,
+    0.0235
+   ],
+   "symmetry": {
+    "mirror": 0.167,
+    "flip": 0.249,
+    "turn": 0.137
+   },
+   "compactness": 56.88,
+   "corners": 76,
+   "centre_offset": [
+    -0.066,
+    -0.021
+   ],
+   "kind": "wordmark"
+  },
+  {
+   "file": "refs/arena/design-logomark-wordmark-symbol/51448468.jpg",
+   "usable": true,
+   "separation": 0.9899134020120077,
+   "ink_colours": 1,
+   "reversed": false,
+   "aspect": 7.57,
+   "coverage": 0.5313,
+   "solidity": 0.6176,
+   "stroke": 251.7,
+   "stroke_contrast": 2.25,
+   "components": 8,
+   "counters": 3,
+   "counter_shares": [
+    0.0467,
+    0.0077,
+    0.0024
+   ],
+   "symmetry": {
+    "mirror": 0.424,
+    "flip": 0.604,
+    "turn": 0.4
+   },
+   "compactness": 19.51,
+   "corners": 64,
+   "centre_offset": [
+    0.052,
+    -0.015
+   ],
+   "kind": "wordmark"
+  },
+  {
+   "file": "refs/arena/design-logomark-wordmark-symbol/51448517.jpg",
+   "usable": true,
+   "separation": 0.9923986301343178,
+   "ink_colours": 1,
+   "reversed": false,
+   "aspect": 3.668,
+   "coverage": 0.355,
+   "solidity": 0.369,
+   "stroke": 139.0,
+   "stroke_contrast": 1.2,
+   "components": 5,
+   "counters": 0,
+   "counter_shares": [],
+   "symmetry": {
+    "mirror": 0.532,
+    "flip": 0.57,
+    "turn": 0.471
+   },
+   "compactness": 26.29,
+   "corners": 41,
+   "centre_offset": [
+    -0.06,
+    -0.05
+   ],
+   "kind": "wordmark"
+  },
+  {
+   "file": "refs/arena/design-logomark-wordmark-symbol/51448634.jpg",
+   "usable": true,
+   "separation": 0.9867665779796578,
+   "ink_colours": 1,
+   "reversed": false,
+   "aspect": 8.904,
+   "coverage": 0.3557,
+   "solidity": 0.4238,
+   "stroke": 165.0,
+   "stroke_contrast": 1.86,
+   "components": 9,
+   "counters": 4,
+   "counter_shares": [
+    0.0356,
+    0.0348,
+    0.0348,
+    0.0113
+   ],
+   "symmetry": {
+    "mirror": 0.439,
+    "flip": 0.271,
+    "turn": 0.186
+   },
+   "compactness": 34.34,
+   "corners": 77,
+   "centre_offset": [
+    -0.045,
+    0.022
+   ],
+   "kind": "wordmark"
+  },
+  {
+   "file": "refs/arena/design-logomark-wordmark-symbol/51448819.jpg",
+   "usable": true,
+   "separation": 0.9825802167133559,
+   "ink_colours": 2,
+   "reversed": true,
+   "aspect": 6.507,
+   "coverage": 0.5675,
+   "solidity": 0.5587,
+   "stroke": 227.3,
+   "stroke_contrast": 1.14,
+   "components": 6,
+   "counters": 1,
+   "counter_shares": [
+    0.0277
+   ],
+   "symmetry": {
+    "mirror": 0.649,
+    "flip": 0.563,
+    "turn": 0.513
+   },
+   "compactness": 28.12,
+   "corners": 61,
+   "centre_offset": [
+    -0.016,
+    0.017
+   ],
+   "kind": "wordmark"
+  },
+  {
+   "file": "refs/arena/design-logomark-wordmark-symbol/51993538.jpg",
+   "usable": true,
+   "separation": 0.9926602361109477,
+   "ink_colours": 1,
+   "reversed": false,
+   "aspect": 3.475,
+   "coverage": 0.4532,
+   "solidity": 0.521,
+   "stroke": 173.7,
+   "stroke_contrast": 1.25,
+   "components": 1,
+   "counters": 3,
+   "counter_shares": [
+    0.0982,
+    0.0466,
+    0.0214
+   ],
+   "symmetry": {
+    "mirror": 0.673,
+    "flip": 0.314,
+    "turn": 0.289
+   },
+   "compactness": 17.38,
+   "corners": 34,
+   "centre_offset": [
+    0.067,
+    -0.024
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/arena/gd-logos-marks-symbols/1801359.png",
+   "usable": true,
+   "separation": 0.9917848656790742,
+   "ink_colours": 1,
+   "reversed": true,
+   "aspect": 3.466,
+   "coverage": 0.6074,
+   "solidity": 0.7312,
+   "stroke": 241.5,
+   "stroke_contrast": 15.0,
+   "components": 7,
+   "counters": 6,
+   "counter_shares": [
+    0.0334,
+    0.0191,
+    0.019,
+    0.0078,
+    0.0026,
+    0.0023
+   ],
+   "symmetry": {
+    "mirror": 0.612,
+    "flip": 0.619,
+    "turn": 0.611
+   },
+   "compactness": 17.44,
+   "corners": 71,
+   "centre_offset": [
+    -0.002,
+    -0.029
+   ],
+   "kind": "wordmark"
+  },
+  {
+   "file": "refs/arena/gd-logos-marks-symbols/19649763.png",
+   "usable": true,
+   "separation": 0.9935338856763787,
+   "ink_colours": 1,
+   "reversed": false,
+   "aspect": 2.143,
+   "coverage": 0.6416,
+   "solidity": 0.6409,
+   "stroke": 78.6,
+   "stroke_contrast": 4.83,
+   "components": 3,
+   "counters": 22,
+   "counter_shares": [
+    0.0882,
+    0.0691,
+    0.069,
+    0.0672,
+    0.0672,
+    0.0272
+   ],
+   "symmetry": {
+    "mirror": 0.702,
+    "flip": 0.436,
+    "turn": 0.421
+   },
+   "compactness": 50.59,
+   "corners": 96,
+   "centre_offset": [
+    -0.042,
+    -0.0
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/arena/gd-logos-marks-symbols/19939209.png",
+   "usable": true,
+   "separation": 0.9773703483693106,
+   "ink_colours": 2,
+   "reversed": false,
+   "aspect": 0.892,
+   "coverage": 0.3596,
+   "solidity": 0.4074,
+   "stroke": 31.9,
+   "stroke_contrast": 5.0,
+   "components": 23,
+   "counters": 0,
+   "counter_shares": [],
+   "symmetry": {
+    "mirror": 0.216,
+    "flip": 0.461,
+    "turn": 0.204
+   },
+   "compactness": 99.3,
+   "corners": 60,
+   "centre_offset": [
+    -0.005,
+    0.006
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/arena/gd-logos-marks-symbols/21644491.gif",
+   "usable": true,
+   "separation": 0.9770183004223554,
+   "ink_colours": 1,
+   "reversed": false,
+   "aspect": 1.744,
+   "coverage": 0.2421,
+   "solidity": 0.3004,
+   "stroke": 59.3,
+   "stroke_contrast": 1.2,
+   "components": 7,
+   "counters": 2,
+   "counter_shares": [
+    0.0466,
+    0.0248
+   ],
+   "symmetry": {
+    "mirror": 0.208,
+    "flip": 0.214,
+    "turn": 0.173
+   },
+   "compactness": 41.22,
+   "corners": 59,
+   "centre_offset": [
+    -0.115,
+    -0.104
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/arena/gd-logos-marks-symbols/21883505.png",
+   "usable": true,
+   "separation": 0.9904898074723982,
+   "ink_colours": 1,
+   "reversed": false,
+   "aspect": 1.437,
+   "coverage": 0.4989,
+   "solidity": 0.5523,
+   "stroke": 106.1,
+   "stroke_contrast": 1.74,
+   "components": 2,
+   "counters": 4,
+   "counter_shares": [
+    0.019,
+    0.0067,
+    0.0039,
+    0.0038
+   ],
+   "symmetry": {
+    "mirror": 0.384,
+    "flip": 0.345,
+    "turn": 0.362
+   },
+   "compactness": 19.27,
+   "corners": 56,
+   "centre_offset": [
+    0.042,
+    -0.047
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/arena/gd-logos-marks-symbols/28027796.jpg",
+   "usable": true,
+   "separation": 0.9935849171777784,
+   "ink_colours": 1,
+   "reversed": false,
+   "aspect": 0.69,
+   "coverage": 0.2743,
+   "solidity": 0.3091,
+   "stroke": 43.0,
+   "stroke_contrast": 6.0,
+   "components": 2,
+   "counters": 2,
+   "counter_shares": [
+    0.7498,
+    0.5996
+   ],
+   "symmetry": {
+    "mirror": 0.407,
+    "flip": 0.16,
+    "turn": 0.134
+   },
+   "compactness": 24.67,
+   "corners": 24,
+   "centre_offset": [
+    -0.01,
+    -0.009
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/arena/gd-logos-marks-symbols/30140092.jpg",
+   "usable": false,
+   "why": "too many colours (11), likely a photo"
+  },
+  {
+   "file": "refs/arena/gd-logos-marks-symbols/34285264.jpg",
+   "usable": true,
+   "separation": 0.9865376473289077,
+   "ink_colours": 1,
+   "reversed": false,
+   "aspect": 3.197,
+   "coverage": 0.2434,
+   "solidity": 0.2721,
+   "stroke": 57.8,
+   "stroke_contrast": 1.2,
+   "components": 1,
+   "counters": 4,
+   "counter_shares": [
+    1.9295,
+    0.6469,
+    0.2198,
+    0.0594
+   ],
+   "symmetry": {
+    "mirror": 0.593,
+    "flip": 0.665,
+    "turn": 0.546
+   },
+   "compactness": 73.44,
+   "corners": 17,
+   "centre_offset": [
+    0.01,
+    -0.034
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/arena/gd-logos-marks-symbols/34285267.jpg",
+   "usable": true,
+   "separation": 0.997384484404882,
+   "ink_colours": 1,
+   "reversed": false,
+   "aspect": 1.026,
+   "coverage": 0.6965,
+   "solidity": 0.7023,
+   "stroke": 102.6,
+   "stroke_contrast": 21.0,
+   "components": 3,
+   "counters": 0,
+   "counter_shares": [],
+   "symmetry": {
+    "mirror": 0.593,
+    "flip": 0.497,
+    "turn": 0.733
+   },
+   "compactness": 9.23,
+   "corners": 20,
+   "centre_offset": [
+    -0.041,
+    -0.004
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/arena/gd-logos-marks-symbols/34285277.jpg",
+   "usable": true,
+   "separation": 0.9953323154708054,
+   "ink_colours": 1,
+   "reversed": false,
+   "aspect": 1.0,
+   "coverage": 0.2887,
+   "solidity": 0.287,
+   "stroke": 14.0,
+   "stroke_contrast": 16.59,
+   "components": 1,
+   "counters": 0,
+   "counter_shares": [],
+   "symmetry": {
+    "mirror": 0.22,
+    "flip": 0.5,
+    "turn": 0.22
+   },
+   "compactness": 7.91,
+   "corners": 14,
+   "centre_offset": [
+    0.022,
+    0.184
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/arena/gd-logos-marks-symbols/34724676.jpg",
+   "usable": false,
+   "why": "too many colours (11), likely a photo"
+  },
+  {
+   "file": "refs/arena/gd-logos-marks-symbols/36450522.jpg",
+   "usable": false,
+   "why": "too many colours (11), likely a photo"
+  },
+  {
+   "file": "refs/arena/gd-logos-marks-symbols/36645423.png",
+   "usable": false,
+   "why": "ground not plain or mark touches the edge (0.75)"
+  },
+  {
+   "file": "refs/arena/gd-logos-marks-symbols/38380545.png",
+   "usable": true,
+   "separation": 0.9918303516316221,
+   "ink_colours": 2,
+   "reversed": false,
+   "aspect": 0.873,
+   "coverage": 0.319,
+   "solidity": 0.3266,
+   "stroke": 43.9,
+   "stroke_contrast": 9.15,
+   "components": 6,
+   "counters": 2,
+   "counter_shares": [
+    0.0258,
+    0.0058
+   ],
+   "symmetry": {
+    "mirror": 0.613,
+    "flip": 0.214,
+    "turn": 0.219
+   },
+   "compactness": 30.96,
+   "corners": 42,
+   "centre_offset": [
+    0.03,
+    -0.007
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/arena/gd-logos-marks-symbols/38456447.jpg",
+   "usable": true,
+   "separation": 0.9854878839490699,
+   "ink_colours": 2,
+   "reversed": false,
+   "aspect": 0.884,
+   "coverage": 0.5246,
+   "solidity": 0.5468,
+   "stroke": 65.9,
+   "stroke_contrast": 11.94,
+   "components": 11,
+   "counters": 4,
+   "counter_shares": [
+    0.0059,
+    0.0026,
+    0.0025,
+    0.0022
+   ],
+   "symmetry": {
+    "mirror": 0.386,
+    "flip": 0.395,
+    "turn": 0.283
+   },
+   "compactness": 22.96,
+   "corners": 96,
+   "centre_offset": [
+    -0.046,
+    -0.0
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/arena/gd-logos-marks-symbols/40778748.jpg",
+   "usable": false,
+   "why": "ground not plain or mark touches the edge (0.84)"
+  },
+  {
+   "file": "refs/arena/gd-logos-marks-symbols/41679661.jpg",
+   "usable": false,
+   "why": "too many colours (16), likely a photo"
+  },
+  {
+   "file": "refs/arena/gd-logos-marks-symbols/43682711.jpg",
+   "usable": false,
+   "why": "ground not plain or mark touches the edge (0.22)"
+  },
+  {
+   "file": "refs/arena/gd-logos-marks-symbols/51609574.png",
+   "usable": false,
+   "why": "too many colours (10), likely a photo"
+  },
+  {
+   "file": "refs/arena/gd-logos-marks-symbols/5661640.jpg",
+   "usable": true,
+   "separation": 0.9926153319124926,
+   "ink_colours": 1,
+   "reversed": false,
+   "aspect": 4.416,
+   "coverage": 0.7168,
+   "solidity": 0.7586,
+   "stroke": 311.7,
+   "stroke_contrast": 1.37,
+   "components": 5,
+   "counters": 3,
+   "counter_shares": [
+    0.0298,
+    0.021,
+    0.0073
+   ],
+   "symmetry": {
+    "mirror": 0.638,
+    "flip": 0.814,
+    "turn": 0.613
+   },
+   "compactness": 12.6,
+   "corners": 36,
+   "centre_offset": [
+    -0.004,
+    0.002
+   ],
+   "kind": "wordmark"
+  },
+  {
+   "file": "refs/arena/gd-logos-marks-symbols/9576349.jpg",
+   "usable": true,
+   "separation": 0.9677925526539891,
+   "ink_colours": 3,
+   "reversed": true,
+   "aspect": 0.78,
+   "coverage": 0.2284,
+   "solidity": 0.2645,
+   "stroke": 27.1,
+   "stroke_contrast": 2.5,
+   "components": 5,
+   "counters": 5,
+   "counter_shares": [
+    0.2749,
+    0.2743,
+    0.2602,
+    0.0797,
+    0.0585
+   ],
+   "symmetry": {
+    "mirror": 0.214,
+    "flip": 0.414,
+    "turn": 0.181
+   },
+   "compactness": 69.89,
+   "corners": 46,
+   "centre_offset": [
+    -0.02,
+    -0.028
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/arena/logotype-logomark/10103408.png",
+   "usable": true,
+   "separation": 0.9871599344519841,
+   "ink_colours": 1,
+   "reversed": false,
+   "aspect": 2.933,
+   "coverage": 0.601,
+   "solidity": 0.6189,
+   "stroke": 76.7,
+   "stroke_contrast": 9.69,
+   "components": 20,
+   "counters": 7,
+   "counter_shares": [
+    0.0259,
+    0.0112,
+    0.0069,
+    0.0068,
+    0.0066,
+    0.0066
+   ],
+   "symmetry": {
+    "mirror": 0.639,
+    "flip": 0.367,
+    "turn": 0.335
+   },
+   "compactness": 34.07,
+   "corners": 167,
+   "centre_offset": [
+    -0.13,
+    -0.004
+   ],
+   "kind": "wordmark"
+  },
+  {
+   "file": "refs/arena/logotype-logomark/12883564.jpg",
+   "usable": true,
+   "separation": 0.9950904945333794,
+   "ink_colours": 1,
+   "reversed": false,
+   "aspect": 0.615,
+   "coverage": 0.5615,
+   "solidity": 0.6113,
+   "stroke": 51.1,
+   "stroke_contrast": 9.59,
+   "components": 6,
+   "counters": 4,
+   "counter_shares": [
+    0.0032,
+    0.0022,
+    0.0022,
+    0.0022
+   ],
+   "symmetry": {
+    "mirror": 0.404,
+    "flip": 0.637,
+    "turn": 0.413
+   },
+   "compactness": 28.89,
+   "corners": 132,
+   "centre_offset": [
+    -0.003,
+    -0.052
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/arena/logotype-logomark/16619396.png",
+   "usable": true,
+   "separation": 0.9965027393813438,
+   "ink_colours": 1,
+   "reversed": false,
+   "aspect": 1.491,
+   "coverage": 0.4423,
+   "solidity": 0.561,
+   "stroke": 89.6,
+   "stroke_contrast": 7.67,
+   "components": 4,
+   "counters": 1,
+   "counter_shares": [
+    0.7716
+   ],
+   "symmetry": {
+    "mirror": 0.501,
+    "flip": 0.481,
+    "turn": 0.512
+   },
+   "compactness": 14.89,
+   "corners": 25,
+   "centre_offset": [
+    -0.013,
+    0.005
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/arena/logotype-logomark/22027623.webp",
+   "usable": true,
+   "separation": 0.979292290656488,
+   "ink_colours": 4,
+   "reversed": false,
+   "aspect": 4.027,
+   "coverage": 0.3683,
+   "solidity": 0.3835,
+   "stroke": 178.9,
+   "stroke_contrast": 3.16,
+   "components": 3,
+   "counters": 1,
+   "counter_shares": [
+    0.3968
+   ],
+   "symmetry": {
+    "mirror": 0.609,
+    "flip": 0.496,
+    "turn": 0.443
+   },
+   "compactness": 19.31,
+   "corners": 8,
+   "centre_offset": [
+    -0.0,
+    -0.014
+   ],
+   "kind": "wordmark"
+  },
+  {
+   "file": "refs/arena/logotype-logomark/31090140.jpg",
+   "usable": false,
+   "why": "ground not plain or mark touches the edge (0.30)"
+  },
+  {
+   "file": "refs/arena/logotype-logomark/32404294.jpg",
+   "usable": true,
+   "separation": 0.9902400752324958,
+   "ink_colours": 3,
+   "reversed": false,
+   "aspect": 0.996,
+   "coverage": 0.3821,
+   "solidity": 0.5904,
+   "stroke": 110.7,
+   "stroke_contrast": 2.47,
+   "components": 2,
+   "counters": 4,
+   "counter_shares": [
+    0.0324,
+    0.0192,
+    0.0174,
+    0.0081
+   ],
+   "symmetry": {
+    "mirror": 0.347,
+    "flip": 0.361,
+    "turn": 0.254
+   },
+   "compactness": 7.15,
+   "corners": 28,
+   "centre_offset": [
+    -0.058,
+    -0.009
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/arena/logotype-logomark/32404301.jpg",
+   "usable": true,
+   "separation": 0.9928442352744905,
+   "ink_colours": 2,
+   "reversed": false,
+   "aspect": 1.167,
+   "coverage": 0.702,
+   "solidity": 0.7462,
+   "stroke": 85.7,
+   "stroke_contrast": 4.88,
+   "components": 1,
+   "counters": 13,
+   "counter_shares": [
+    0.0576,
+    0.0053,
+    0.0053,
+    0.0053,
+    0.0053,
+    0.0053
+   ],
+   "symmetry": {
+    "mirror": 0.51,
+    "flip": 0.593,
+    "turn": 0.534
+   },
+   "compactness": 7.73,
+   "corners": 55,
+   "centre_offset": [
+    -0.065,
+    0.078
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/arena/logotype-logomark/33168550.jpg",
+   "usable": true,
+   "separation": 0.9560210891769492,
+   "ink_colours": 4,
+   "reversed": false,
+   "aspect": 8.735,
+   "coverage": 0.4315,
+   "solidity": 0.4448,
+   "stroke": 235.3,
+   "stroke_contrast": 2.75,
+   "components": 11,
+   "counters": 1,
+   "counter_shares": [
+    0.0201
+   ],
+   "symmetry": {
+    "mirror": 0.418,
+    "flip": 0.445,
+    "turn": 0.317
+   },
+   "compactness": 28.35,
+   "corners": 79,
+   "centre_offset": [
+    0.074,
+    -0.013
+   ],
+   "kind": "wordmark"
+  },
+  {
+   "file": "refs/arena/logotype-logomark/35793164.jpg",
+   "usable": true,
+   "separation": 0.9794471590656173,
+   "ink_colours": 1,
+   "reversed": false,
+   "aspect": 1.625,
+   "coverage": 0.2395,
+   "solidity": 0.3147,
+   "stroke": 38.3,
+   "stroke_contrast": 1.49,
+   "components": 7,
+   "counters": 7,
+   "counter_shares": [
+    1.8884,
+    0.0837,
+    0.0799,
+    0.0077,
+    0.0075,
+    0.0069
+   ],
+   "symmetry": {
+    "mirror": 0.603,
+    "flip": 0.626,
+    "turn": 0.802
+   },
+   "compactness": 79.98,
+   "corners": 56,
+   "centre_offset": [
+    -0.001,
+    -0.004
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/arena/logotype-logomark/37248799.jpg",
+   "usable": true,
+   "separation": 0.9855106323507394,
+   "ink_colours": 1,
+   "reversed": true,
+   "aspect": 0.766,
+   "coverage": 0.3096,
+   "solidity": 0.3995,
+   "stroke": 38.1,
+   "stroke_contrast": 6.22,
+   "components": 3,
+   "counters": 3,
+   "counter_shares": [
+    0.2557,
+    0.0832,
+    0.0113
+   ],
+   "symmetry": {
+    "mirror": 0.309,
+    "flip": 0.168,
+    "turn": 0.253
+   },
+   "compactness": 32.48,
+   "corners": 67,
+   "centre_offset": [
+    0.052,
+    0.006
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/arena/logotype-logomark/37552757.png",
+   "usable": true,
+   "separation": 0.9489190824619363,
+   "ink_colours": 5,
+   "reversed": false,
+   "aspect": 2.248,
+   "coverage": 0.3749,
+   "solidity": 0.4048,
+   "stroke": 6.8,
+   "stroke_contrast": 5.0,
+   "components": 11,
+   "counters": 7,
+   "counter_shares": [
+    0.6607,
+    0.008,
+    0.0076,
+    0.0053,
+    0.004,
+    0.0028
+   ],
+   "symmetry": {
+    "mirror": 0.411,
+    "flip": 0.311,
+    "turn": 0.199
+   },
+   "compactness": 63.92,
+   "corners": 243,
+   "centre_offset": [
+    -0.018,
+    -0.041
+   ],
+   "kind": "wordmark"
+  },
+  {
+   "file": "refs/arena/logotype-logomark/37810233.png",
+   "usable": true,
+   "separation": 0.9918657762608702,
+   "ink_colours": 1,
+   "reversed": false,
+   "aspect": 1.214,
+   "coverage": 0.3549,
+   "solidity": 0.5409,
+   "stroke": 84.0,
+   "stroke_contrast": 2.8,
+   "components": 1,
+   "counters": 4,
+   "counter_shares": [
+    0.0502,
+    0.037,
+    0.0107,
+    0.0085
+   ],
+   "symmetry": {
+    "mirror": 0.378,
+    "flip": 0.333,
+    "turn": 0.334
+   },
+   "compactness": 17.7,
+   "corners": 35,
+   "centre_offset": [
+    -0.059,
+    -0.052
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/arena/logotype-logomark/38523309.jpg",
+   "usable": true,
+   "separation": 0.9893159320545588,
+   "ink_colours": 1,
+   "reversed": false,
+   "aspect": 1.003,
+   "coverage": 0.3048,
+   "solidity": 0.324,
+   "stroke": 26.4,
+   "stroke_contrast": 6.15,
+   "components": 17,
+   "counters": 10,
+   "counter_shares": [
+    0.4569,
+    0.0698,
+    0.0646,
+    0.0601,
+    0.0568,
+    0.05
+   ],
+   "symmetry": {
+    "mirror": 0.432,
+    "flip": 0.176,
+    "turn": 0.171
+   },
+   "compactness": 67.74,
+   "corners": 259,
+   "centre_offset": [
+    -0.055,
+    -0.008
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/arena/logotype-logomark/38523314.jpg",
+   "usable": false,
+   "why": "ground not plain or mark touches the edge (0.85)"
+  },
+  {
+   "file": "refs/arena/logotype-logomark/38523315.jpg",
+   "usable": true,
+   "separation": 0.9918038066500955,
+   "ink_colours": 1,
+   "reversed": false,
+   "aspect": 1.001,
+   "coverage": 0.443,
+   "solidity": 0.5238,
+   "stroke": 158.8,
+   "stroke_contrast": 6.66,
+   "components": 1,
+   "counters": 1,
+   "counter_shares": [
+    0.6644
+   ],
+   "symmetry": {
+    "mirror": 0.966,
+    "flip": 0.393,
+    "turn": 0.393
+   },
+   "compactness": 5.97,
+   "corners": 0,
+   "centre_offset": [
+    0.081,
+    -0.0
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/arena/logotype-logomark/38523322.jpg",
+   "usable": true,
+   "separation": 0.9416785604897974,
+   "ink_colours": 5,
+   "reversed": true,
+   "aspect": 0.284,
+   "coverage": 0.1943,
+   "solidity": 0.2308,
+   "stroke": 9.1,
+   "stroke_contrast": 3.81,
+   "components": 7,
+   "counters": 14,
+   "counter_shares": [
+    0.0089,
+    0.0085,
+    0.0076,
+    0.0047,
+    0.0045,
+    0.0041
+   ],
+   "symmetry": {
+    "mirror": 0.086,
+    "flip": 0.169,
+    "turn": 0.094
+   },
+   "compactness": 108.68,
+   "corners": 132,
+   "centre_offset": [
+    0.0,
+    0.112
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/arena/logotype-logomark/38836805.jpg",
+   "usable": false,
+   "why": "ground not plain or mark touches the edge (0.49)"
+  },
+  {
+   "file": "refs/arena/logotype-logomark/43496809.png",
+   "usable": true,
+   "separation": 0.937267480202862,
+   "ink_colours": 5,
+   "reversed": true,
+   "aspect": 1.79,
+   "coverage": 0.3184,
+   "solidity": 0.3497,
+   "stroke": 58.5,
+   "stroke_contrast": 2.27,
+   "components": 9,
+   "counters": 6,
+   "counter_shares": [
+    0.3224,
+    0.1783,
+    0.0177,
+    0.0152,
+    0.0152,
+    0.0094
+   ],
+   "symmetry": {
+    "mirror": 0.305,
+    "flip": 0.176,
+    "turn": 0.156
+   },
+   "compactness": 62.28,
+   "corners": 105,
+   "centre_offset": [
+    0.015,
+    0.025
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/arena/logotype-logomark/45812636.jpeg",
+   "usable": true,
+   "separation": 0.9879094814560845,
+   "ink_colours": 4,
+   "reversed": false,
+   "aspect": 6.743,
+   "coverage": 0.4282,
+   "solidity": 0.4843,
+   "stroke": 212.4,
+   "stroke_contrast": 4.74,
+   "components": 11,
+   "counters": 3,
+   "counter_shares": [
+    0.0134,
+    0.0134,
+    0.0126
+   ],
+   "symmetry": {
+    "mirror": 0.328,
+    "flip": 0.404,
+    "turn": 0.207
+   },
+   "compactness": 23.86,
+   "corners": 59,
+   "centre_offset": [
+    0.094,
+    0.074
+   ],
+   "kind": "wordmark"
+  },
+  {
+   "file": "refs/arena/logotype-logomark/46092392.jpeg",
+   "usable": true,
+   "separation": 0.9899255333427766,
+   "ink_colours": 1,
+   "reversed": true,
+   "aspect": 5.415,
+   "coverage": 0.5471,
+   "solidity": 0.5791,
+   "stroke": 226.4,
+   "stroke_contrast": 2.67,
+   "components": 2,
+   "counters": 2,
+   "counter_shares": [
+    0.0192,
+    0.0192
+   ],
+   "symmetry": {
+    "mirror": 0.425,
+    "flip": 0.352,
+    "turn": 0.393
+   },
+   "compactness": 22.31,
+   "corners": 76,
+   "centre_offset": [
+    0.065,
+    -0.011
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/arena/logotype-logomark/4739502.png",
+   "usable": true,
+   "separation": 0.9892390788485697,
+   "ink_colours": 1,
+   "reversed": false,
+   "aspect": 1.004,
+   "coverage": 0.2882,
+   "solidity": 0.3691,
+   "stroke": 52.0,
+   "stroke_contrast": 7.0,
+   "components": 8,
+   "counters": 0,
+   "counter_shares": [],
+   "symmetry": {
+    "mirror": 0.299,
+    "flip": 0.317,
+    "turn": 0.254
+   },
+   "compactness": 27.11,
+   "corners": 68,
+   "centre_offset": [
+    -0.005,
+    -0.002
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/arena/logotype-logomark/47826111.jpeg",
+   "usable": true,
+   "separation": 0.9930230743333421,
+   "ink_colours": 1,
+   "reversed": true,
+   "aspect": 1.621,
+   "coverage": 0.2682,
+   "solidity": 0.3607,
+   "stroke": 44.0,
+   "stroke_contrast": 3.17,
+   "components": 5,
+   "counters": 3,
+   "counter_shares": [
+    0.0146,
+    0.0139,
+    0.0138
+   ],
+   "symmetry": {
+    "mirror": 0.48,
+    "flip": 0.1,
+    "turn": 0.108
+   },
+   "compactness": 45.28,
+   "corners": 73,
+   "centre_offset": [
+    0.067,
+    -0.012
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/arena/logotype-logomark/50528618.webp",
+   "usable": true,
+   "separation": 0.9520795918499263,
+   "ink_colours": 6,
+   "reversed": false,
+   "aspect": 1.002,
+   "coverage": 0.105,
+   "solidity": 0.1457,
+   "stroke": 25.2,
+   "stroke_contrast": 2.0,
+   "components": 8,
+   "counters": 3,
+   "counter_shares": [
+    0.4054,
+    0.2189,
+    0.0626
+   ],
+   "symmetry": {
+    "mirror": 0.258,
+    "flip": 0.006,
+    "turn": 0.007
+   },
+   "compactness": 46.98,
+   "corners": 60,
+   "centre_offset": [
+    -0.152,
+    -0.046
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/arena/logotype-logomark/50696648.jpeg",
+   "usable": false,
+   "why": "ground not plain or mark touches the edge (0.73)"
+  },
+  {
+   "file": "refs/arena/logotype-logomark/50696649.jpeg",
+   "usable": false,
+   "why": "ground not plain or mark touches the edge (0.11)"
+  },
+  {
+   "file": "refs/arena/marks-monograms-symbols/11674874.png",
+   "usable": true,
+   "separation": 0.9596929617712466,
+   "ink_colours": 4,
+   "reversed": false,
+   "aspect": 1.271,
+   "coverage": 0.1138,
+   "solidity": 0.1439,
+   "stroke": 25.0,
+   "stroke_contrast": 1.8,
+   "components": 10,
+   "counters": 6,
+   "counter_shares": [
+    2.3683,
+    0.1214,
+    0.0218,
+    0.0218,
+    0.0212,
+    0.002
+   ],
+   "symmetry": {
+    "mirror": 0.31,
+    "flip": 0.077,
+    "turn": 0.074
+   },
+   "compactness": 99.79,
+   "corners": 88,
+   "centre_offset": [
+    0.128,
+    0.003
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/arena/marks-monograms-symbols/11700461.jpg",
+   "usable": true,
+   "separation": 0.9899422936112501,
+   "ink_colours": 1,
+   "reversed": false,
+   "aspect": 4.565,
+   "coverage": 0.2793,
+   "solidity": 0.2961,
+   "stroke": 104.7,
+   "stroke_contrast": 1.65,
+   "components": 5,
+   "counters": 2,
+   "counter_shares": [
+    0.2321,
+    0.0346
+   ],
+   "symmetry": {
+    "mirror": 0.175,
+    "flip": 0.557,
+    "turn": 0.195
+   },
+   "compactness": 42.76,
+   "corners": 50,
+   "centre_offset": [
+    0.004,
+    -0.019
+   ],
+   "kind": "wordmark"
+  },
+  {
+   "file": "refs/arena/marks-monograms-symbols/14716742.jpg",
+   "usable": true,
+   "separation": 0.990937710309294,
+   "ink_colours": 2,
+   "reversed": false,
+   "aspect": 0.926,
+   "coverage": 0.4697,
+   "solidity": 0.5814,
+   "stroke": 84.1,
+   "stroke_contrast": 3.35,
+   "components": 1,
+   "counters": 7,
+   "counter_shares": [
+    0.0899,
+    0.0886,
+    0.0548,
+    0.0281,
+    0.0272,
+    0.022
+   ],
+   "symmetry": {
+    "mirror": 0.324,
+    "flip": 0.504,
+    "turn": 0.363
+   },
+   "compactness": 18.52,
+   "corners": 218,
+   "centre_offset": [
+    0.024,
+    -0.001
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/arena/marks-monograms-symbols/16767860.jpg",
+   "usable": false,
+   "why": "not flat (separation 0.66)"
+  },
+  {
+   "file": "refs/arena/marks-monograms-symbols/18536009.jpg",
+   "usable": false,
+   "why": "too many colours (9), likely a photo"
+  },
+  {
+   "file": "refs/arena/marks-monograms-symbols/21635536.jpg",
+   "usable": true,
+   "separation": 0.9961900319810808,
+   "ink_colours": 1,
+   "reversed": false,
+   "aspect": 0.996,
+   "coverage": 0.627,
+   "solidity": 0.7984,
+   "stroke": 183.2,
+   "stroke_contrast": 12.89,
+   "components": 1,
+   "counters": 0,
+   "counter_shares": [],
+   "symmetry": {
+    "mirror": 0.592,
+    "flip": 0.975,
+    "turn": 0.588
+   },
+   "compactness": 3.71,
+   "corners": 13,
+   "centre_offset": [
+    -0.003,
+    -0.058
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/arena/marks-monograms-symbols/29771988.jpg",
+   "usable": false,
+   "why": "too many colours (9), likely a photo"
+  },
+  {
+   "file": "refs/arena/marks-monograms-symbols/31111304.png",
+   "usable": true,
+   "separation": 0.9849776836918984,
+   "ink_colours": 2,
+   "reversed": true,
+   "aspect": 1.665,
+   "coverage": 0.258,
+   "solidity": 0.2794,
+   "stroke": 31.4,
+   "stroke_contrast": 7.62,
+   "components": 5,
+   "counters": 0,
+   "counter_shares": [],
+   "symmetry": {
+    "mirror": 0.162,
+    "flip": 0.258,
+    "turn": 0.139
+   },
+   "compactness": 73.27,
+   "corners": 190,
+   "centre_offset": [
+    -0.047,
+    -0.123
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/arena/marks-monograms-symbols/31814590.jpg",
+   "usable": true,
+   "separation": 0.9879572173729291,
+   "ink_colours": 1,
+   "reversed": false,
+   "aspect": 8.087,
+   "coverage": 0.3397,
+   "solidity": 0.4686,
+   "stroke": 153.8,
+   "stroke_contrast": 4.25,
+   "components": 11,
+   "counters": 3,
+   "counter_shares": [
+    0.0213,
+    0.0212,
+    0.0097
+   ],
+   "symmetry": {
+    "mirror": 0.35,
+    "flip": 0.109,
+    "turn": 0.062
+   },
+   "compactness": 24.69,
+   "corners": 76,
+   "centre_offset": [
+    0.221,
+    -0.035
+   ],
+   "kind": "wordmark"
+  },
+  {
+   "file": "refs/arena/marks-monograms-symbols/33529383.jpg",
+   "usable": false,
+   "why": "too many colours (8), likely a photo"
+  },
+  {
+   "file": "refs/arena/marks-monograms-symbols/33883086.jpg",
+   "usable": false,
+   "why": "ground not plain or mark touches the edge (0.10)"
+  },
+  {
+   "file": "refs/arena/marks-monograms-symbols/33913666.jpg",
+   "usable": true,
+   "separation": 0.9556443324082894,
+   "ink_colours": 3,
+   "reversed": false,
+   "aspect": 0.508,
+   "coverage": 0.1964,
+   "solidity": 0.2515,
+   "stroke": 9.0,
+   "stroke_contrast": 4.0,
+   "components": 42,
+   "counters": 5,
+   "counter_shares": [
+    0.0625,
+    0.0478,
+    0.0079,
+    0.0036,
+    0.0023
+   ],
+   "symmetry": {
+    "mirror": 0.361,
+    "flip": 0.409,
+    "turn": 0.323
+   },
+   "compactness": 104.55,
+   "corners": 264,
+   "centre_offset": [
+    -0.058,
+    0.041
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/arena/marks-monograms-symbols/33984622.jpg",
+   "usable": true,
+   "separation": 0.9838171840387895,
+   "ink_colours": 1,
+   "reversed": false,
+   "aspect": 2.231,
+   "coverage": 0.312,
+   "solidity": 0.3564,
+   "stroke": 68.6,
+   "stroke_contrast": 1.85,
+   "components": 3,
+   "counters": 2,
+   "counter_shares": [
+    0.7433,
+    0.7424
+   ],
+   "symmetry": {
+    "mirror": 0.646,
+    "flip": 0.735,
+    "turn": 0.597
+   },
+   "compactness": 39.37,
+   "corners": 33,
+   "centre_offset": [
+    -0.004,
+    -0.0
+   ],
+   "kind": "wordmark"
+  },
+  {
+   "file": "refs/arena/marks-monograms-symbols/34806728.gif",
+   "usable": false,
+   "why": "ink fills the frame"
+  },
+  {
+   "file": "refs/arena/marks-monograms-symbols/35405735.jpg",
+   "usable": true,
+   "separation": 0.9919301198644399,
+   "ink_colours": 1,
+   "reversed": false,
+   "aspect": 1.865,
+   "coverage": 0.342,
+   "solidity": 0.491,
+   "stroke": 83.9,
+   "stroke_contrast": 4.4,
+   "components": 3,
+   "counters": 3,
+   "counter_shares": [
+    0.5033,
+    0.3032,
+    0.0113
+   ],
+   "symmetry": {
+    "mirror": 0.26,
+    "flip": 0.505,
+    "turn": 0.196
+   },
+   "compactness": 26.41,
+   "corners": 29,
+   "centre_offset": [
+    0.015,
+    -0.093
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/arena/marks-monograms-symbols/38717793.jpg",
+   "usable": true,
+   "separation": 0.9939843023227525,
+   "ink_colours": 1,
+   "reversed": true,
+   "aspect": 0.839,
+   "coverage": 0.2464,
+   "solidity": 0.3374,
+   "stroke": 77.1,
+   "stroke_contrast": 2.04,
+   "components": 6,
+   "counters": 1,
+   "counter_shares": [
+    0.0111
+   ],
+   "symmetry": {
+    "mirror": 0.092,
+    "flip": 0.179,
+    "turn": 0.142
+   },
+   "compactness": 16.43,
+   "corners": 21,
+   "centre_offset": [
+    -0.007,
+    -0.054
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/arena/marks-monograms-symbols/39637073.png",
+   "usable": true,
+   "separation": 0.9757662995672807,
+   "ink_colours": 2,
+   "reversed": false,
+   "aspect": 0.474,
+   "coverage": 0.1515,
+   "solidity": 0.1538,
+   "stroke": 9.9,
+   "stroke_contrast": 3.2,
+   "components": 34,
+   "counters": 29,
+   "counter_shares": [
+    0.0543,
+    0.0488,
+    0.0128,
+    0.0123,
+    0.0104,
+    0.0082
+   ],
+   "symmetry": {
+    "mirror": 0.335,
+    "flip": 0.345,
+    "turn": 0.281
+   },
+   "compactness": 136.74,
+   "corners": 409,
+   "centre_offset": [
+    0.036,
+    0.001
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/arena/marks-monograms-symbols/40416719.jpg",
+   "usable": true,
+   "separation": 0.9578218820069314,
+   "ink_colours": 3,
+   "reversed": false,
+   "aspect": 0.954,
+   "coverage": 0.4443,
+   "solidity": 0.579,
+   "stroke": 22.5,
+   "stroke_contrast": 6.52,
+   "components": 31,
+   "counters": 22,
+   "counter_shares": [
+    0.0051,
+    0.0046,
+    0.0043,
+    0.0038,
+    0.0036,
+    0.0036
+   ],
+   "symmetry": {
+    "mirror": 0.501,
+    "flip": 0.46,
+    "turn": 0.633
+   },
+   "compactness": 161.08,
+   "corners": 411,
+   "centre_offset": [
+    0.0,
+    0.0
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/arena/marks-monograms-symbols/41034425.jpg",
+   "usable": true,
+   "separation": 0.992847634661399,
+   "ink_colours": 1,
+   "reversed": false,
+   "aspect": 0.186,
+   "coverage": 0.5476,
+   "solidity": 0.57,
+   "stroke": 36.9,
+   "stroke_contrast": 1.37,
+   "components": 1,
+   "counters": 7,
+   "counter_shares": [
+    0.0617,
+    0.0444,
+    0.0437,
+    0.0253,
+    0.0183,
+    0.018
+   ],
+   "symmetry": {
+    "mirror": 0.842,
+    "flip": 0.457,
+    "turn": 0.449
+   },
+   "compactness": 20.35,
+   "corners": 59,
+   "centre_offset": [
+    0.027,
+    -0.009
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/arena/marks-monograms-symbols/42795910.jpg",
+   "usable": true,
+   "separation": 0.9868252716718741,
+   "ink_colours": 2,
+   "reversed": false,
+   "aspect": 12.365,
+   "coverage": 0.4815,
+   "solidity": 0.4962,
+   "stroke": 243.2,
+   "stroke_contrast": 2.17,
+   "components": 10,
+   "counters": 2,
+   "counter_shares": [
+    0.0137,
+    0.0104
+   ],
+   "symmetry": {
+    "mirror": 0.432,
+    "flip": 0.437,
+    "turn": 0.293
+   },
+   "compactness": 32.54,
+   "corners": 99,
+   "centre_offset": [
+    0.081,
+    -0.006
+   ],
+   "kind": "wordmark"
+  },
+  {
+   "file": "refs/arena/marks-monograms-symbols/44653779.jpg",
+   "usable": false,
+   "why": "too many colours (9), likely a photo"
+  },
+  {
+   "file": "refs/arena/marks-monograms-symbols/49650730.jpeg",
+   "usable": false,
+   "why": "too many colours (8), likely a photo"
+  },
+  {
+   "file": "refs/arena/marks-monograms-symbols/5128509.jpg",
+   "usable": false,
+   "why": "too many colours (10), likely a photo"
+  },
+  {
+   "file": "refs/world-abstract/abstract-logotypes-symbols-pictograms/12413129.png",
+   "usable": true,
+   "separation": 0.9800759329846247,
+   "ink_colours": 2,
+   "reversed": false,
+   "aspect": 4.124,
+   "coverage": 0.4259,
+   "solidity": 0.4762,
+   "stroke": 111.1,
+   "stroke_contrast": 2.0,
+   "components": 13,
+   "counters": 3,
+   "counter_shares": [
+    0.0368,
+    0.0116,
+    0.0086
+   ],
+   "symmetry": {
+    "mirror": 0.336,
+    "flip": 0.482,
+    "turn": 0.256
+   },
+   "compactness": 49.54,
+   "corners": 102,
+   "centre_offset": [
+    0.071,
+    -0.002
+   ],
+   "kind": "wordmark"
+  },
+  {
+   "file": "refs/world-abstract/abstract-logotypes-symbols-pictograms/16441517.jpg",
+   "usable": true,
+   "separation": 0.9920492594667373,
+   "ink_colours": 1,
+   "reversed": false,
+   "aspect": 2.175,
+   "coverage": 0.38,
+   "solidity": 0.4579,
+   "stroke": 144.6,
+   "stroke_contrast": 1.5,
+   "components": 2,
+   "counters": 1,
+   "counter_shares": [
+    0.0467
+   ],
+   "symmetry": {
+    "mirror": 0.367,
+    "flip": 0.318,
+    "turn": 0.279
+   },
+   "compactness": 13.24,
+   "corners": 21,
+   "centre_offset": [
+    0.093,
+    -0.046
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/world-abstract/abstract-logotypes-symbols-pictograms/19950676.jpg",
+   "usable": false,
+   "why": "too many colours (152), likely a photo"
+  },
+  {
+   "file": "refs/world-abstract/abstract-logotypes-symbols-pictograms/21669890.jpg",
+   "usable": true,
+   "separation": 0.9819258527475921,
+   "ink_colours": 2,
+   "reversed": true,
+   "aspect": 4.346,
+   "coverage": 0.2884,
+   "solidity": 0.3178,
+   "stroke": 66.5,
+   "stroke_contrast": 1.57,
+   "components": 18,
+   "counters": 5,
+   "counter_shares": [
+    0.0445,
+    0.0265,
+    0.0265,
+    0.0097,
+    0.0093
+   ],
+   "symmetry": {
+    "mirror": 0.192,
+    "flip": 0.267,
+    "turn": 0.197
+   },
+   "compactness": 90.84,
+   "corners": 167,
+   "centre_offset": [
+    -0.033,
+    0.017
+   ],
+   "kind": "wordmark"
+  },
+  {
+   "file": "refs/world-abstract/abstract-logotypes-symbols-pictograms/21669931.png",
+   "usable": true,
+   "separation": 0.9888874458393014,
+   "ink_colours": 2,
+   "reversed": false,
+   "aspect": 6.14,
+   "coverage": 0.4131,
+   "solidity": 0.42,
+   "stroke": 120.0,
+   "stroke_contrast": 5.5,
+   "components": 7,
+   "counters": 2,
+   "counter_shares": [
+    0.046,
+    0.042
+   ],
+   "symmetry": {
+    "mirror": 0.296,
+    "flip": 0.475,
+    "turn": 0.286
+   },
+   "compactness": 31.72,
+   "corners": 53,
+   "centre_offset": [
+    0.048,
+    -0.051
+   ],
+   "kind": "wordmark"
+  },
+  {
+   "file": "refs/world-abstract/abstract-logotypes-symbols-pictograms/22566242.png",
+   "usable": true,
+   "separation": 0.9884732144059892,
+   "ink_colours": 1,
+   "reversed": false,
+   "aspect": 1.51,
+   "coverage": 0.2369,
+   "solidity": 0.2788,
+   "stroke": 32.4,
+   "stroke_contrast": 4.37,
+   "components": 4,
+   "counters": 7,
+   "counter_shares": [
+    0.1236,
+    0.0521,
+    0.0472,
+    0.047,
+    0.0332,
+    0.0062
+   ],
+   "symmetry": {
+    "mirror": 0.214,
+    "flip": 0.34,
+    "turn": 0.174
+   },
+   "compactness": 89.33,
+   "corners": 148,
+   "centre_offset": [
+    -0.007,
+    -0.029
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/world-abstract/abstract-logotypes-symbols-pictograms/23273305.jpg",
+   "usable": true,
+   "separation": 0.9613692743601838,
+   "ink_colours": 5,
+   "reversed": true,
+   "aspect": 6.37,
+   "coverage": 0.355,
+   "solidity": 0.3759,
+   "stroke": 147.5,
+   "stroke_contrast": 1.75,
+   "components": 10,
+   "counters": 3,
+   "counter_shares": [
+    0.0497,
+    0.048,
+    0.015
+   ],
+   "symmetry": {
+    "mirror": 0.34,
+    "flip": 0.244,
+    "turn": 0.157
+   },
+   "compactness": 36.23,
+   "corners": 82,
+   "centre_offset": [
+    0.09,
+    0.012
+   ],
+   "kind": "wordmark"
+  },
+  {
+   "file": "refs/world-abstract/abstract-logotypes-symbols-pictograms/23512278.jpg",
+   "usable": true,
+   "separation": 0.9950271849817858,
+   "ink_colours": 1,
+   "reversed": true,
+   "aspect": 1.141,
+   "coverage": 0.339,
+   "solidity": 0.5633,
+   "stroke": 210.8,
+   "stroke_contrast": 1.73,
+   "components": 3,
+   "counters": 0,
+   "counter_shares": [],
+   "symmetry": {
+    "mirror": 0.975,
+    "flip": 0.963,
+    "turn": 0.955
+   },
+   "compactness": 4.46,
+   "corners": 0,
+   "centre_offset": [
+    -0.001,
+    -0.001
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/world-abstract/abstract-logotypes-symbols-pictograms/23512280.jpg",
+   "usable": true,
+   "separation": 0.9948230936682255,
+   "ink_colours": 1,
+   "reversed": true,
+   "aspect": 1.0,
+   "coverage": 0.3617,
+   "solidity": 0.6208,
+   "stroke": 86.7,
+   "stroke_contrast": 12.26,
+   "components": 5,
+   "counters": 0,
+   "counter_shares": [],
+   "symmetry": {
+    "mirror": 0.955,
+    "flip": 0.937,
+    "turn": 0.927
+   },
+   "compactness": 11.88,
+   "corners": 0,
+   "centre_offset": [
+    -0.001,
+    -0.001
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/world-abstract/abstract-logotypes-symbols-pictograms/23512284.jpg",
+   "usable": true,
+   "separation": 0.9939282915775893,
+   "ink_colours": 1,
+   "reversed": true,
+   "aspect": 1.156,
+   "coverage": 0.5161,
+   "solidity": 0.6163,
+   "stroke": 122.4,
+   "stroke_contrast": 4.4,
+   "components": 4,
+   "counters": 0,
+   "counter_shares": [],
+   "symmetry": {
+    "mirror": 0.846,
+    "flip": 0.312,
+    "turn": 0.305
+   },
+   "compactness": 12.17,
+   "corners": 22,
+   "centre_offset": [
+    -0.027,
+    0.002
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/world-abstract/abstract-logotypes-symbols-pictograms/23512286.jpg",
+   "usable": true,
+   "separation": 0.9801219605564788,
+   "ink_colours": 2,
+   "reversed": true,
+   "aspect": 1.0,
+   "coverage": 0.2377,
+   "solidity": 0.3687,
+   "stroke": 43.9,
+   "stroke_contrast": 1.14,
+   "components": 4,
+   "counters": 0,
+   "counter_shares": [],
+   "symmetry": {
+    "mirror": 0.562,
+    "flip": 0.563,
+    "turn": 0.834
+   },
+   "compactness": 48.14,
+   "corners": 20,
+   "centre_offset": [
+    -0.001,
+    -0.002
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/world-abstract/abstract-logotypes-symbols-pictograms/23512289.jpg",
+   "usable": true,
+   "separation": 0.9936080534679882,
+   "ink_colours": 1,
+   "reversed": true,
+   "aspect": 2.493,
+   "coverage": 0.4599,
+   "solidity": 0.4607,
+   "stroke": 256.8,
+   "stroke_contrast": 3.8,
+   "components": 1,
+   "counters": 0,
+   "counter_shares": [],
+   "symmetry": {
+    "mirror": 0.736,
+    "flip": 0.787,
+    "turn": 0.716
+   },
+   "compactness": 12.28,
+   "corners": 20,
+   "centre_offset": [
+    -0.029,
+    -0.001
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/world-abstract/abstract-logotypes-symbols-pictograms/23512290.jpg",
+   "usable": true,
+   "separation": 0.9936080534679882,
+   "ink_colours": 1,
+   "reversed": true,
+   "aspect": 2.493,
+   "coverage": 0.4599,
+   "solidity": 0.4607,
+   "stroke": 256.8,
+   "stroke_contrast": 3.8,
+   "components": 1,
+   "counters": 0,
+   "counter_shares": [],
+   "symmetry": {
+    "mirror": 0.736,
+    "flip": 0.787,
+    "turn": 0.716
+   },
+   "compactness": 12.28,
+   "corners": 20,
+   "centre_offset": [
+    -0.029,
+    -0.001
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/world-abstract/abstract-logotypes-symbols-pictograms/23512292.jpg",
+   "usable": true,
+   "separation": 0.9924454804240435,
+   "ink_colours": 1,
+   "reversed": true,
+   "aspect": 1.196,
+   "coverage": 0.4786,
+   "solidity": 0.619,
+   "stroke": 131.8,
+   "stroke_contrast": 2.29,
+   "components": 3,
+   "counters": 2,
+   "counter_shares": [
+    0.2359,
+    0.051
+   ],
+   "symmetry": {
+    "mirror": 0.404,
+    "flip": 0.414,
+    "turn": 0.788
+   },
+   "compactness": 14.69,
+   "corners": 22,
+   "centre_offset": [
+    0.004,
+    0.004
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/world-abstract/abstract-logotypes-symbols-pictograms/23512294.jpg",
+   "usable": true,
+   "separation": 0.9934474931866081,
+   "ink_colours": 1,
+   "reversed": true,
+   "aspect": 1.137,
+   "coverage": 0.5179,
+   "solidity": 0.5183,
+   "stroke": 142.9,
+   "stroke_contrast": 1.23,
+   "components": 1,
+   "counters": 0,
+   "counter_shares": [],
+   "symmetry": {
+    "mirror": 0.742,
+    "flip": 0.746,
+    "turn": 0.978
+   },
+   "compactness": 10.6,
+   "corners": 20,
+   "centre_offset": [
+    -0.001,
+    -0.001
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/world-abstract/abstract-logotypes-symbols-pictograms/23512296.jpg",
+   "usable": true,
+   "separation": 0.99416503209702,
+   "ink_colours": 1,
+   "reversed": true,
+   "aspect": 1.041,
+   "coverage": 0.4851,
+   "solidity": 0.6041,
+   "stroke": 151.3,
+   "stroke_contrast": 6.2,
+   "components": 6,
+   "counters": 0,
+   "counter_shares": [],
+   "symmetry": {
+    "mirror": 0.823,
+    "flip": 0.8,
+    "turn": 0.917
+   },
+   "compactness": 9.32,
+   "corners": 24,
+   "centre_offset": [
+    -0.006,
+    -0.004
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/world-abstract/abstract-logotypes-symbols-pictograms/23512298.jpg",
+   "usable": true,
+   "separation": 0.98326629659859,
+   "ink_colours": 2,
+   "reversed": true,
+   "aspect": 1.0,
+   "coverage": 0.3661,
+   "solidity": 0.4712,
+   "stroke": 44.1,
+   "stroke_contrast": 1.07,
+   "components": 15,
+   "counters": 0,
+   "counter_shares": [],
+   "symmetry": {
+    "mirror": 0.359,
+    "flip": 0.415,
+    "turn": 0.163
+   },
+   "compactness": 76.05,
+   "corners": 55,
+   "centre_offset": [
+    -0.004,
+    0.0
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/world-abstract/abstract-logotypes-symbols-pictograms/23512305.jpg",
+   "usable": true,
+   "separation": 0.9834263934880669,
+   "ink_colours": 1,
+   "reversed": true,
+   "aspect": 0.969,
+   "coverage": 0.234,
+   "solidity": 0.3185,
+   "stroke": 36.3,
+   "stroke_contrast": 1.11,
+   "components": 4,
+   "counters": 0,
+   "counter_shares": [],
+   "symmetry": {
+    "mirror": 0.803,
+    "flip": 0.121,
+    "turn": 0.135
+   },
+   "compactness": 64.79,
+   "corners": 40,
+   "centre_offset": [
+    -0.069,
+    -0.002
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/world-abstract/abstract-logotypes-symbols-pictograms/23512312.jpg",
+   "usable": true,
+   "separation": 0.9663898146549462,
+   "ink_colours": 3,
+   "reversed": true,
+   "aspect": 1.028,
+   "coverage": 0.1235,
+   "solidity": 0.1755,
+   "stroke": 74.1,
+   "stroke_contrast": 1.29,
+   "components": 26,
+   "counters": 0,
+   "counter_shares": [],
+   "symmetry": {
+    "mirror": 0.083,
+    "flip": 0.442,
+    "turn": 0.097
+   },
+   "compactness": 25.92,
+   "corners": 40,
+   "centre_offset": [
+    0.01,
+    -0.142
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/world-abstract/abstract-logotypes-symbols-pictograms/23512321.jpg",
+   "usable": true,
+   "separation": 0.9951124655841264,
+   "ink_colours": 1,
+   "reversed": true,
+   "aspect": 2.081,
+   "coverage": 0.6472,
+   "solidity": 0.744,
+   "stroke": 397.1,
+   "stroke_contrast": 4.3,
+   "components": 1,
+   "counters": 0,
+   "counter_shares": [],
+   "symmetry": {
+    "mirror": 0.655,
+    "flip": 0.328,
+    "turn": 0.362
+   },
+   "compactness": 3.42,
+   "corners": 5,
+   "centre_offset": [
+    0.042,
+    0.026
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/world-abstract/abstract-logotypes-symbols-pictograms/23512324.jpg",
+   "usable": true,
+   "separation": 0.9916307299941622,
+   "ink_colours": 1,
+   "reversed": true,
+   "aspect": 0.912,
+   "coverage": 0.5763,
+   "solidity": 0.7045,
+   "stroke": 88.2,
+   "stroke_contrast": 12.5,
+   "components": 4,
+   "counters": 0,
+   "counter_shares": [],
+   "symmetry": {
+    "mirror": 0.443,
+    "flip": 0.989,
+    "turn": 0.442
+   },
+   "compactness": 8.53,
+   "corners": 14,
+   "centre_offset": [
+    -0.002,
+    0.077
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/world-abstract/abstract-logotypes-symbols-pictograms/23512327.jpg",
+   "usable": true,
+   "separation": 0.9939133485156888,
+   "ink_colours": 1,
+   "reversed": true,
+   "aspect": 1.049,
+   "coverage": 0.4397,
+   "solidity": 0.5906,
+   "stroke": 98.8,
+   "stroke_contrast": 3.61,
+   "components": 1,
+   "counters": 0,
+   "counter_shares": [],
+   "symmetry": {
+    "mirror": 0.404,
+    "flip": 0.956,
+    "turn": 0.404
+   },
+   "compactness": 11.4,
+   "corners": 24,
+   "centre_offset": [
+    -0.002,
+    -0.027
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/world-abstract/abstract-logotypes-symbols-pictograms/23512332.jpg",
+   "usable": true,
+   "separation": 0.9926644249643434,
+   "ink_colours": 1,
+   "reversed": true,
+   "aspect": 1.012,
+   "coverage": 0.4342,
+   "solidity": 0.7508,
+   "stroke": 138.6,
+   "stroke_contrast": 2.25,
+   "components": 6,
+   "counters": 2,
+   "counter_shares": [
+    0.0109,
+    0.0105
+   ],
+   "symmetry": {
+    "mirror": 0.574,
+    "flip": 0.821,
+    "turn": 0.569
+   },
+   "compactness": 10.53,
+   "corners": 27,
+   "centre_offset": [
+    -0.018,
+    0.028
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/world-abstract/abstract-logotypes-symbols-pictograms/23512337.jpg",
+   "usable": true,
+   "separation": 0.9885964631634234,
+   "ink_colours": 1,
+   "reversed": true,
+   "aspect": 1.015,
+   "coverage": 0.3852,
+   "solidity": 0.4991,
+   "stroke": 65.9,
+   "stroke_contrast": 3.5,
+   "components": 8,
+   "counters": 0,
+   "counter_shares": [],
+   "symmetry": {
+    "mirror": 0.54,
+    "flip": 0.234,
+    "turn": 0.096
+   },
+   "compactness": 36.22,
+   "corners": 22,
+   "centre_offset": [
+    0.014,
+    -0.09
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/world-abstract/abstract-logotypes-symbols-pictograms/23512341.jpg",
+   "usable": true,
+   "separation": 0.9930548853663865,
+   "ink_colours": 1,
+   "reversed": true,
+   "aspect": 1.095,
+   "coverage": 0.3564,
+   "solidity": 0.4354,
+   "stroke": 134.7,
+   "stroke_contrast": 2.83,
+   "components": 2,
+   "counters": 0,
+   "counter_shares": [],
+   "symmetry": {
+    "mirror": 0.97,
+    "flip": 0.196,
+    "turn": 0.195
+   },
+   "compactness": 11.21,
+   "corners": 23,
+   "centre_offset": [
+    0.01,
+    -0.002
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/world-abstract/abstract-logotypes-symbols-pictograms/23512343.jpg",
+   "usable": true,
+   "separation": 0.9881097741974392,
+   "ink_colours": 1,
+   "reversed": true,
+   "aspect": 0.804,
+   "coverage": 0.2196,
+   "solidity": 0.3116,
+   "stroke": 101.4,
+   "stroke_contrast": 1.87,
+   "components": 20,
+   "counters": 0,
+   "counter_shares": [],
+   "symmetry": {
+    "mirror": 0.257,
+    "flip": 0.254,
+    "turn": 0.888
+   },
+   "compactness": 19.75,
+   "corners": 23,
+   "centre_offset": [
+    -0.002,
+    -0.001
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/world-abstract/abstract-logotypes-symbols-pictograms/23591672.webp",
+   "usable": true,
+   "separation": 0.9960766508538862,
+   "ink_colours": 1,
+   "reversed": true,
+   "aspect": 1.339,
+   "coverage": 0.6575,
+   "solidity": 0.718,
+   "stroke": 250.1,
+   "stroke_contrast": 6.0,
+   "components": 2,
+   "counters": 0,
+   "counter_shares": [],
+   "symmetry": {
+    "mirror": 0.357,
+    "flip": 0.359,
+    "turn": 0.974
+   },
+   "compactness": 4.6,
+   "corners": 10,
+   "centre_offset": [
+    -0.002,
+    -0.001
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/world-abstract/abstract-logotypes-symbols-pictograms/23815628.jpg",
+   "usable": true,
+   "separation": 0.9965144142127792,
+   "ink_colours": 1,
+   "reversed": true,
+   "aspect": 1.049,
+   "coverage": 0.5652,
+   "solidity": 0.5893,
+   "stroke": 217.8,
+   "stroke_contrast": 1.22,
+   "components": 1,
+   "counters": 0,
+   "counter_shares": [],
+   "symmetry": {
+    "mirror": 0.404,
+    "flip": 0.364,
+    "turn": 0.34
+   },
+   "compactness": 4.59,
+   "corners": 9,
+   "centre_offset": [
+    -0.07,
+    0.085
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/world-abstract/abstract-logotypes-symbols-pictograms/23885846.jpg",
+   "usable": true,
+   "separation": 0.9966316209235891,
+   "ink_colours": 1,
+   "reversed": true,
+   "aspect": 1.22,
+   "coverage": 0.4859,
+   "solidity": 0.7608,
+   "stroke": 204.8,
+   "stroke_contrast": 4.1,
+   "components": 3,
+   "counters": 0,
+   "counter_shares": [],
+   "symmetry": {
+    "mirror": 0.393,
+    "flip": 0.421,
+    "turn": 0.485
+   },
+   "compactness": 8.23,
+   "corners": 9,
+   "centre_offset": [
+    -0.026,
+    -0.029
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/world-abstract/abstract-logotypes-symbols-pictograms/23941463.jpg",
+   "usable": true,
+   "separation": 0.9956892828051485,
+   "ink_colours": 1,
+   "reversed": true,
+   "aspect": 0.902,
+   "coverage": 0.2387,
+   "solidity": 0.3229,
+   "stroke": 200.7,
+   "stroke_contrast": 3.13,
+   "components": 9,
+   "counters": 0,
+   "counter_shares": [],
+   "symmetry": {
+    "mirror": 0.452,
+    "flip": 0.452,
+    "turn": 0.92
+   },
+   "compactness": 8.15,
+   "corners": 2,
+   "centre_offset": [
+    -0.001,
+    -0.001
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/world-abstract/abstract-logotypes-symbols-pictograms/23985352.webp",
+   "usable": true,
+   "separation": 0.9955177682908254,
+   "ink_colours": 1,
+   "reversed": true,
+   "aspect": 0.831,
+   "coverage": 0.3748,
+   "solidity": 0.4842,
+   "stroke": 100.9,
+   "stroke_contrast": 1.91,
+   "components": 2,
+   "counters": 0,
+   "counter_shares": [],
+   "symmetry": {
+    "mirror": 0.942,
+    "flip": 0.333,
+    "turn": 0.332
+   },
+   "compactness": 9.39,
+   "corners": 0,
+   "centre_offset": [
+    0.031,
+    -0.002
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/world-abstract/abstract-logotypes-symbols-pictograms/25068550.jpg",
+   "usable": true,
+   "separation": 0.9952178308110453,
+   "ink_colours": 1,
+   "reversed": true,
+   "aspect": 1.183,
+   "coverage": 0.6467,
+   "solidity": 0.701,
+   "stroke": 259.6,
+   "stroke_contrast": 1.1,
+   "components": 3,
+   "counters": 0,
+   "counter_shares": [],
+   "symmetry": {
+    "mirror": 0.344,
+    "flip": 0.83,
+    "turn": 0.34
+   },
+   "compactness": 5.81,
+   "corners": 12,
+   "centre_offset": [
+    0.005,
+    0.064
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/world-abstract/abstract-logotypes-symbols-pictograms/25116974.jpg",
+   "usable": true,
+   "separation": 0.9974474105666884,
+   "ink_colours": 1,
+   "reversed": true,
+   "aspect": 1.0,
+   "coverage": 0.6035,
+   "solidity": 0.7688,
+   "stroke": 264.5,
+   "stroke_contrast": 1.5,
+   "components": 1,
+   "counters": 0,
+   "counter_shares": [],
+   "symmetry": {
+    "mirror": 0.766,
+    "flip": 0.775,
+    "turn": 0.835
+   },
+   "compactness": 3.33,
+   "corners": 0,
+   "centre_offset": [
+    -0.015,
+    0.005
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/world-abstract/abstract-logotypes-symbols-pictograms/27193105.png",
+   "usable": true,
+   "separation": 0.9899377145177426,
+   "ink_colours": 1,
+   "reversed": true,
+   "aspect": 1.228,
+   "coverage": 0.4891,
+   "solidity": 0.7633,
+   "stroke": 204.3,
+   "stroke_contrast": 3.82,
+   "components": 3,
+   "counters": 0,
+   "counter_shares": [],
+   "symmetry": {
+    "mirror": 0.391,
+    "flip": 0.422,
+    "turn": 0.486
+   },
+   "compactness": 8.23,
+   "corners": 9,
+   "centre_offset": [
+    -0.027,
+    -0.031
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/world-abstract/abstract-logotypes-symbols-pictograms/28286382.png",
+   "usable": true,
+   "separation": 0.9910476009611178,
+   "ink_colours": 3,
+   "reversed": true,
+   "aspect": 6.958,
+   "coverage": 0.5817,
+   "solidity": 0.6015,
+   "stroke": 227.1,
+   "stroke_contrast": 1.35,
+   "components": 7,
+   "counters": 2,
+   "counter_shares": [
+    0.0212,
+    0.0145
+   ],
+   "symmetry": {
+    "mirror": 0.487,
+    "flip": 0.655,
+    "turn": 0.539
+   },
+   "compactness": 20.63,
+   "corners": 55,
+   "centre_offset": [
+    -0.02,
+    -0.014
+   ],
+   "kind": "wordmark"
+  },
+  {
+   "file": "refs/world-abstract/abstract-logotypes-symbols-pictograms/29584371.png",
+   "usable": true,
+   "separation": 0.9871402012005083,
+   "ink_colours": 2,
+   "reversed": true,
+   "aspect": 1.0,
+   "coverage": 0.1482,
+   "solidity": 0.1571,
+   "stroke": 41.7,
+   "stroke_contrast": 1.25,
+   "components": 4,
+   "counters": 0,
+   "counter_shares": [],
+   "symmetry": {
+    "mirror": 0.892,
+    "flip": 0.892,
+    "turn": 0.806
+   },
+   "compactness": 27.44,
+   "corners": 32,
+   "centre_offset": [
+    -0.003,
+    -0.003
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/world-abstract/abstract-logotypes-symbols-pictograms/303952.gif",
+   "usable": true,
+   "separation": 0.9874070879406865,
+   "ink_colours": 1,
+   "reversed": false,
+   "aspect": 0.916,
+   "coverage": 0.1398,
+   "solidity": 0.2456,
+   "stroke": 17.9,
+   "stroke_contrast": 6.47,
+   "components": 11,
+   "counters": 0,
+   "counter_shares": [],
+   "symmetry": {
+    "mirror": 0.075,
+    "flip": 0.045,
+    "turn": 0.097
+   },
+   "compactness": 30.66,
+   "corners": 114,
+   "centre_offset": [
+    -0.037,
+    0.048
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/world-abstract/abstract-logotypes-symbols-pictograms/41780963.jpg",
+   "usable": false,
+   "why": "ground not plain or mark touches the edge (0.09)"
+  },
+  {
+   "file": "refs/world-minimal/minimal-logo/11246107.jpg",
+   "usable": true,
+   "separation": 0.9638633830929566,
+   "ink_colours": 1,
+   "reversed": false,
+   "aspect": 0.971,
+   "coverage": 0.6069,
+   "solidity": 0.8616,
+   "stroke": 163.9,
+   "stroke_contrast": 4.81,
+   "components": 2,
+   "counters": 0,
+   "counter_shares": [],
+   "symmetry": {
+    "mirror": 0.963,
+    "flip": 0.426,
+    "turn": 0.426
+   },
+   "compactness": 4.63,
+   "corners": 6,
+   "centre_offset": [
+    -0.093,
+    -0.002
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/world-minimal/minimal-logo/12903243.png",
+   "usable": true,
+   "separation": 0.9967858290705747,
+   "ink_colours": 1,
+   "reversed": false,
+   "aspect": 0.945,
+   "coverage": 0.3226,
+   "solidity": 0.4704,
+   "stroke": 62.5,
+   "stroke_contrast": 5.01,
+   "components": 1,
+   "counters": 1,
+   "counter_shares": [
+    0.1131
+   ],
+   "symmetry": {
+    "mirror": 0.945,
+    "flip": 0.264,
+    "turn": 0.264
+   },
+   "compactness": 21.51,
+   "corners": 19,
+   "centre_offset": [
+    0.044,
+    0.001
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/world-minimal/minimal-logo/12903244.png",
+   "usable": true,
+   "separation": 0.9965265499222978,
+   "ink_colours": 1,
+   "reversed": false,
+   "aspect": 0.492,
+   "coverage": 0.3064,
+   "solidity": 0.3424,
+   "stroke": 50.9,
+   "stroke_contrast": 2.28,
+   "components": 1,
+   "counters": 3,
+   "counter_shares": [
+    0.0538,
+    0.0339,
+    0.0183
+   ],
+   "symmetry": {
+    "mirror": 0.268,
+    "flip": 0.205,
+    "turn": 0.369
+   },
+   "compactness": 18.41,
+   "corners": 36,
+   "centre_offset": [
+    0.001,
+    -0.01
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/world-minimal/minimal-logo/12903245.png",
+   "usable": true,
+   "separation": 0.9944880223103272,
+   "ink_colours": 1,
+   "reversed": false,
+   "aspect": 4.796,
+   "coverage": 0.4633,
+   "solidity": 0.585,
+   "stroke": 139.8,
+   "stroke_contrast": 3.66,
+   "components": 8,
+   "counters": 6,
+   "counter_shares": [
+    0.026,
+    0.0034,
+    0.0032,
+    0.0027,
+    0.0022,
+    0.0021
+   ],
+   "symmetry": {
+    "mirror": 0.361,
+    "flip": 0.256,
+    "turn": 0.252
+   },
+   "compactness": 27.95,
+   "corners": 87,
+   "centre_offset": [
+    0.121,
+    0.076
+   ],
+   "kind": "wordmark"
+  },
+  {
+   "file": "refs/world-minimal/minimal-logo/12903246.png",
+   "usable": true,
+   "separation": 0.9943822828220825,
+   "ink_colours": 1,
+   "reversed": false,
+   "aspect": 6.516,
+   "coverage": 0.4018,
+   "solidity": 0.4304,
+   "stroke": 128.0,
+   "stroke_contrast": 5.0,
+   "components": 5,
+   "counters": 5,
+   "counter_shares": [
+    0.1206,
+    0.0751,
+    0.0744,
+    0.0212,
+    0.0211
+   ],
+   "symmetry": {
+    "mirror": 0.411,
+    "flip": 0.443,
+    "turn": 0.344
+   },
+   "compactness": 27.25,
+   "corners": 53,
+   "centre_offset": [
+    0.0,
+    -0.018
+   ],
+   "kind": "wordmark"
+  },
+  {
+   "file": "refs/world-minimal/minimal-logo/12903248.png",
+   "usable": true,
+   "separation": 0.9965241123918758,
+   "ink_colours": 1,
+   "reversed": false,
+   "aspect": 5.27,
+   "coverage": 0.6345,
+   "solidity": 0.6453,
+   "stroke": 118.4,
+   "stroke_contrast": 3.0,
+   "components": 7,
+   "counters": 2,
+   "counter_shares": [
+    0.1382,
+    0.0063
+   ],
+   "symmetry": {
+    "mirror": 0.668,
+    "flip": 0.523,
+    "turn": 0.46
+   },
+   "compactness": 30.29,
+   "corners": 54,
+   "centre_offset": [
+    0.001,
+    -0.026
+   ],
+   "kind": "wordmark"
+  },
+  {
+   "file": "refs/world-minimal/minimal-logo/12903249.png",
+   "usable": true,
+   "separation": 0.9945689530891894,
+   "ink_colours": 1,
+   "reversed": false,
+   "aspect": 0.679,
+   "coverage": 0.3263,
+   "solidity": 0.505,
+   "stroke": 23.1,
+   "stroke_contrast": 7.82,
+   "components": 2,
+   "counters": 7,
+   "counter_shares": [
+    0.0061,
+    0.0052,
+    0.005,
+    0.0045,
+    0.003,
+    0.0025
+   ],
+   "symmetry": {
+    "mirror": 0.334,
+    "flip": 0.323,
+    "turn": 0.428
+   },
+   "compactness": 48.94,
+   "corners": 158,
+   "centre_offset": [
+    -0.044,
+    0.002
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/world-minimal/minimal-logo/12903252.png",
+   "usable": true,
+   "separation": 0.9897601626853887,
+   "ink_colours": 1,
+   "reversed": false,
+   "aspect": 0.481,
+   "coverage": 0.2846,
+   "solidity": 0.4036,
+   "stroke": 14.3,
+   "stroke_contrast": 4.64,
+   "components": 20,
+   "counters": 6,
+   "counter_shares": [
+    0.0348,
+    0.0053,
+    0.0041,
+    0.0035,
+    0.0026,
+    0.0021
+   ],
+   "symmetry": {
+    "mirror": 0.317,
+    "flip": 0.284,
+    "turn": 0.316
+   },
+   "compactness": 79.38,
+   "corners": 248,
+   "centre_offset": [
+    0.05,
+    -0.041
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/world-minimal/minimal-logo/12903253.png",
+   "usable": true,
+   "separation": 0.9782661366388637,
+   "ink_colours": 2,
+   "reversed": false,
+   "aspect": 1.014,
+   "coverage": 0.2442,
+   "solidity": 0.3101,
+   "stroke": 9.2,
+   "stroke_contrast": 1.49,
+   "components": 8,
+   "counters": 69,
+   "counter_shares": [
+    0.3809,
+    0.342,
+    0.1053,
+    0.0889,
+    0.0792,
+    0.0767
+   ],
+   "symmetry": {
+    "mirror": 0.279,
+    "flip": 0.279,
+    "turn": 0.28
+   },
+   "compactness": 509.98,
+   "corners": 613,
+   "centre_offset": [
+    -0.004,
+    -0.009
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/world-minimal/minimal-logo/12903296.png",
+   "usable": true,
+   "separation": 0.997953222827892,
+   "ink_colours": 1,
+   "reversed": false,
+   "aspect": 0.807,
+   "coverage": 0.6112,
+   "solidity": 0.6165,
+   "stroke": 151.1,
+   "stroke_contrast": 1.18,
+   "components": 2,
+   "counters": 0,
+   "counter_shares": [],
+   "symmetry": {
+    "mirror": 0.715,
+    "flip": 0.701,
+    "turn": 0.97
+   },
+   "compactness": 8.59,
+   "corners": 20,
+   "centre_offset": [
+    -0.001,
+    -0.001
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/world-minimal/minimal-logo/12903297.png",
+   "usable": true,
+   "separation": 0.9920758912402655,
+   "ink_colours": 1,
+   "reversed": false,
+   "aspect": 5.037,
+   "coverage": 0.4874,
+   "solidity": 0.5097,
+   "stroke": 139.8,
+   "stroke_contrast": 1.2,
+   "components": 9,
+   "counters": 2,
+   "counter_shares": [
+    0.0508,
+    0.0109
+   ],
+   "symmetry": {
+    "mirror": 0.321,
+    "flip": 0.604,
+    "turn": 0.313
+   },
+   "compactness": 43.39,
+   "corners": 80,
+   "centre_offset": [
+    0.004,
+    0.022
+   ],
+   "kind": "wordmark"
+  },
+  {
+   "file": "refs/world-minimal/minimal-logo/12903298.png",
+   "usable": true,
+   "separation": 0.9979903969759769,
+   "ink_colours": 1,
+   "reversed": false,
+   "aspect": 1.05,
+   "coverage": 0.3835,
+   "solidity": 0.3978,
+   "stroke": 77.0,
+   "stroke_contrast": 2.7,
+   "components": 1,
+   "counters": 0,
+   "counter_shares": [],
+   "symmetry": {
+    "mirror": 0.453,
+    "flip": 0.339,
+    "turn": 0.261
+   },
+   "compactness": 13.88,
+   "corners": 25,
+   "centre_offset": [
+    0.008,
+    -0.026
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/world-minimal/minimal-logo/12903299.png",
+   "usable": true,
+   "separation": 0.993751942235399,
+   "ink_colours": 1,
+   "reversed": false,
+   "aspect": 0.739,
+   "coverage": 0.2969,
+   "solidity": 0.4338,
+   "stroke": 20.4,
+   "stroke_contrast": 8.89,
+   "components": 42,
+   "counters": 0,
+   "counter_shares": [],
+   "symmetry": {
+    "mirror": 0.563,
+    "flip": 0.221,
+    "turn": 0.216
+   },
+   "compactness": 61.13,
+   "corners": 187,
+   "centre_offset": [
+    -0.068,
+    0.016
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/world-minimal/minimal-logo/14716746.jpg",
+   "usable": true,
+   "separation": 0.9900308367852616,
+   "ink_colours": 3,
+   "reversed": false,
+   "aspect": 1.116,
+   "coverage": 0.5141,
+   "solidity": 0.7238,
+   "stroke": 93.5,
+   "stroke_contrast": 6.58,
+   "components": 4,
+   "counters": 7,
+   "counter_shares": [
+    0.0397,
+    0.0315,
+    0.03,
+    0.0289,
+    0.0281,
+    0.0191
+   ],
+   "symmetry": {
+    "mirror": 0.601,
+    "flip": 0.336,
+    "turn": 0.338
+   },
+   "compactness": 15.86,
+   "corners": 50,
+   "centre_offset": [
+    0.056,
+    0.009
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/world-minimal/minimal-logo/2531601.jpg",
+   "usable": true,
+   "separation": 0.9940834379857546,
+   "ink_colours": 1,
+   "reversed": true,
+   "aspect": 4.059,
+   "coverage": 0.3602,
+   "solidity": 0.3823,
+   "stroke": 118.2,
+   "stroke_contrast": 2.54,
+   "components": 4,
+   "counters": 3,
+   "counter_shares": [
+    0.2781,
+    0.1018,
+    0.0288
+   ],
+   "symmetry": {
+    "mirror": 0.214,
+    "flip": 0.319,
+    "turn": 0.147
+   },
+   "compactness": 24.51,
+   "corners": 32,
+   "centre_offset": [
+    -0.066,
+    -0.023
+   ],
+   "kind": "wordmark"
+  },
+  {
+   "file": "refs/world-minimal/minimal-logo/268529.jpg",
+   "usable": true,
+   "separation": 0.9895833212356778,
+   "ink_colours": 1,
+   "reversed": false,
+   "aspect": 6.377,
+   "coverage": 0.4001,
+   "solidity": 0.4247,
+   "stroke": 129.9,
+   "stroke_contrast": 5.19,
+   "components": 5,
+   "counters": 5,
+   "counter_shares": [
+    0.1213,
+    0.0753,
+    0.0747,
+    0.0217,
+    0.0217
+   ],
+   "symmetry": {
+    "mirror": 0.413,
+    "flip": 0.433,
+    "turn": 0.342
+   },
+   "compactness": 27.82,
+   "corners": 55,
+   "centre_offset": [
+    0.001,
+    -0.018
+   ],
+   "kind": "wordmark"
+  },
+  {
+   "file": "refs/world-minimal/minimal-logo/3667221.png",
+   "usable": true,
+   "separation": 0.9812966077839733,
+   "ink_colours": 2,
+   "reversed": false,
+   "aspect": 2.36,
+   "coverage": 0.1345,
+   "solidity": 0.1455,
+   "stroke": 29.2,
+   "stroke_contrast": 1.2,
+   "components": 1,
+   "counters": 5,
+   "counter_shares": [
+    0.675,
+    0.6302,
+    0.4262,
+    0.1147,
+    0.0194
+   ],
+   "symmetry": {
+    "mirror": 0.067,
+    "flip": 0.297,
+    "turn": 0.068
+   },
+   "compactness": 117.09,
+   "corners": 47,
+   "centre_offset": [
+    -0.015,
+    0.013
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/world-minimal/minimal-logo/39441530.jpg",
+   "usable": true,
+   "separation": 0.9891620377050516,
+   "ink_colours": 2,
+   "reversed": true,
+   "aspect": 0.69,
+   "coverage": 0.5436,
+   "solidity": 0.5841,
+   "stroke": 53.4,
+   "stroke_contrast": 2.8,
+   "components": 5,
+   "counters": 0,
+   "counter_shares": [],
+   "symmetry": {
+    "mirror": 0.542,
+    "flip": 0.294,
+    "turn": 0.343
+   },
+   "compactness": 19.6,
+   "corners": 33,
+   "centre_offset": [
+    -0.057,
+    0.012
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/world-minimal/minimal-logo/4136410.jpg",
+   "usable": true,
+   "separation": 0.9875109202795849,
+   "ink_colours": 1,
+   "reversed": true,
+   "aspect": 1.301,
+   "coverage": 0.4157,
+   "solidity": 0.4578,
+   "stroke": 25.1,
+   "stroke_contrast": 11.91,
+   "components": 15,
+   "counters": 5,
+   "counter_shares": [
+    0.03,
+    0.0123,
+    0.0122,
+    0.0079,
+    0.0027
+   ],
+   "symmetry": {
+    "mirror": 0.572,
+    "flip": 0.204,
+    "turn": 0.203
+   },
+   "compactness": 62.79,
+   "corners": 167,
+   "centre_offset": [
+    -0.069,
+    0.0
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/world-minimal/minimal-logo/4643950.jpg",
+   "usable": true,
+   "separation": 0.981915626853372,
+   "ink_colours": 2,
+   "reversed": true,
+   "aspect": 0.73,
+   "coverage": 0.1347,
+   "solidity": 0.2011,
+   "stroke": 21.8,
+   "stroke_contrast": 1.08,
+   "components": 1,
+   "counters": 0,
+   "counter_shares": [],
+   "symmetry": {
+    "mirror": 0.1,
+    "flip": 0.096,
+    "turn": 0.045
+   },
+   "compactness": 65.94,
+   "corners": 25,
+   "centre_offset": [
+    0.014,
+    -0.007
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/world-minimal/minimal-logo/5138378.jpg",
+   "usable": true,
+   "separation": 0.9595713944976592,
+   "ink_colours": 4,
+   "reversed": true,
+   "aspect": 1.841,
+   "coverage": 0.2055,
+   "solidity": 0.2959,
+   "stroke": 45.5,
+   "stroke_contrast": 4.0,
+   "components": 12,
+   "counters": 3,
+   "counter_shares": [
+    0.0071,
+    0.0068,
+    0.0059
+   ],
+   "symmetry": {
+    "mirror": 0.256,
+    "flip": 0.143,
+    "turn": 0.128
+   },
+   "compactness": 52.06,
+   "corners": 115,
+   "centre_offset": [
+    0.04,
+    -0.006
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/world-minimal/minimal-logo/5615158.png",
+   "usable": true,
+   "separation": 0.9854505141352795,
+   "ink_colours": 2,
+   "reversed": false,
+   "aspect": 0.982,
+   "coverage": 0.5406,
+   "solidity": 0.6199,
+   "stroke": 92.8,
+   "stroke_contrast": 4.33,
+   "components": 4,
+   "counters": 0,
+   "counter_shares": [],
+   "symmetry": {
+    "mirror": 0.602,
+    "flip": 0.598,
+    "turn": 0.893
+   },
+   "compactness": 16.52,
+   "corners": 28,
+   "centre_offset": [
+    -0.002,
+    0.001
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/world-minimal/minimal-logo/5732760.jpg",
+   "usable": true,
+   "separation": 0.9838816488861593,
+   "ink_colours": 2,
+   "reversed": false,
+   "aspect": 1.127,
+   "coverage": 0.6686,
+   "solidity": 0.8572,
+   "stroke": 309.9,
+   "stroke_contrast": 5.31,
+   "components": 3,
+   "counters": 0,
+   "counter_shares": [],
+   "symmetry": {
+    "mirror": 0.946,
+    "flip": 0.871,
+    "turn": 0.865
+   },
+   "compactness": 4.76,
+   "corners": 5,
+   "centre_offset": [
+    -0.005,
+    -0.005
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/world-minimal/minimal-logo/5871259.gif",
+   "usable": true,
+   "separation": 0.962716642823882,
+   "ink_colours": 1,
+   "reversed": false,
+   "aspect": 0.489,
+   "coverage": 0.0847,
+   "solidity": 0.2263,
+   "stroke": 30.9,
+   "stroke_contrast": 16.12,
+   "components": 2,
+   "counters": 0,
+   "counter_shares": [],
+   "symmetry": {
+    "mirror": 0.045,
+    "flip": 0.0,
+    "turn": 0.0
+   },
+   "compactness": 7.85,
+   "corners": 14,
+   "centre_offset": [
+    -0.343,
+    0.225
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/world-minimal/minimal-logo/5993010.jpg",
+   "usable": true,
+   "separation": 0.9942681065849602,
+   "ink_colours": 1,
+   "reversed": false,
+   "aspect": 1.079,
+   "coverage": 0.4212,
+   "solidity": 0.5284,
+   "stroke": 74.1,
+   "stroke_contrast": 53.24,
+   "components": 1,
+   "counters": 1,
+   "counter_shares": [
+    0.6238
+   ],
+   "symmetry": {
+    "mirror": 0.31,
+    "flip": 0.368,
+    "turn": 0.213
+   },
+   "compactness": 7.53,
+   "corners": 9,
+   "centre_offset": [
+    0.069,
+    0.003
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/world-minimal/minimal-logo/8162461.jpg",
+   "usable": true,
+   "separation": 0.9757695561474464,
+   "ink_colours": 3,
+   "reversed": true,
+   "aspect": 1.391,
+   "coverage": 0.0841,
+   "solidity": 0.1328,
+   "stroke": 16.2,
+   "stroke_contrast": 7.81,
+   "components": 4,
+   "counters": 0,
+   "counter_shares": [],
+   "symmetry": {
+    "mirror": 0.287,
+    "flip": 0.273,
+    "turn": 0.204
+   },
+   "compactness": 93.02,
+   "corners": 94,
+   "centre_offset": [
+    0.021,
+    0.037
+   ],
+   "kind": "mark"
+  },
+  {
+   "file": "refs/world-minimal/minimal-logo/834381.jpg",
+   "usable": true,
+   "separation": 0.8193535338800582,
+   "ink_colours": 5,
+   "reversed": false,
+   "aspect": 2.591,
+   "coverage": 0.1287,
+   "solidity": 0.2428,
+   "stroke": 29.2,
+   "stroke_contrast": 9.92,
+   "components": 11,
+   "counters": 4,
+   "counter_shares": [
+    0.0319,
+    0.0225,
+    0.0151,
+    0.0146
+   ],
+   "symmetry": {
+    "mirror": 0.108,
+    "flip": 0.0,
+    "turn": 0.01
+   },
+   "compactness": 26.4,
+   "corners": 113,
+   "centre_offset": [
+    -0.2,
+    -0.155
+   ],
+   "kind": "wordmark"
+  },
+  {
+   "file": "refs/world-minimal/minimal-logo/9099461.jpg",
+   "usable": true,
+   "separation": 0.9819448474150149,
+   "ink_colours": 6,
+   "reversed": true,
+   "aspect": 0.659,
+   "coverage": 0.6421,
+   "solidity": 0.7109,
+   "stroke": 22.7,
+   "stroke_contrast": 17.22,
+   "components": 8,
+   "counters": 6,
+   "counter_shares": [
+    0.0263,
+    0.0082,
+    0.0069,
+    0.006,
+    0.0024,
+    0.0022
+   ],
+   "symmetry": {
+    "mirror": 0.636,
+    "flip": 0.553,
+    "turn": 0.578
+   },
+   "compactness": 11.49,
+   "corners": 85,
+   "centre_offset": [
+    -0.047,
+    -0.05
+   ],
+   "kind": "mark"
+  }
+ ]
+}

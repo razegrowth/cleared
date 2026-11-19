@@ -1,0 +1,52 @@
+{
+ "name": "Glance",
+ "title": "Glint",
+ "idea": "A lid and a pupil already looking to the side: a glance, not a stare.",
+ "grid": 48,
+ "mark": [
+  {
+   "shape": "circle",
+   "cx": 24,
+   "cy": 34,
+   "r": 21
+  },
+  {
+   "op": "cut",
+   "shape": "circle",
+   "cx": 24,
+   "cy": 41,
+   "r": 21
+  },
+  {
+   "op": "keep",
+   "shape": "rect",
+   "x": 0,
+   "y": 0,
+   "w": 48,
+   "h": 27
+  },
+  {
+   "shape": "circle",
+   "cx": 31,
+   "cy": 30.5,
+   "r": 6.5
+  }
+ ],
+ "wordmark": {
+  "text": "Glance",
+  "font": "Instrument Sans",
+  "weight": 600,
+  "tracking": -10
+ },
+ "palette": {
+  "ink": "#111111",
+  "paper": "#ffffff",
+  "accent": "#111111",
+  "neutral": "#8a8a8a",
+  "tint": "#ececec"
+ },
+ "lockup": {
+  "mark_scale": 1.6,
+  "gap": 0.7
+ }
+}

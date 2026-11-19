@@ -1,0 +1,12 @@
+{
+  "name": "Glance",
+  "what": "A Chrome extension (also runs in Quo) that shows unread mail from all your Gmail accounts in one calm list, in a toolbar popup or side panel. For people juggling several inboxes who want to triage fast, keyboard-first.",
+  "tagline": "All your Gmail inboxes, one calm glance away.",
+  "ideas": ["a glance: an eye, a look, a glint", "many into one: several inboxes merging into one list", "the letter G", "calm / inbox zero: settled, empty, a horizon"],
+  "references": "none given: pulled from Are.na (default logo channels plus a minimal monochrome set)",
+  "lives": ["browser toolbar icon at 16 and 32 px", "chrome://extensions at 48 and 128 px", "settings page header, README"],
+  "colour": "black and white only",
+  "format": "mark only",
+  "icon_shape": "black rounded tile with the mark knocked out in white",
+  "defaults_taken": ["one colour (black on white)", "no wordmark"]
+}

@@ -1,0 +1,53 @@
+{
+ "name": "Glance",
+ "title": "Horizon",
+ "idea": "Inbox zero: a low sun over still water, nothing left to do.",
+ "grid": 48,
+ "mark": [
+  {
+   "shape": "circle",
+   "cx": 30,
+   "cy": 26,
+   "r": 10
+  },
+  {
+   "op": "keep",
+   "shape": "rect",
+   "x": 0,
+   "y": 0,
+   "w": 48,
+   "h": 26
+  },
+  {
+   "shape": "rect",
+   "x": 4,
+   "y": 29.5,
+   "w": 40,
+   "h": 5
+  },
+  {
+   "shape": "rect",
+   "x": 14,
+   "y": 38,
+   "w": 20,
+   "h": 4.5
+  }
+ ],
+ "wordmark": {
+  "text": "Glance",
+  "font": "Manrope",
+  "weight": 600,
+  "tracking": -10
+ },
+ "palette": {
+  "ink": "#101010",
+  "paper": "#f7f7f5",
+  "accent": "#101010",
+  "neutral": "#8a8a8a",
+  "tint": "#ececec"
+ },
+ "lockup": {
+  "mark_scale": 1.6,
+  "gap": 0.7
+ }
+}

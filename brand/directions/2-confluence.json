@@ -1,0 +1,85 @@
+{
+ "name": "Glance",
+ "title": "Confluence",
+ "idea": "Three inboxes merge like lanes into one, and only one line runs on.",
+ "grid": 48,
+ "mark": [
+  {
+   "shape": "rect",
+   "x": 4,
+   "y": 21,
+   "w": 40,
+   "h": 6
+  },
+  {
+   "shape": "rect",
+   "x": 4,
+   "y": 7,
+   "w": 10,
+   "h": 6
+  },
+  {
+   "shape": "arc",
+   "cx": 14,
+   "cy": 17,
+   "r": 10,
+   "width": 6,
+   "start": 270,
+   "end": 360
+  },
+  {
+   "shape": "arc",
+   "cx": 28,
+   "cy": 17,
+   "r": 10,
+   "width": 6,
+   "start": 90,
+   "end": 180
+  },
+  {
+   "shape": "rect",
+   "x": 4,
+   "y": 7,
+   "w": 10,
+   "h": 6,
+   "mirror": "y"
+  },
+  {
+   "shape": "arc",
+   "cx": 14,
+   "cy": 17,
+   "r": 10,
+   "width": 6,
+   "start": 270,
+   "end": 360,
+   "mirror": "y"
+  },
+  {
+   "shape": "arc",
+   "cx": 28,
+   "cy": 17,
+   "r": 10,
+   "width": 6,
+   "start": 90,
+   "end": 180,
+   "mirror": "y"
+  }
+ ],
+ "wordmark": {
+  "text": "Glance",
+  "font": "Space Grotesk",
+  "weight": 500,
+  "tracking": -10
+ },
+ "palette": {
+  "ink": "#0e0e0e",
+  "paper": "#fafafa",
+  "accent": "#0e0e0e",
+  "neutral": "#8a8a8a",
+  "tint": "#ececec"
+ },
+ "lockup": {
+  "mark_scale": 1.6,
+  "gap": 0.7
+ }
+}

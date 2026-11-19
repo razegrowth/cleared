@@ -1,0 +1,176 @@
+{
+ "references": 130,
+ "different_pairs": 8383,
+ "same_logo_twice": [
+  [
+   "refs/world-abstract/abstract-logotypes-symbols-pictograms/23512289.jpg",
+   "refs/world-abstract/abstract-logotypes-symbols-pictograms/23512290.jpg"
+  ],
+  [
+   "refs/world-abstract/abstract-logotypes-symbols-pictograms/23885846.jpg",
+   "refs/world-abstract/abstract-logotypes-symbols-pictograms/27193105.png"
+  ]
+ ],
+ "measures": {
+  "overlap": {
+   "limit": 0.304,
+   "caught": {
+    "turned 4\u00b0": 0.992,
+    "thicker": 0.992,
+    "thinner": 0.954,
+    "stretched 10%": 0.969,
+    "mirrored": 0.992,
+    "part cut away": 0.977,
+    "part added": 0.985,
+    "three at once": 0.962
+   }
+  },
+  "edges": {
+   "limit": 24.9,
+   "caught": {
+    "turned 4\u00b0": 0.992,
+    "thicker": 0.977,
+    "thinner": 0.985,
+    "stretched 10%": 0.992,
+    "mirrored": 0.992,
+    "part cut away": 1.0,
+    "part added": 0.992,
+    "three at once": 0.931
+   }
+  },
+  "hash": {
+   "limit": 0.683,
+   "caught": {
+    "turned 4\u00b0": 0.985,
+    "thicker": 0.938,
+    "thinner": 0.969,
+    "stretched 10%": 0.992,
+    "mirrored": 0.992,
+    "part cut away": 0.869,
+    "part added": 0.931,
+    "three at once": 0.831
+   }
+  },
+  "similarity": {
+   "limit": 0.589,
+   "caught": {
+    "turned 4\u00b0": 0.992,
+    "thicker": 1.0,
+    "thinner": 0.985,
+    "stretched 10%": 0.992,
+    "mirrored": 0.992,
+    "part cut away": 1.0,
+    "part added": 0.992,
+    "three at once": 0.985
+   }
+  }
+ },
+ "fused": {
+  "weights": [
+   9.6484,
+   -4.2364,
+   6.6887,
+   -7.4615
+  ],
+  "features": [
+   "overlap",
+   "edges/100",
+   "hash"
+  ],
+  "limit": 0.7828,
+  "held_out_caught": {
+   "turned 4\u00b0": 1.0,
+   "thicker": 0.923,
+   "thinner": 1.0,
+   "stretched 10%": 1.0,
+   "mirrored": 1.0,
+   "part cut away": 1.0,
+   "part added": 1.0,
+   "three at once": 0.831
+  },
+  "false_alarm": "share of references whose nearest other reference reaches the limit",
+  "nearest_median": 0.4411,
+  "in_sample_caught": {
+   "turned 4\u00b0": 0.992,
+   "thicker": 0.931,
+   "thinner": 0.938,
+   "stretched 10%": 0.962,
+   "mirrored": 0.992,
+   "part cut away": 0.977,
+   "part added": 0.985,
+   "three at once": 0.762
+  }
+ },
+ "limit": 0.7828,
+ "score": "fused",
+ "verdict": {
+  "single edits caught": 0.923,
+  "three at once caught": 0.831
+ },
+ "closest_different": [
+  {
+   "a": "refs/world-minimal/minimal-logo/12903246.png",
+   "b": "refs/world-minimal/minimal-logo/268529.jpg",
+   "overlap": 0.697,
+   "edges": 4.4,
+   "hash": 0.873,
+   "similarity": 0.926
+  },
+  {
+   "a": "refs/arena/design-logomark-wordmark-symbol/29016340.webp",
+   "b": "refs/world-minimal/minimal-logo/12903248.png",
+   "overlap": 0.171,
+   "edges": 19.0,
+   "hash": 1.0,
+   "similarity": 0.9
+  },
+  {
+   "a": "refs/arena/design-logomark-wordmark-symbol/51448468.jpg",
+   "b": "refs/arena/logotype-logomark/33168550.jpg",
+   "overlap": 0.404,
+   "edges": 7.6,
+   "hash": 0.651,
+   "similarity": 0.874
+  },
+  {
+   "a": "refs/arena/design-logomark-wordmark-symbol/23467889.jpg",
+   "b": "refs/arena/design-logomark-wordmark-symbol/51448819.jpg",
+   "overlap": 0.337,
+   "edges": 7.6,
+   "hash": 0.683,
+   "similarity": 0.873
+  },
+  {
+   "a": "refs/arena/design-logomark-wordmark-symbol/29016332.png",
+   "b": "refs/arena/design-logomark-wordmark-symbol/51448634.jpg",
+   "overlap": 0.253,
+   "edges": 7.7,
+   "hash": 0.746,
+   "similarity": 0.871
+  },
+  {
+   "a": "refs/arena/design-logomark-wordmark-symbol/29016332.png",
+   "b": "refs/arena/logotype-logomark/33168550.jpg",
+   "overlap": 0.237,
+   "edges": 8.0,
+   "hash": 0.524,
+   "similarity": 0.866
+  },
+  {
+   "a": "refs/arena/marks-monograms-symbols/31814590.jpg",
+   "b": "refs/arena/marks-monograms-symbols/42795910.jpg",
+   "overlap": 0.361,
+   "edges": 8.0,
+   "hash": 0.683,
+   "similarity": 0.866
+  },
+  {
+   "a": "refs/arena/design-logomark-wordmark-symbol/29016340.webp",
+   "b": "refs/arena/design-logomark-wordmark-symbol/51448634.jpg",
+   "overlap": 0.331,
+   "edges": 8.2,
+   "hash": 0.746,
+   "similarity": 0.863
+  }
+ ]
+}

@@ -1,0 +1,47 @@
+{
+ "name": "Glance",
+ "title": "Tray",
+ "idea": "An open tray with one thing still in it: the one mail worth a look.",
+ "grid": 48,
+ "mark": [
+  {
+   "shape": "rect",
+   "x": 6,
+   "y": 9,
+   "w": 36,
+   "h": 31,
+   "r": 8
+  },
+  {
+   "op": "cut",
+   "shape": "rect",
+   "x": 12.5,
+   "y": 0,
+   "w": 23,
+   "h": 34
+  },
+  {
+   "shape": "circle",
+   "cx": 24,
+   "cy": 22,
+   "r": 5.5
+  }
+ ],
+ "wordmark": {
+  "text": "Glance",
+  "font": "Inter Tight",
+  "weight": 600,
+  "tracking": -10
+ },
+ "palette": {
+  "ink": "#111111",
+  "paper": "#fbfbfb",
+  "accent": "#111111",
+  "neutral": "#8a8a8a",
+  "tint": "#ececec"
+ },
+ "lockup": {
+  "mark_scale": 1.6,
+  "gap": 0.7
+ }
+}

@@ -1,0 +1,18 @@
+node_modules
+build
+.wxt
+.keys
+.env
+.env.local
+*.zip
+.DS_Store
+
+# Logo work: downloaded references are only for measuring and never committed
+brand/.venv
+brand/refs
+brand/photos
+brand/book
+brand/excluded
+brand/pw
+brand/measured.png
+brand/photos-sheet.png

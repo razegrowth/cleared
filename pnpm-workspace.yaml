@@ -1,0 +1,5 @@
+minimumReleaseAgeExclude:
+  - lucide-react@1.75.0
+  - '@vitest/mocker@5.1.1'
+  - '@vitest/spy@5.1.1'
+  - vitest@5.1.1

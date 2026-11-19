@@ -1,0 +1,53 @@
+{
+ "name": "Glance",
+ "title": "G-eye",
+ "idea": "A G whose crossbar points at a pupil: the letter looking back.",
+ "grid": 48,
+ "mark": [
+  {
+   "shape": "ring",
+   "cx": 24,
+   "cy": 24,
+   "r": 16.5,
+   "width": 7
+  },
+  {
+   "op": "cut",
+   "shape": "rect",
+   "x": 26,
+   "y": 4,
+   "w": 22,
+   "h": 17
+  },
+  {
+   "shape": "rect",
+   "x": 31,
+   "y": 21,
+   "w": 13.5,
+   "h": 6
+  },
+  {
+   "shape": "circle",
+   "cx": 24,
+   "cy": 24,
+   "r": 4.5
+  }
+ ],
+ "wordmark": {
+  "text": "Glance",
+  "font": "Geist",
+  "weight": 600,
+  "tracking": -20
+ },
+ "palette": {
+  "ink": "#121212",
+  "paper": "#ffffff",
+  "accent": "#121212",
+  "neutral": "#8a8a8a",
+  "tint": "#ececec"
+ },
+ "lockup": {
+  "mark_scale": 1.6,
+  "gap": 0.7
+ }
+}
