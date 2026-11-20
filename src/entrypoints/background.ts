@@ -6,6 +6,8 @@ export default defineBackground(() => {
   // Every time the worker starts, not only on install or browser start.
   engine.ensurePolling().catch(() => {});
   engine.updateBadge().catch(() => {});
+  // The button opens the popup or the side panel, whichever was used last.
+  engine.applySurface().catch(() => {});
 
   chrome.runtime.onMessage.addListener((req: Request, _sender, sendResponse) => {
     respond(req).then(sendResponse);
@@ -27,8 +29,6 @@ export default defineBackground(() => {
   });
 
   const start = async () => {
-    // The toolbar button opens the popup; the side panel opens from the popup or its shortcut.
-    chrome.sidePanel?.setPanelBehavior?.({ openPanelOnActionClick: false }).catch(() => {});
     await engine.schedulePolling();
     await engine.updateBadge();
     engine.syncAll();

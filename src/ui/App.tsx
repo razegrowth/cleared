@@ -10,6 +10,7 @@ import {
   MailOpen,
   Moon,
   PanelRight,
+  PanelRightClose,
   Plus,
   RefreshCw,
   Reply,
@@ -656,12 +657,24 @@ function MailApp({ state, layout }: { state: MailState; layout: Layout }) {
     chrome.tabs.create({ url: gmailThreadUrl(a.email, t!.id) });
   };
 
+  /** Moves Glance into the side panel, and keeps it there: the toolbar button opens and closes the panel from now on. */
   const openPanel = () => {
     if (windowId.current === undefined) return;
-    chrome.sidePanel
-      .open({ windowId: windowId.current })
-      .then(() => window.close())
-      .catch((e: Error) => push({ text: e.message, error: true }));
+    // Opened first, while the click still counts as one.
+    const opening = chrome.sidePanel.open({ windowId: windowId.current });
+    request({ type: 'updateSettings', patch: { surface: 'panel' } }).catch(() => {});
+    opening.then(() => window.close()).catch((e: Error) => push({ text: e.message, error: true }));
+  };
+
+  /** Back to the popup: the toolbar button opens it again, and the panel closes. */
+  const usePopup = async () => {
+    await request({ type: 'updateSettings', patch: { surface: 'popup' } }).catch(() => {});
+    push({ text: 'Glance will open as a popup from now on', ms: 2500 });
+    setTimeout(() => {
+      const close = (chrome.sidePanel as { close?: (o: { windowId?: number }) => Promise<void> }).close;
+      if (close && windowId.current !== undefined) close({ windowId: windowId.current }).catch(() => window.close());
+      else window.close();
+    }, 900);
   };
 
   const openSettings = () => chrome.runtime.openOptionsPage();
@@ -814,6 +827,7 @@ function MailApp({ state, layout }: { state: MailState; layout: Layout }) {
     { id: 'theme-system', group: 'View', label: 'Match system appearance', icon: Sun, run: () => request({ type: 'updateSettings', patch: { theme: 'system' } }) },
   );
   if (layout === 'popup') commands.push({ id: 'panel', group: 'Glance', label: 'Open in side panel', icon: PanelRight, run: openPanel });
+  if (layout === 'panel') commands.push({ id: 'popup', group: 'Glance', label: 'Use the popup instead of the side panel', icon: PanelRightClose, run: usePopup });
   commands.push(
     { id: 'add', group: 'Glance', label: 'Add a Gmail account', icon: Plus, run: addAccount },
     { id: 'settings', group: 'Glance', label: 'Settings', icon: SettingsIcon, keys: [MOD, ','], run: openSettings },
@@ -1116,9 +1130,13 @@ function MailApp({ state, layout }: { state: MailState; layout: Layout }) {
             <button className="icon-btn" title="New message (c)" onClick={compose}>
               <SquarePen />
             </button>
-            {layout === 'popup' && (
+            {layout === 'popup' ? (
               <button className="icon-btn" title="Open in side panel" onClick={openPanel}>
                 <PanelRight />
+              </button>
+            ) : (
+              <button className="icon-btn" title="Use the popup instead" onClick={usePopup}>
+                <PanelRightClose />
               </button>
             )}
             <button className="icon-btn" title={`Settings (${MOD},)`} onClick={openSettings}>

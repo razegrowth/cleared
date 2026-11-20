@@ -316,6 +316,16 @@ function Page({ accounts, settings }: { accounts: Account[]; settings: Settings 
       </Section>
 
       <Section title="Appearance">
+        <Row label="Open Glance in" hint="What the toolbar button opens. In the side panel, pressing it again closes the panel.">
+          <Segmented
+            value={settings.surface}
+            onChange={(surface) => set({ surface })}
+            options={[
+              ['popup', 'Popup'],
+              ['panel', 'Side panel'],
+            ]}
+          />
+        </Row>
         <Row label="Theme">
           <Segmented
             value={settings.theme}

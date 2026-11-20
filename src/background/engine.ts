@@ -565,10 +565,26 @@ export async function updateBadge() {
 
 // ---------------------------------------------------------------- settings & alarms
 
+/**
+ * Points the toolbar button at what was chosen last. In the side panel's
+ * case the popup is taken off the button and the browser opens the panel
+ * instead, and closes it on the next press.
+ */
+export async function applySurface(surface?: Settings['surface']) {
+  surface ??= (await getSettings()).surface;
+  const panel = surface === 'panel';
+  // Each on its own: a browser missing either API still gets the other.
+  await Promise.allSettled([
+    (async () => chrome.action?.setPopup?.({ popup: panel ? '' : 'popup.html' }))(),
+    (async () => chrome.sidePanel?.setPanelBehavior?.({ openPanelOnActionClick: panel }))(),
+  ]);
+}
+
 export async function updateSettings(patch: Partial<Settings>) {
   const before = await getSettings();
   const after = withDefaults({ ...before, ...patch });
   await chrome.storage.local.set({ settings: after });
+  if (after.surface !== before.surface) await applySurface(after.surface);
   if (after.pollMinutes !== before.pollMinutes) await schedulePolling();
   if (after.view !== before.view) await syncAll();
 }

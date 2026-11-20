@@ -94,6 +94,8 @@ export interface Settings {
   fullPreviews: boolean;
   /** How large mail text is drawn, in the list and the reader: 1 is as designed. */
   textScale: number;
+  /** What the toolbar button opens: the popup, or the side panel (and closes it again). */
+  surface: 'popup' | 'panel';
   /** A row of tabs above the list, one per inbox. Off: 1–9 and A still switch inboxes. */
   inboxTabs: boolean;
   /** Inbox tabs show the whole address (alex@northwind.example), not just the part before the @. */
@@ -116,6 +118,7 @@ export const DEFAULT_SETTINGS: Settings = {
   undoSendSeconds: 5,
   fullPreviews: false,
   inboxTabs: false,
+  surface: 'popup',
   fullAddresses: false,
   textScale: 1,
 };
