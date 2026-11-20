@@ -41,6 +41,7 @@ import { LinkContext, type Mailto } from './links';
 import { GroupHead, ThreadRow } from './ThreadRow';
 import { Tips } from './Tips';
 import { ToastProvider, useToasts } from './Toasts';
+import { Logo } from './Logo';
 import { gmailThreadUrl } from '../shared/format';
 import { request } from '../shared/store';
 import type {
@@ -1359,7 +1360,7 @@ function Welcome({ onAdd, onDemo, onSettings }: { onAdd: () => void; onDemo: () 
   return (
     <div className="app">
       <div className="empty">
-        <img src="/icon/128.png" alt="" width={56} height={56} style={{ marginBottom: 14, borderRadius: 12 }} />
+        <Logo size={56} style={{ marginBottom: 14 }} />
         <h2>Welcome to Glance</h2>
         <p>Every Gmail inbox you use, in one list. Read, reply and clear mail without opening a tab.</p>
         <div className="actions">

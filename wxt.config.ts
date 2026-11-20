@@ -17,7 +17,7 @@ export default defineConfig({
     description: 'All your Gmail inboxes, one calm glance away.',
     key: KEY,
     minimum_chrome_version: '116',
-    permissions: ['storage', 'unlimitedStorage', 'alarms', 'notifications', 'identity', 'sidePanel'],
+    permissions: ['storage', 'unlimitedStorage', 'alarms', 'notifications', 'identity', 'sidePanel', 'offscreen'],
     host_permissions: [
       'https://gmail.googleapis.com/*',
       'https://oauth2.googleapis.com/*',

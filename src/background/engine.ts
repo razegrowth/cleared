@@ -190,7 +190,7 @@ async function doSync(accountId: string) {
 function notifySignedOut(account: Account) {
   chrome.notifications.create(`r|${account.id}`, {
     type: 'basic',
-    iconUrl: chrome.runtime.getURL('/icon/128.png'),
+    iconUrl: notificationIcon(),
     title: `Sign in to ${account.email} again`,
     message: 'Google signed this account out of Glance. Its mail won’t update until you sign in.',
     buttons: [{ title: 'Sign in' }],
@@ -386,7 +386,7 @@ export async function processSnoozes() {
         for (const s of due.filter((d) => d.accountId === accountId)) {
           chrome.notifications.create(`t|${accountId}|${s.threadId}`, {
             type: 'basic',
-            iconUrl: chrome.runtime.getURL('/icon/128.png'),
+            iconUrl: notificationIcon(),
             title: 'Back from snooze',
             message: s.subject || '(no subject)',
             contextMessage: account.email,
@@ -432,7 +432,7 @@ export async function send(draft: Draft): Promise<SendResult> {
       await chrome.storage.local.set({ [key]: { ...draft, failed: e instanceof Error ? e.message : String(e) } });
       chrome.notifications.create(`f|${sendId}`, {
         type: 'basic',
-        iconUrl: chrome.runtime.getURL('/icon/128.png'),
+        iconUrl: notificationIcon(),
         title: 'Message not sent',
         message: `${draft.subject || '(no subject)'}: ${e instanceof Error ? e.message : e}`,
         contextMessage: 'Your draft is saved in Glance.',
@@ -501,7 +501,7 @@ async function notifyArrivals(account: Account, arrivals: ThreadSummary[], setti
     await chrome.storage.session?.set({ [summaryKey(id)]: worth.map((t) => t.id) }).catch(() => {});
     chrome.notifications.create(id, {
       type: 'basic',
-      iconUrl: chrome.runtime.getURL('/icon/128.png'),
+      iconUrl: notificationIcon(),
       title: `${worth.length} new emails`,
       message: names.length > 3 ? `${names.slice(0, 3).join(', ')} and ${names.length - 3} more` : names.join(', '),
       contextMessage: account.email,
@@ -513,7 +513,7 @@ async function notifyArrivals(account: Account, arrivals: ThreadSummary[], setti
   for (const t of worth) {
     chrome.notifications.create(`t|${account.id}|${t.id}`, {
       type: 'basic',
-      iconUrl: chrome.runtime.getURL('/icon/128.png'),
+      iconUrl: notificationIcon(),
       title: t.from.name || t.from.email,
       message: t.subject,
       contextMessage: account.email,
@@ -570,6 +570,56 @@ export async function updateBadge() {
  * case the popup is taken off the button and the browser opens the panel
  * instead, and closes it on the next press.
  */
+/**
+ * Light or dark: the eye is drawn in near-black for a light toolbar and in
+ * light grey for a dark one. The browser keeps one manifest icon, so Glance
+ * swaps it itself whenever a page of its own sees the appearance change: the
+ * hidden offscreen page while the browser runs, and the popup, panel and
+ * settings whenever they open (for browsers without offscreen pages).
+ */
+let darkScheme = false;
+let schemeSeen = false;
+const SCHEME_KEY = 'darkScheme';
+
+const iconPaths = (dark: boolean) =>
+  Object.fromEntries([16, 32, 48, 128].map((s) => [s, `/icon/${dark ? 'dark/' : ''}${s}.png`]));
+
+export const notificationIcon = () => chrome.runtime.getURL(`/icon/${darkScheme ? 'dark/' : ''}128.png`);
+
+/** With no value, puts back the last one seen (the worker forgets it when it sleeps). */
+export async function applyScheme(dark?: boolean) {
+  if (dark === undefined) {
+    const stored = (await chrome.storage.local.get(SCHEME_KEY))[SCHEME_KEY];
+    if (schemeSeen || typeof stored !== 'boolean') return;
+    dark = stored;
+  } else {
+    schemeSeen = true;
+    await chrome.storage.local.set({ [SCHEME_KEY]: dark });
+  }
+  darkScheme = dark;
+  try {
+    await chrome.action?.setIcon?.({ path: iconPaths(dark) });
+  } catch {
+    // A browser that can't set the icon keeps the light one.
+  }
+}
+
+/** Opens the hidden page that follows the appearance, once. */
+export async function watchScheme() {
+  const off = chrome.offscreen;
+  if (!off?.createDocument) return;
+  try {
+    if (await off.hasDocument?.()) return;
+    await off.createDocument({
+      url: 'offscreen.html',
+      reasons: [chrome.offscreen.Reason.MATCH_MEDIA],
+      justification: 'Match the toolbar icon to the light or dark appearance.',
+    });
+  } catch {
+    // Already open, or not supported: the popup and panel still report it.
+  }
+}
+
 export async function applySurface(surface?: Settings['surface']) {
   surface ??= (await getSettings()).surface;
   const panel = surface === 'panel';
@@ -627,7 +677,7 @@ export async function testNotification(): Promise<{ level: string }> {
   const latest = accounts.flatMap((a) => threads[a.id] ?? []).filter((t) => t.unread).sort((a, b) => b.date - a.date)[0];
   await chrome.notifications.create(`test|${Date.now()}`, {
     type: 'basic',
-    iconUrl: chrome.runtime.getURL('/icon/128.png'),
+    iconUrl: notificationIcon(),
     title: latest ? latest.from.name || latest.from.email : 'Glance',
     message: latest ? latest.subject : 'Notifications are working. New mail will show up like this.',
     contextMessage: 'Test notification from Glance',

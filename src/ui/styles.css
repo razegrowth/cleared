@@ -2341,3 +2341,22 @@ html[data-split='true'][data-nav='back']::view-transition-old(glance-reader) {
     opacity: 0;
   }
 }
+
+/* The eye in near-black on light themes, light grey on dark ones. */
+.logo-dark {
+  display: none;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) .logo-light {
+    display: none;
+  }
+  :root:not([data-theme='light']) .logo-dark {
+    display: inline;
+  }
+}
+:root[data-theme='dark'] .logo-light {
+  display: none;
+}
+:root[data-theme='dark'] .logo-dark {
+  display: inline;
+}

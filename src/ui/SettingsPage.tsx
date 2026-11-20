@@ -4,6 +4,7 @@ import { Avatar } from './Avatar';
 import { MOD, TEXT_SCALES, useMail, useTheme } from './hooks';
 import { Tips } from './Tips';
 import { ToastProvider, useToasts } from './Toasts';
+import { Logo } from './Logo';
 import { request } from '../shared/store';
 import type { Account, Settings } from '../shared/types';
 
@@ -100,7 +101,7 @@ function Page({ accounts, settings }: { accounts: Account[]; settings: Settings 
   return (
     <main className="s-page">
       <header className="s-header">
-        <img src="/icon/128.png" alt="" width={40} height={40} />
+        <Logo size={40} />
         <div>
           <h1>Glance</h1>
           <p>Settings</p>

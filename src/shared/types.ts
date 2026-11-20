@@ -183,7 +183,8 @@ export type Request =
   | { type: 'search'; query: string }
   | { type: 'updateSettings'; patch: Partial<Settings> }
   | { type: 'openPanel'; windowId?: number }
-  | { type: 'testNotification' };
+  | { type: 'testNotification' }
+  | { type: 'colorScheme'; dark: boolean };
 
 export interface ThreadRef {
   accountId: string;

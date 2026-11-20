@@ -35,6 +35,8 @@ export async function handle(req: Request): Promise<unknown> {
       return engine.search(req.query);
     case 'updateSettings':
       return engine.updateSettings(req.patch);
+    case 'colorScheme':
+      return engine.applyScheme(req.dark);
     case 'testNotification':
       return engine.testNotification();
     case 'openPanel':

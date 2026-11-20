@@ -8,6 +8,9 @@ export default defineBackground(() => {
   engine.updateBadge().catch(() => {});
   // The button opens the popup or the side panel, whichever was used last.
   engine.applySurface().catch(() => {});
+  // The toolbar eye follows the browser's light or dark appearance.
+  engine.applyScheme().catch(() => {});
+  engine.watchScheme();
 
   chrome.runtime.onMessage.addListener((req: Request, _sender, sendResponse) => {
     respond(req).then(sendResponse);
