@@ -942,6 +942,8 @@ function MailApp({ state, layout }: { state: MailState; layout: Layout }) {
         if (selected.size) setSelected(new Set());
         else if (results) clearResults();
         else if (query) setQuery('');
+        // Nothing left to clear: Esc puts the popup away, like a menu.
+        else if (layout === 'popup') window.close();
       },
       ...common,
     };
@@ -1235,13 +1237,13 @@ function MailApp({ state, layout }: { state: MailState; layout: Layout }) {
 
           <footer className="statusbar">
             {keyboard ? (
-              <span className="grow" title={status}>
+              <span className="grow" title={errored && !selected.size ? status : undefined}>
                 {selected.size ? `${selected.size} selected · E archive · # delete · H snooze` : status}
               </span>
             ) : (
               <span className="grow nokeys">Click in Glance to use shortcuts</span>
             )}
-            <button onClick={() => setPalette(true)} title="Command palette">
+            <button onClick={() => setPalette(true)}>
               <CommandIcon size={11} /> Commands <kbd>.</kbd> <kbd>{MOD}K</kbd>
             </button>
           </footer>
