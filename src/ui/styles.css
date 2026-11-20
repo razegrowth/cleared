@@ -1104,6 +1104,28 @@ kbd {
   max-width: calc(100% - 40px);
 }
 
+/* The subject opens the thread in Gmail, like G. */
+.subject-link {
+  all: unset;
+  cursor: pointer;
+  border-radius: 4px;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+  transition: text-decoration-color 0.15s var(--ease);
+}
+.subject-link:hover:not(:disabled) {
+  text-decoration-color: var(--text-3);
+}
+.subject-link:disabled {
+  cursor: default;
+}
+.subject-link:focus-visible {
+  outline: 2px solid var(--ring, currentColor);
+  outline-offset: 2px;
+}
+
 .reader .thread-meta {
   margin: 0 20px 16px;
   display: flex;
@@ -1111,8 +1133,6 @@ kbd {
   gap: 8px;
   color: var(--text-2);
   font: 500 11px var(--mono);
-  text-transform: uppercase;
-  letter-spacing: 0.02em;
 }
 
 .reveal {
@@ -1192,6 +1212,10 @@ kbd {
   gap: 10px;
   align-items: start;
   padding: 2px 0 12px;
+}
+
+.msg-head.foldable {
+  cursor: pointer;
 }
 
 .msg-head .who {

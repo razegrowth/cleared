@@ -51,7 +51,8 @@ function Message({
   m: MessageDetail;
   account?: Account;
   expanded: boolean;
-  onToggle: () => void;
+  /** Absent for the newest message, which always stays open: folding it would leave nothing to read. */
+  onToggle?: () => void;
   settings: Settings;
 }) {
   const { push } = useToasts();
@@ -74,7 +75,7 @@ function Message({
   const files = m.attachments.filter((a) => !a.inline || !m.html?.includes(`cid:${a.contentId}`));
   return (
     <article className="msg expanded">
-      <header className="msg-head" onClick={onToggle}>
+      <header className={`msg-head${onToggle ? ' foldable' : ''}`} onClick={onToggle}>
         <Avatar person={m.from} size="md" />
         <div className="who">
           <div className="name">
@@ -187,6 +188,8 @@ export function Reader({
       return n;
     });
 
+  const newest = detail?.messages[detail.messages.length - 1]?.id;
+
   return (
     <div className="reader">
       <div className="toolbar">
@@ -225,7 +228,11 @@ export function Reader({
       </div>
 
       <div className="scroll" ref={scroller}>
-        <h1 style={morph ? { viewTransitionName: 'glance-subject' } : undefined}>{detail?.subject ?? subject}</h1>
+        <h1 style={morph ? { viewTransitionName: 'glance-subject' } : undefined}>
+          <button className="subject-link" title="Open in Gmail (g)" onClick={onOpenInGmail} disabled={!detail}>
+            {detail?.subject ?? subject}
+          </button>
+        </h1>
         <div className="thread-meta">
           <span>{account?.email}</span>
           {detail && detail.messages.length > 1 && <span>· {detail.messages.length} messages</span>}
@@ -255,8 +262,8 @@ export function Reader({
                   key={item.id}
                   m={item}
                   account={account}
-                  expanded={expanded.has(item.id)}
-                  onToggle={() => toggle(item.id)}
+                  expanded={item.id === newest || expanded.has(item.id)}
+                  onToggle={item.id === newest ? undefined : () => toggle(item.id)}
                   settings={settings}
                 />
               ),
