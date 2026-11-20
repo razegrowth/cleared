@@ -2,6 +2,7 @@ import { Check, CircleAlert, Copy, Plus, RefreshCw, Trash2 } from 'lucide-react'
 import { useEffect, useState, type ReactNode } from 'react';
 import { Avatar } from './Avatar';
 import { MOD, TEXT_SCALES, useMail, useTheme } from './hooks';
+import { Tips } from './Tips';
 import { ToastProvider, useToasts } from './Toasts';
 import { request } from '../shared/store';
 import type { Account, Settings } from '../shared/types';
@@ -13,6 +14,7 @@ export function SettingsPage() {
   return (
     <ToastProvider>
       <Page accounts={state.accounts} settings={state.settings} />
+      <Tips />
     </ToastProvider>
   );
 }
@@ -66,7 +68,7 @@ function Copyable({ text }: { text: string }) {
       <code>{text}</code>
       <button
         className="icon-btn"
-        title="Copy"
+        title={done ? 'Copied' : 'Copy'}
         onClick={() => {
           navigator.clipboard.writeText(text);
           setDone(true);
@@ -207,9 +209,14 @@ function Page({ accounts, settings }: { accounts: Account[]; settings: Settings 
             ))}
           </select>
         </Row>
-        <Row label="Full addresses in inbox tabs" hint="Show alex@northwind.example instead of alex in the tabs above the list.">
-          <Toggle label="Full addresses in inbox tabs" checked={settings.fullAddresses} onChange={(fullAddresses) => set({ fullAddresses })} />
+        <Row label="Inbox tabs" hint="A tab for each inbox above the list. Without them, 1–9 and A still switch inboxes.">
+          <Toggle label="Inbox tabs" checked={settings.inboxTabs} onChange={(inboxTabs) => set({ inboxTabs })} />
         </Row>
+        {settings.inboxTabs && (
+          <Row label="Full addresses in inbox tabs" hint="Show alex@northwind.example instead of alex in the tabs above the list.">
+            <Toggle label="Full addresses in inbox tabs" checked={settings.fullAddresses} onChange={(fullAddresses) => set({ fullAddresses })} />
+          </Row>
+        )}
         <Row label="Full emails in the list" hint="Show each conversation's whole latest message instead of two lines. Also V.">
           <Toggle label="Full emails in the list" checked={settings.fullPreviews} onChange={(fullPreviews) => set({ fullPreviews })} />
         </Row>
@@ -330,13 +337,13 @@ function Page({ accounts, settings }: { accounts: Account[]; settings: Settings 
             ['esc or u', 'Back to list'],
             ['e', 'Archive'],
             ['#', 'Delete'],
-            ['⇧I / ⇧U', 'Mark read / unread'],
+            ['r', 'Mark read / unread'],
             ['s', 'Star'],
             ['h', 'Snooze'],
             ['!', 'Report spam'],
             ['x', 'Select'],
             ['v', 'Full emails in the list'],
-            ['r / a', 'Reply / reply all'],
+            ['↵ / a', 'Reply / reply all (in an email)'],
             ['c', 'New message'],
             ['/', 'Search'],
             ['z', 'Undo'],

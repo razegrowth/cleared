@@ -507,9 +507,35 @@ html[data-split='true'] .split.has-reader > .pane-reader {
   letter-spacing: 0.01em;
 }
 
+/* One cell at the right edge: the unread count, or the buttons over it on hover. */
+.gh-end {
+  flex: none;
+  display: grid;
+  align-items: center;
+  justify-items: end;
+}
+
+.gh-end > * {
+  grid-area: 1 / 1;
+}
+
+.gh-tools {
+  display: flex;
+  gap: 2px;
+}
+
+/* Right edge on the rows' time column (16px in, the head has 10px of padding). */
 .group-head .n {
-  margin-left: auto;
+  margin-right: 6px;
   color: var(--text-2);
+  font-variant-numeric: tabular-nums;
+  transition: opacity 0.15s;
+}
+
+.group-head:hover .n,
+.group-head:focus-within .n,
+.group-head[data-menu] .n {
+  opacity: 0;
 }
 
 /* This account lists only its Primary tab. */
@@ -1857,6 +1883,11 @@ kbd {
   text-overflow: ellipsis;
 }
 
+.statusbar .nokeys {
+  color: var(--text-2);
+  animation: fade-in 0.2s var(--ease);
+}
+
 .statusbar button {
   display: inline-flex;
   align-items: center;
@@ -2201,5 +2232,88 @@ html[data-split='true'][data-nav='back']::view-transition-old(glance-reader) {
   }
   to {
     transform: scaleX(0);
+  }
+}
+
+/* Glance's own tooltips (Tips.tsx): shown at once, ink on paper like the toasts. */
+.tip {
+  position: fixed;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: max-content;
+  max-width: 240px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  background: var(--ink);
+  color: var(--on-ink);
+  font: 500 11.5px/1.35 var(--font);
+  letter-spacing: 0.01em;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+  pointer-events: none;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  animation: tip-in 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.12s, transform 0.14s var(--ease);
+}
+
+.tip[data-side='above'] {
+  animation-name: tip-in-above;
+}
+
+/* From one tip straight to the next: glide over, don't pop in again. */
+.tip[data-warm] {
+  animation: none;
+  transition: opacity 0.12s, transform 0.14s var(--ease), left 0.16s var(--ease), top 0.16s var(--ease);
+}
+
+.tip[data-state='closed'] {
+  opacity: 0;
+  transform: scale(0.97);
+}
+
+.tip kbd {
+  flex: none;
+  height: 16px;
+  min-width: 16px;
+  padding: 0 4px;
+  font-size: 10px;
+  color: color-mix(in srgb, var(--on-ink) 78%, transparent);
+  background: color-mix(in srgb, var(--on-ink) 14%, transparent);
+  box-shadow: none;
+}
+
+@keyframes tip-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px) scale(0.92);
+    filter: blur(2px);
+  }
+}
+
+@keyframes tip-in-above {
+  from {
+    opacity: 0;
+    transform: translateY(4px) scale(0.92);
+    filter: blur(2px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tip,
+  .tip[data-warm] {
+    animation: none;
+    transition: opacity 0.12s;
+  }
+
+  .tip[data-state='closed'] {
+    transform: none;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
   }
 }

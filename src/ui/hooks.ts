@@ -100,3 +100,35 @@ export function stepScale(current: number, dir: 1 | -1): number {
   const i = TEXT_SCALES.reduce((best, s, j) => (Math.abs(s - current) < Math.abs(TEXT_SCALES[best] - current) ? j : best), 0);
   return TEXT_SCALES[Math.max(0, Math.min(TEXT_SCALES.length - 1, i + dir))];
 }
+
+/**
+ * Whether this page has the keyboard. A side panel, or a popup the browser
+ * didn't focus, hears no keys until it's clicked; pointing at it asks for
+ * the keyboard (which some browsers grant), and the answer is kept here so
+ * the UI can say when the shortcuts aren't listening.
+ */
+export function useKeyboardFocus(): boolean {
+  const [focused, setFocused] = useState(() => document.hasFocus());
+  useEffect(() => {
+    const update = () => setFocused(document.hasFocus());
+    let asked = 0;
+    const ask = () => {
+      if (document.hasFocus() || Date.now() - asked < 1000) return;
+      asked = Date.now();
+      window.focus();
+      setTimeout(update, 50);
+    };
+    window.addEventListener('focus', update);
+    window.addEventListener('blur', update);
+    document.addEventListener('pointermove', ask, { passive: true });
+    // Some hosts move focus without telling the page: check now and then.
+    const poll = setInterval(update, 1000);
+    return () => {
+      window.removeEventListener('focus', update);
+      window.removeEventListener('blur', update);
+      document.removeEventListener('pointermove', ask);
+      clearInterval(poll);
+    };
+  }, []);
+  return focused;
+}

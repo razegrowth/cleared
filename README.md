@@ -78,8 +78,8 @@ pnpm typecheck
 |---|---|---|---|
 | `j` / `k` | next / previous | `e` | archive |
 | `↵` / `o` | open | `#` | delete |
-| `esc` / `u` | back | `⇧I` / `⇧U` | read / unread |
-| `r` / `a` | reply / reply all | `s` | star |
+| `esc` / `u` | back | `r` | read / unread |
+| `↵` / `a` | reply / reply all (in an email) | `s` | star |
 | `c` | new message | `h` | snooze |
 | `/` | search | `x` | select |
 | `z` | undo | `!` | spam |

@@ -202,7 +202,7 @@ export function Reader({
         <button className="icon-btn" title="Delete (#)" onClick={() => onAct('trash')} disabled={!detail}>
           <Trash2 />
         </button>
-        <button className="icon-btn" title="Mark as unread (⇧U)" onClick={() => onAct('unread')} disabled={!detail}>
+        <button className="icon-btn" title="Mark as unread (r)" onClick={() => onAct('unread')} disabled={!detail}>
           <Mail />
         </button>
         <button className="icon-btn" title="Snooze (h)" onClick={onSnooze} disabled={!detail}>
@@ -270,7 +270,7 @@ export function Reader({
         : detail && (
             <div className="reply-bar">
               <button className="btn" onClick={() => onReply(false)}>
-                <Reply /> Reply <kbd>R</kbd>
+                <Reply /> Reply <kbd>↵</kbd>
               </button>
               <button className="btn" onClick={() => onReply(true)}>
                 <ReplyAll /> Reply all <kbd>A</kbd>

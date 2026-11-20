@@ -129,29 +129,39 @@ export function GroupHead({
         <span className="addr">{email}</span>
         {primary && <span className="gh-tag">Primary</span>}
         <ArrowUpRight className="out" aria-hidden />
-        {count > 0 && !signedOut && <span className="n">{count}</span>}
       </button>
       {signedOut && (
         <button className="gh-signin" title={`Sign in to ${email} again`} tabIndex={off} onClick={onSignIn}>
           Sign in again
         </button>
       )}
-      {count > 0 && (
-        <button className="gh-act" title={`Mark all read in ${email}`} aria-label={`Mark all read in ${email}`} tabIndex={off} onClick={onMarkAllRead}>
-          <CheckCheck />
-        </button>
-      )}
-      <button
-        className="gh-act"
-        title="More"
-        aria-label={`More for ${email}`}
-        aria-haspopup="menu"
-        aria-expanded={menuOpen || false}
-        tabIndex={off}
-        onClick={(e) => onMenu(under(e.currentTarget))}
-      >
-        <Ellipsis />
-      </button>
+      {/* The count and the hover buttons share one spot at the right edge,
+          in line with the rows' times: pointing at the heading swaps one for the other. */}
+      <div className="gh-end">
+        {count > 0 && !signedOut && (
+          <span className="n" aria-label={`${count} unread`}>
+            {count}
+          </span>
+        )}
+        <div className="gh-tools">
+          {count > 0 && (
+            <button className="gh-act" title={`Mark all read in ${email}`} aria-label={`Mark all read in ${email}`} tabIndex={off} onClick={onMarkAllRead}>
+              <CheckCheck />
+            </button>
+          )}
+          <button
+            className="gh-act"
+            title="More"
+            aria-label={`More for ${email}`}
+            aria-haspopup="menu"
+            aria-expanded={menuOpen || false}
+            tabIndex={off}
+            onClick={(e) => onMenu(under(e.currentTarget))}
+          >
+            <Ellipsis />
+          </button>
+        </div>
+      </div>
     </div>
   );
 }
@@ -282,7 +292,7 @@ export const ThreadRow = memo(function ThreadRow({
         </button>
         <button
           className="icon-btn"
-          title={t.unread ? 'Mark as read (⇧I)' : 'Mark as unread (⇧U)'}
+          title={t.unread ? 'Mark as read (r)' : 'Mark as unread (r)'}
           onClick={() => onAct(t.unread ? 'read' : 'unread')}
         >
           {t.unread ? <MailOpen /> : <Mail />}

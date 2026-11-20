@@ -31,13 +31,14 @@ import {
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { flushSync } from 'react-dom';
 import { clearDraft, Composer, loadDraft } from './Composer';
-import { MOD, stepScale, typingIn, useChecking, useLatest, useMail, useNow, useSpin, useTheme, useWidth } from './hooks';
+import { MOD, stepScale, typingIn, useChecking, useKeyboardFocus, useLatest, useMail, useNow, useSpin, useTheme, useWidth } from './hooks';
 import { ActionMenu, Palette, SnoozeMenu, type Command, type MenuAnchor } from './Palette';
 import { Reader } from './Reader';
 import { blankDraft, replyDraft } from './reply';
 import { describeSnooze } from './snooze';
 import { LinkContext, type Mailto } from './links';
 import { GroupHead, ThreadRow } from './ThreadRow';
+import { Tips } from './Tips';
 import { ToastProvider, useToasts } from './Toasts';
 import { gmailThreadUrl } from '../shared/format';
 import { request } from '../shared/store';
@@ -218,6 +219,7 @@ export function App({ layout }: { layout: Layout }) {
   return (
     <ToastProvider>
       <MailApp state={state} layout={layout} />
+      <Tips />
     </ToastProvider>
   );
 }
@@ -240,6 +242,7 @@ function MailApp({ state, layout }: { state: MailState; layout: Layout }) {
   const byId = useMemo(() => new Map(accounts.map((a) => [a.id, a])), [accounts]);
   const monograms = useMemo(() => monogramsFor(accounts), [accounts]);
   const checking = useChecking();
+  const keyboard = useKeyboardFocus();
   const [asked, setAsked] = useState(false);
   const spin = useSpin(checking || asked || accounts.some((a) => a.status === 'syncing'));
 
@@ -359,6 +362,15 @@ function MailApp({ state, layout }: { state: MailState; layout: Layout }) {
     if (selected.size) return visible.filter((t) => selected.has(keyOf(t))).map(refOf);
     if (open) return [refOf(open)];
     return cursor ? [refOf(cursor)] : [];
+  };
+
+  /** R: read if any of them is unread, unread if they're all read. Read from the live store, not the copy the reader opened with. */
+  const toggleRead = () => {
+    const refs = targets();
+    if (!refs.length) return;
+    const live = (r: ThreadRef) =>
+      (threads[r.accountId] ?? []).find((t) => t.id === r.threadId) ?? results?.find((t) => t.accountId === r.accountId && t.id === r.threadId);
+    act(refs.some((r) => live(r)?.unread) ? 'read' : 'unread', refs);
   };
 
   const undoable = (undoId: string | undefined, text: string) => {
@@ -551,6 +563,11 @@ function MailApp({ state, layout }: { state: MailState; layout: Layout }) {
     setResultsFor('');
   };
 
+  const toggleInboxTabs = () =>
+    request({ type: 'updateSettings', patch: { inboxTabs: !settings.inboxTabs } }).catch((e: Error) =>
+      push({ text: e.message, error: true }),
+    );
+
   const toggleFullAddresses = () =>
     request({ type: 'updateSettings', patch: { fullAddresses: !settings.fullAddresses } }).catch((e: Error) =>
       push({ text: e.message, error: true }),
@@ -678,8 +695,8 @@ function MailApp({ state, layout }: { state: MailState; layout: Layout }) {
     commands.push(
       { id: 'archive', group: 'Conversation', label: `Archive${multi}`, icon: Archive, keys: ['E'], run: () => act('archive') },
       { id: 'trash', group: 'Conversation', label: `Delete${multi}`, icon: Trash2, keys: ['#'], run: () => act('trash') },
-      { id: 'read', group: 'Conversation', label: `Mark as read${multi}`, icon: MailOpen, keys: ['⇧', 'I'], run: () => act('read') },
-      { id: 'unread', group: 'Conversation', label: `Mark as unread${multi}`, icon: Mail, keys: ['⇧', 'U'], run: () => act('unread') },
+      { id: 'read', group: 'Conversation', label: `Mark as read${multi}`, icon: MailOpen, keys: ['R'], run: () => act('read') },
+      { id: 'unread', group: 'Conversation', label: `Mark as unread${multi}`, icon: Mail, keys: ['R'], run: () => act('unread') },
       {
         id: 'star',
         group: 'Conversation',
@@ -693,7 +710,7 @@ function MailApp({ state, layout }: { state: MailState; layout: Layout }) {
     );
     if (open && detail) {
       commands.push(
-        { id: 'reply', group: 'Conversation', label: 'Reply', icon: Reply, keys: ['R'], run: () => startReply(false) },
+        { id: 'reply', group: 'Conversation', label: 'Reply', icon: Reply, keys: ['↵'], run: () => startReply(false) },
         { id: 'replyall', group: 'Conversation', label: 'Reply all', icon: ReplyAll, keys: ['A'], run: () => startReply(true) },
       );
     }
@@ -745,6 +762,15 @@ function MailApp({ state, layout }: { state: MailState; layout: Layout }) {
     }
   }
   if (accounts.length > 1) {
+    commands.push({
+      id: 'tabs',
+      group: 'View',
+      label: settings.inboxTabs ? 'Hide inbox tabs' : 'Show inbox tabs',
+      icon: Inbox,
+      run: toggleInboxTabs,
+    });
+  }
+  if (accounts.length > 1 && settings.inboxTabs) {
     commands.push({
       id: 'addresses',
       group: 'View',
@@ -839,6 +865,7 @@ function MailApp({ state, layout }: { state: MailState; layout: Layout }) {
     const common: Record<string, () => void> = {
       e: () => act('archive'),
       '#': () => act('trash'),
+      r: toggleRead,
       I: () => act('read'),
       U: () => act('unread'),
       s: () => {
@@ -868,7 +895,10 @@ function MailApp({ state, layout }: { state: MailState; layout: Layout }) {
           const n = neighbor(open, -1);
           if (n) openThread(n, 'prev');
         },
-        r: () => startReply(false),
+        // ↵ replies: a focused button keeps ↵ for itself.
+        Enter: () => {
+          if (!(e.target instanceof HTMLElement && e.target.closest('button, a, select'))) startReply(false);
+        },
         a: () => startReply(true),
         ...common,
       };
@@ -943,7 +973,7 @@ function MailApp({ state, layout }: { state: MailState; layout: Layout }) {
       nav.removeEventListener('scroll', edges);
       window.removeEventListener('resize', edges);
     };
-  }, [activeFilter, settings.fullAddresses, accounts.length]);
+  }, [activeFilter, settings.fullAddresses, settings.inboxTabs, accounts.length]);
 
   // ------------------------------------------------------------ render
 
@@ -1096,12 +1126,12 @@ function MailApp({ state, layout }: { state: MailState; layout: Layout }) {
             </button>
           </div>
 
-          {accounts.length > 1 ? (
+          {accounts.length > 1 && settings.inboxTabs ? (
             <nav className="tabs" aria-label="Inboxes" ref={tabsRef}>
-              <button className="tab" aria-pressed={activeFilter === 'all'} onClick={() => setFilter('all')} title="All inboxes (a)">
+              <button className="tab" aria-pressed={activeFilter === 'all'} onClick={() => setFilter('all')}>
                 All <span className="n">{totalUnread || ''}</span>
               </button>
-              {accounts.map((a, i) => (
+              {accounts.map((a) => (
                 <button
                   key={a.id}
                   className="tab"
@@ -1111,7 +1141,7 @@ function MailApp({ state, layout }: { state: MailState; layout: Layout }) {
                     e.preventDefault();
                     setInboxMenu(a, { x: e.clientX, y: e.clientY, align: 'start' });
                   }}
-                  title={`${a.email}${i < 9 ? ` (${i + 1})` : ''}${ownPrimary(a) ? ' · Primary only' : ''}`}
+                  aria-label={`${a.email}${a.status === 'needs-auth' ? ', needs signing in' : ''}`}
                 >
                   <span className="monogram">{monograms.get(a.id)}</span>
                   {nameOf(a)}
@@ -1186,9 +1216,13 @@ function MailApp({ state, layout }: { state: MailState; layout: Layout }) {
           )}
 
           <footer className="statusbar">
-            <span className="grow" title={status}>
-              {selected.size ? `${selected.size} selected · E archive · # delete · H snooze` : status}
-            </span>
+            {keyboard ? (
+              <span className="grow" title={status}>
+                {selected.size ? `${selected.size} selected · E archive · # delete · H snooze` : status}
+              </span>
+            ) : (
+              <span className="grow nokeys">Click in Glance to use shortcuts</span>
+            )}
             <button onClick={() => setPalette(true)} title="Command palette">
               <CommandIcon size={11} /> Commands <kbd>.</kbd> <kbd>{MOD}K</kbd>
             </button>

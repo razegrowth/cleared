@@ -94,6 +94,8 @@ export interface Settings {
   fullPreviews: boolean;
   /** How large mail text is drawn, in the list and the reader: 1 is as designed. */
   textScale: number;
+  /** A row of tabs above the list, one per inbox. Off: 1–9 and A still switch inboxes. */
+  inboxTabs: boolean;
   /** Inbox tabs show the whole address (alex@northwind.example), not just the part before the @. */
   fullAddresses: boolean;
   /** Overrides for the build-time OAuth client, for teammates building without a .env. */
@@ -113,6 +115,7 @@ export const DEFAULT_SETTINGS: Settings = {
   quietHours: { enabled: false, start: '22:00', end: '08:00' },
   undoSendSeconds: 5,
   fullPreviews: false,
+  inboxTabs: false,
   fullAddresses: false,
   textScale: 1,
 };
