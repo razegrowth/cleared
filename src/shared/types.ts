@@ -100,9 +100,6 @@ export interface Settings {
   inboxTabs: boolean;
   /** Inbox tabs show the whole address (alex@northwind.example), not just the part before the @. */
   fullAddresses: boolean;
-  /** Overrides for the build-time OAuth client, for teammates building without a .env. */
-  clientId?: string;
-  clientSecret?: string;
 }
 
 export const DEFAULT_SETTINGS: Settings = {

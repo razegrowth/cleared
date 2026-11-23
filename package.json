@@ -1,6 +1,7 @@
 {
   "name": "cleared",
   "description": "Every Gmail inbox in one calm, keyboard-first list. Read, reply and clear your mail without leaving the tab.",
+  "license": "MIT",
   "private": true,
   "version": "0.1.0",
   "type": "module",

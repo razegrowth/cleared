@@ -1,4 +1,4 @@
-import { Check, CircleAlert, Copy, Plus, RefreshCw, Trash2 } from 'lucide-react';
+import { CircleAlert, Plus, RefreshCw, Trash2 } from 'lucide-react';
 import { useEffect, useState, type ReactNode } from 'react';
 import { Avatar } from './Avatar';
 import { MOD, TEXT_SCALES, useMail, useTheme } from './hooks';
@@ -62,41 +62,16 @@ function Segmented<T extends string>({ value, options, onChange }: { value: T; o
   );
 }
 
-function Copyable({ text }: { text: string }) {
-  const [done, setDone] = useState(false);
-  return (
-    <span className="copyable">
-      <code>{text}</code>
-      <button
-        className="icon-btn"
-        title={done ? 'Copied' : 'Copy'}
-        onClick={() => {
-          navigator.clipboard.writeText(text);
-          setDone(true);
-          setTimeout(() => setDone(false), 1500);
-        }}
-      >
-        {done ? <Check /> : <Copy />}
-      </button>
-    </span>
-  );
-}
-
 function Page({ accounts, settings }: { accounts: Account[]; settings: Settings }) {
   const { push } = useToasts();
   const set = (patch: Partial<Settings>) =>
     request({ type: 'updateSettings', patch }).catch((e: Error) => push({ text: e.message, error: true }));
   const fail = (e: Error) => push({ text: e.message, error: true, ms: 8000 });
 
-  const builtIn = !!import.meta.env.WXT_GOOGLE_CLIENT_ID;
-  const configured = builtIn || !!(settings.clientId && settings.clientSecret);
-  const [clientId, setClientId] = useState(settings.clientId ?? '');
-  const [clientSecret, setClientSecret] = useState(settings.clientSecret ?? '');
+  const configured = !!import.meta.env.WXT_GOOGLE_CLIENT_ID;
   const [vips, setVips] = useState(settings.vips.join('\n'));
   useEffect(() => setVips(settings.vips.join('\n')), [settings.vips.join('\n')]);
 
-  const redirect = chrome.identity?.getRedirectURL?.('oauth2') ?? '';
-  const extensionId = chrome.runtime?.id ?? '';
 
   return (
     <main className="s-page">
@@ -179,7 +154,7 @@ function Page({ accounts, settings }: { accounts: Account[]; settings: Settings 
               Add sample mail
             </button>
           )}
-          {!configured && <span className="s-sub">Set up the Google connection below first.</span>}
+          {!configured && <span className="s-sub">This build has no Google OAuth client. See SETUP.md.</span>}
         </div>
       </Section>
 
@@ -374,51 +349,6 @@ function Page({ accounts, settings }: { accounts: Account[]; settings: Settings 
         </div>
       </Section>
 
-      <Section
-        title="Google connection"
-        hint={
-          <>
-            Cleared talks to Gmail through your own Google Cloud OAuth client, so mail never passes through anyone else’s
-            server. SETUP.md in the project walks through creating one.
-          </>
-        }
-      >
-        <Row label="Status">
-          {configured ? (
-            <span className="ok">
-              <Check size={14} /> {builtIn && !settings.clientId ? 'Built into this copy of Cleared' : 'Using the client below'}
-            </span>
-          ) : (
-            <span className="warn">
-              <CircleAlert size={14} /> Not set up yet
-            </span>
-          )}
-        </Row>
-        <Row label="Extension ID">
-          <Copyable text={extensionId} />
-        </Row>
-        <Row label="Redirect URI" hint="Add this to the OAuth client’s Authorized redirect URIs.">
-          <Copyable text={redirect} />
-        </Row>
-        <Row label="Client ID" hint={builtIn ? 'Leave empty to use the built-in one.' : undefined}>
-          <input className="s-input" value={clientId} onChange={(e) => setClientId(e.target.value)} placeholder="…apps.googleusercontent.com" spellCheck={false} />
-        </Row>
-        <Row label="Client secret">
-          <input className="s-input" type="password" value={clientSecret} onChange={(e) => setClientSecret(e.target.value)} spellCheck={false} />
-        </Row>
-        <div className="s-row s-actions">
-          <button
-            className="btn"
-            onClick={() =>
-              set({ clientId: clientId.trim() || undefined, clientSecret: clientSecret.trim() || undefined }).then(() =>
-                push({ text: 'Saved', ms: 1500 }),
-              )
-            }
-          >
-            Save
-          </button>
-        </div>
-      </Section>
     </main>
   );
 }

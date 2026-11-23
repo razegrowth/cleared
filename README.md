@@ -22,8 +22,13 @@ without opening Gmail.
 ## How it works
 
 Cleared uses the official **Gmail API** with OAuth, one refresh token per
-account. Checker Plus scrapes Gmail's private feeds and internal endpoints,
-which break whenever Google changes them; Cleared doesn't.
+account, rather than Gmail's private feeds and internal endpoints, which break
+whenever Google changes them.
+
+It runs entirely in your browser. There is no Cleared server: the only
+network requests go to Google (`gmail.googleapis.com`, `oauth2.googleapis.com`,
+`openidconnect.googleapis.com` and the sign-in page), and everything kept is in
+the extension's own storage. Search the code for `fetch(` to check.
 
 - `src/background/`: the service worker. `auth.ts` handles OAuth (PKCE, refresh,
   silent re-auth), `gmail.ts` is the API client (backoff on rate limits, only
@@ -36,6 +41,13 @@ which break whenever Google changes them; Cleared doesn't.
 - Gmail's API has no snooze, so Cleared keeps its own: the thread is archived,
   then brought back to the inbox, unread, when it's due. That happens while the
   browser runs; anything due while it was closed returns at the next start.
+
+## Privacy
+
+The privacy policy is at [cleared.razegrowth.com/privacy](https://cleared.razegrowth.com/privacy).
+Cleared's use and transfer of information received from Google APIs adheres to
+the [Google API Services User Data Policy](https://developers.google.com/terms/api-services-user-data-policy),
+including the Limited Use requirements.
 
 ## Setup
 
@@ -85,3 +97,8 @@ pnpm typecheck
 | `z` | undo | `!` | spam |
 | `g` | open in Gmail | `a` / `1`–`9` | all inboxes / one inbox |
 | `.` / `⌘K` | command palette | `⌘↵` | send |
+
+## License
+
+MIT, by [Raze](https://razegrowth.com). See [LICENSE](LICENSE). Cleared is not
+affiliated with Google; Gmail is a trademark of Google LLC.

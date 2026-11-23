@@ -49,25 +49,7 @@ then paste the client ID from step 3.
 
 1. Go to **Clients** (or **Credentials › Create credentials › OAuth client ID**).
 2. Application type: **Web application**. Name: `Cleared`.
-3. Under **Authorized redirect URIs**, add:
-
-   ```
-   https://aiiajjnmbdmphlgpjonnpffadapdiegl.chromiumapp.org/oauth2
-   ```
-
-   That's Cleared's ID in Chrome and every other Chromium browser, on every
-   machine. The `key` in `wxt.config.ts` pins it.
-
-   **For Quo:** Quo ignores the manifest key and derives an unpacked
-   extension's ID from the folder it was loaded from. For this machine's build
-   folder (`~/Apps/Glance/build/glance`) that is:
-
-   ```
-   https://nplbohanankmacbmhofphnohdecfjkpb.chromiumapp.org/oauth2
-   ```
-
-   Add that as a second redirect URI. If you load Cleared from somewhere else,
-   **Settings › Google connection** in Cleared shows the exact URI to add.
+3. Leave the redirect URIs for now; step 5 tells you the one to add.
 4. Create the client and copy the **Client ID** and **Client secret**.
 
 Why a Web application client rather than a Chrome extension client: Chrome's
@@ -76,29 +58,25 @@ just the one Google account signed in to the browser profile. Cleared needs any
 number of accounts, so it uses `launchWebAuthFlow` with PKCE and a refresh token
 per account, which needs a Web application client.
 
-## 4. Give Cleared the client
-
-Either build it in, for the whole team:
+## 4. Put the client in `.env`
 
 ```bash
 cp .env.example .env
 ```
 
-Then put the two values into `.env`:
+Then fill in the two values:
 
 ```
 WXT_GOOGLE_CLIENT_ID=1234-abc.apps.googleusercontent.com
-WXT_GOOGLE_CLIENT_SECRET=GOCSPX-...
+WXT_GOOGLE_CLIENT_SECRET=...
 ```
 
-Or paste them into **Settings › Google connection** in a build that doesn't have them.
+`.env` is ignored by git. The values are built into the extension, where
+anyone who has your build can read them. Google treats secrets in installed
+apps as not really secret, and every sign-in still needs that user's consent,
+but keep your build within your team.
 
-The secret ends up inside the built extension, where anyone who has the
-extension can read it. Google treats secrets in installed apps as not really
-secret, and every sign-in still needs that user's consent, but keep the built
-zip within the team.
-
-## 5. Build and load
+## 5. Build, load, and add the redirect URI
 
 ```bash
 pnpm install
@@ -110,11 +88,25 @@ pnpm build
 
 **Chrome:** open `chrome://extensions`, turn on **Developer mode**, choose
 **Load unpacked**, and pick `build/glance`.
-The folder keeps the app's old name on purpose, so its extension ID and the
-sign-in redirect stay the same.
+
+The OAuth client needs the extension's redirect URI, which comes from its ID
+(shown on its card in `chrome://extensions`):
+
+```
+https://<extension-id>.chromiumapp.org/oauth2
+```
+
+Add it under **Authorized redirect URIs** on the client from step 3. Google
+can take a few minutes to start accepting it.
+
+The browser gives an unpacked extension its ID from the folder it was loaded
+from, so a teammate loading it elsewhere gets another ID. To give every copy
+the same one, put a manifest key in `.env` as `WXT_EXTENSION_KEY` (the public
+key, base64, as Chrome's `key` field takes it) and build again.
 
 **Quo:** load the same `build/glance` folder from Quo's Extensions
-settings, then make sure Quo's redirect URI from step 3 is on the client.
+settings. Quo always derives the ID from the folder, so add its redirect URI
+too: the ID is on Cleared's row in Quo's Extensions settings.
 
 **Updating in Quo:** Quo runs its own copy of the folder. After `pnpm build`,
 press **Reload** on Cleared in Quo's Extensions settings; that copies the new
@@ -131,9 +123,9 @@ pnpm zip
 ```
 
 This writes `build/cleared-<version>-chrome.zip`. Teammates unzip it and use
-**Load unpacked** on the folder. Thanks to the pinned key they get the same
-extension ID, so the redirect URI you already registered works for them. Make
-sure each of their addresses is a test user (step 2).
+**Load unpacked** on the folder. With a pinned key they get the same extension
+ID, so the redirect URI you registered works for them; without one, add each
+of theirs. Make sure each of their addresses is a test user (step 2).
 
 To update, rebuild, send the new zip, and they press the reload button on
 `chrome://extensions`. Accounts and settings are kept.

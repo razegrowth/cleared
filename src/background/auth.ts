@@ -1,6 +1,5 @@
 import { toBase64Url } from '../shared/mime';
-import { getKey, withDefaults } from '../shared/store';
-import type { Settings } from '../shared/types';
+import { getKey } from '../shared/store';
 
 /**
  * OAuth for any number of Google accounts.
@@ -43,11 +42,10 @@ export class AuthError extends Error {
 }
 
 async function client(): Promise<{ id: string; secret: string }> {
-  const s = withDefaults(await getKey<Partial<Settings>>('settings'));
-  const id = s.clientId || import.meta.env.WXT_GOOGLE_CLIENT_ID;
-  const secret = s.clientSecret || import.meta.env.WXT_GOOGLE_CLIENT_SECRET;
+  const id = import.meta.env.WXT_GOOGLE_CLIENT_ID;
+  const secret = import.meta.env.WXT_GOOGLE_CLIENT_SECRET;
   if (!id || !secret) {
-    throw new Error('Cleared has no Google OAuth client yet. Add one in Settings › Google connection (see SETUP.md).');
+    throw new Error('This build of Cleared has no Google OAuth client. Add one to .env and build again (see SETUP.md).');
   }
   return { id, secret };
 }
