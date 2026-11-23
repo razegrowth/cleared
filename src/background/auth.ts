@@ -9,7 +9,7 @@ import type { Settings } from '../shared/types';
  * browser profile, so each account goes through launchWebAuthFlow with the
  * authorization-code flow and PKCE instead. That keeps a refresh token per
  * account. An "External" app in testing mode has its refresh tokens expire
- * after seven days; when that happens, Glance asks Google again without
+ * after seven days; when that happens, Cleared asks Google again without
  * showing anything (prompt=none), which works while the browser is still
  * signed in to that account. Only if that fails is the account marked as
  * needing a click to reconnect.
@@ -47,7 +47,7 @@ async function client(): Promise<{ id: string; secret: string }> {
   const id = s.clientId || import.meta.env.WXT_GOOGLE_CLIENT_ID;
   const secret = s.clientSecret || import.meta.env.WXT_GOOGLE_CLIENT_SECRET;
   if (!id || !secret) {
-    throw new Error('Glance has no Google OAuth client yet. Add one in Settings › Google connection (see SETUP.md).');
+    throw new Error('Cleared has no Google OAuth client yet. Add one in Settings › Google connection (see SETUP.md).');
   }
   return { id, secret };
 }
@@ -131,7 +131,7 @@ async function runFlow({ interactive, loginHint, prompt }: FlowOptions): Promise
   if (!res.ok || json.error) throw new AuthError(json.error_description || json.error || `Token exchange failed (${res.status})`);
   if (!json.refresh_token && interactive) {
     // Can happen if the scope was already granted without offline access.
-    console.warn('[glance] no refresh token returned; will rely on silent re-auth');
+    console.warn('[cleared] no refresh token returned; will rely on silent re-auth');
   }
   return json;
 }

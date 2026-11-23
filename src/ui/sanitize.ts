@@ -1,12 +1,12 @@
 import DOMPurify from 'dompurify';
 
 /**
- * Makes an email's HTML safe to put straight into Glance's page.
+ * Makes an email's HTML safe to put straight into Cleared's page.
  *
  * Mail used to render in a sandboxed frame with scripts off. WebKit (and so
- * Quo) won't run anything in such a frame, not even Glance's own click
+ * Quo) won't run anything in such a frame, not even Cleared's own click
  * handler, so links there could never be followed. Instead the HTML is
- * sanitised here and drawn in a shadow root (EmailBody), where Glance can
+ * sanitised here and drawn in a shadow root (EmailBody), where Cleared can
  * handle clicks the same way in every browser.
  *
  * What's removed: scripts, event handlers, forms and their fields, frames,
@@ -58,7 +58,7 @@ export function cleanEmail(raw: string, opts: { remoteImages: boolean; inline?: 
   });
   purify.addHook('afterSanitizeAttributes', (node) => {
     if (!(node instanceof Element)) return;
-    // Glance decides how links open (links.ts); a target here would only get in the way.
+    // Cleared decides how links open (links.ts); a target here would only get in the way.
     node.removeAttribute('target');
     if (opts.remoteImages) return;
     for (const attr of ['src', 'srcset', 'background', 'poster']) {

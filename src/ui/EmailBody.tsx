@@ -6,8 +6,8 @@ import { request } from '../shared/store';
 import type { MessageDetail } from '../shared/types';
 
 /**
- * The email's own styles live in a shadow root, so they can't reach Glance's
- * UI and Glance's can't reach them. `contain` keeps anything positioned
+ * The email's own styles live in a shadow root, so they can't reach Cleared's
+ * UI and Cleared's can't reach them. `contain` keeps anything positioned
  * fixed inside the email from escaping its paper.
  */
 const SHEET = `

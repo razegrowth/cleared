@@ -1,21 +1,23 @@
-# Setting up Glance
+# Setting up Cleared
 
-Glance reads Gmail through the official Gmail API, using a Google OAuth client
-that you own. Mail goes straight from Google to your browser; there is no Glance
+Cleared reads Gmail through the official Gmail API, using a Google OAuth client
+that you own. Mail goes straight from Google to your browser; there is no Cleared
 server in between. You do the Google Cloud part once, about ten minutes, and then
 everyone on the team uses the same build.
 
 ## 1. Create the Google Cloud project
 
 1. Open [console.cloud.google.com](https://console.cloud.google.com) and create a
-   project named **Glance**.
+   project named **Cleared**.
 2. Go to **APIs & Services › Library**, search for **Gmail API**, and choose **Enable**.
 
 ## 2. Configure the consent screen
 
 In **Google Auth Platform** (formerly **OAuth consent screen**):
 
-1. **Branding:** app name `Glance`, a support email, and a developer contact.
+1. **Branding:** app name `Cleared`, a support email, and a developer contact.
+   If you set the project up when the app was called Glance, rename it here;
+   that's the name people see on Google's sign-in screen.
 2. **Audience:** choose **External**. External is required because the team
    connects personal @gmail.com accounts as well as Workspace ones. Leave the
    publishing status as **Testing**.
@@ -30,7 +32,7 @@ In **Google Auth Platform** (formerly **OAuth consent screen**):
 
 - At first sign-in, Google shows **"Google hasn't verified this app"**. Choose
   **Continue**. That's expected for an internal tool, and it's your own app.
-- Google expires testing-mode sign-ins every **7 days**. Glance handles that by
+- Google expires testing-mode sign-ins every **7 days**. Cleared handles that by
   renewing silently while the browser is still signed in to that Google account.
   If the browser isn't signed in to it, the account shows **Reconnect**: one click.
 - Publishing the app publicly would mean Google's verification and a CASA
@@ -46,14 +48,14 @@ then paste the client ID from step 3.
 ## 3. Create the OAuth client
 
 1. Go to **Clients** (or **Credentials › Create credentials › OAuth client ID**).
-2. Application type: **Web application**. Name: `Glance`.
+2. Application type: **Web application**. Name: `Cleared`.
 3. Under **Authorized redirect URIs**, add:
 
    ```
    https://aiiajjnmbdmphlgpjonnpffadapdiegl.chromiumapp.org/oauth2
    ```
 
-   That's Glance's ID in Chrome and every other Chromium browser, on every
+   That's Cleared's ID in Chrome and every other Chromium browser, on every
    machine. The `key` in `wxt.config.ts` pins it.
 
    **For Quo:** Quo ignores the manifest key and derives an unpacked
@@ -64,17 +66,17 @@ then paste the client ID from step 3.
    https://nplbohanankmacbmhofphnohdecfjkpb.chromiumapp.org/oauth2
    ```
 
-   Add that as a second redirect URI. If you load Glance from somewhere else,
-   **Settings › Google connection** in Glance shows the exact URI to add.
+   Add that as a second redirect URI. If you load Cleared from somewhere else,
+   **Settings › Google connection** in Cleared shows the exact URI to add.
 4. Create the client and copy the **Client ID** and **Client secret**.
 
 Why a Web application client rather than a Chrome extension client: Chrome's
 extension client only works with `chrome.identity.getAuthToken`, which knows
-just the one Google account signed in to the browser profile. Glance needs any
+just the one Google account signed in to the browser profile. Cleared needs any
 number of accounts, so it uses `launchWebAuthFlow` with PKCE and a refresh token
 per account, which needs a Web application client.
 
-## 4. Give Glance the client
+## 4. Give Cleared the client
 
 Either build it in, for the whole team:
 
@@ -108,16 +110,18 @@ pnpm build
 
 **Chrome:** open `chrome://extensions`, turn on **Developer mode**, choose
 **Load unpacked**, and pick `build/glance`.
+The folder keeps the app's old name on purpose, so its extension ID and the
+sign-in redirect stay the same.
 
 **Quo:** load the same `build/glance` folder from Quo's Extensions
 settings, then make sure Quo's redirect URI from step 3 is on the client.
 
 **Updating in Quo:** Quo runs its own copy of the folder. After `pnpm build`,
-press **Reload** on Glance in Quo's Extensions settings; that copies the new
+press **Reload** on Cleared in Quo's Extensions settings; that copies the new
 build in. Quitting and reopening Quo does not: it restarts the old copy.
 
-Pin Glance to the toolbar, open it, and choose **Connect a Gmail account**.
-Repeat for each account. **⌥⇧G** opens Glance from anywhere and **⌥⇧P** opens it in
+Pin Cleared to the toolbar, open it, and choose **Connect a Gmail account**.
+Repeat for each account. **⌥⇧G** opens Cleared from anywhere and **⌥⇧P** opens it in
 the side panel. Both can be changed at `chrome://extensions/shortcuts`.
 
 ## Sharing with the team
@@ -126,7 +130,7 @@ the side panel. Both can be changed at `chrome://extensions/shortcuts`.
 pnpm zip
 ```
 
-This writes `build/glance-<version>-chrome.zip`. Teammates unzip it and use
+This writes `build/cleared-<version>-chrome.zip`. Teammates unzip it and use
 **Load unpacked** on the folder. Thanks to the pinned key they get the same
 extension ID, so the redirect URI you already registered works for them. Make
 sure each of their addresses is a test user (step 2).

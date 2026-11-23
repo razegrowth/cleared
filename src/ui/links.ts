@@ -1,7 +1,7 @@
 import { createContext, useContext, useRef } from 'react';
 
 /**
- * Links in mail. Glance opens them itself rather than trusting the browser to
+ * Links in mail. Cleared opens them itself rather than trusting the browser to
  * follow a link out of a sandboxed frame inside an extension popup: Quo, for
  * one, never does. Only web and mailto links go anywhere; javascript:, file:,
  * data: and the rest do nothing.

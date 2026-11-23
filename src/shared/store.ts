@@ -48,7 +48,7 @@ export function onStateChange(listener: (patch: Partial<MailState>) => void): ()
 /** Sends a request to the background worker and unwraps its response. */
 export async function request<T = unknown>(req: Request): Promise<T> {
   const res = (await chrome.runtime.sendMessage(req)) as Response<T> | undefined;
-  if (!res) throw new Error('Glance’s background worker did not answer. Try again.');
+  if (!res) throw new Error('Cleared’s background worker did not answer. Try again.');
   if (!res.ok) throw new Error(res.error);
   return res.data;
 }

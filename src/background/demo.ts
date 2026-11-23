@@ -51,7 +51,7 @@ function message(
     html: body.html,
     attachments: (opts.attachments ?? []).map((a, i) => ({ ...a, id: `${id}-a${i}`, messageId: id, inline: false })),
     unread: opts.unread ?? false,
-    messageIdHeader: `<${id}@demo.glance>`,
+    messageIdHeader: `<${id}@demo.cleared>`,
   };
 }
 
@@ -224,7 +224,7 @@ function matches(t: DemoThread, query: string): boolean {
   return words.every((w) => hay.includes(w));
 }
 
-const DEMO_PDF_NOTE = 'This is a sample attachment from Glance’s demo mailbox.';
+const DEMO_PDF_NOTE = 'This is a sample attachment from Cleared’s demo mailbox.';
 
 export const demo: Provider = {
   async sync(account, spec) {

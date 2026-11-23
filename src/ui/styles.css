@@ -1,4 +1,4 @@
-/* Glance: black and white. Ink on paper by day, paper on ink by night. */
+/* Cleared: black and white. Ink on paper by day, paper on ink by night. */
 
 @font-face {
   font-family: 'Geist';
@@ -2166,7 +2166,7 @@ html[data-split='true'][data-nav='back']::view-transition-old(glance-reader) {
 
 /* --------------------------------------------------------------- text size
    The person's text size scales what they read (rows' text, the open thread
-   and its mail) and leaves Glance's own controls as they are. */
+   and its mail) and leaves Cleared's own controls as they are. */
 
 .row > .body,
 .reader .scroll > :not(.skeleton) {
@@ -2259,7 +2259,7 @@ html[data-split='true'][data-nav='back']::view-transition-old(glance-reader) {
   }
 }
 
-/* Glance's own tooltips (Tips.tsx): shown at once, ink on paper like the toasts. */
+/* Cleared's own tooltips (Tips.tsx): shown at once, ink on paper like the toasts. */
 .tip {
   position: fixed;
   z-index: 1000;

@@ -18,7 +18,7 @@ export interface Account {
   notify: boolean;
   /** List only Gmail's Primary tab for this account, whatever the global view. */
   primaryOnly?: boolean;
-  /** Sample mail with no Google connection, for trying Glance out. */
+  /** Sample mail with no Google connection, for trying Cleared out. */
   demo?: boolean;
 }
 

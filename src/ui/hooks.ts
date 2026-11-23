@@ -51,7 +51,7 @@ export function useLatest<T>(value: T) {
   return ref;
 }
 
-/** True when keystrokes belong to a text field, not to Glance's shortcuts. */
+/** True when keystrokes belong to a text field, not to Cleared's shortcuts. */
 export function typingIn(target: EventTarget | null): boolean {
   const el = target as HTMLElement | null;
   if (!el) return false;
@@ -62,7 +62,7 @@ export const isMac = typeof navigator !== 'undefined' && /Mac|iPhone|iPad/.test(
 export const MOD = isMac ? '⌘' : 'Ctrl';
 
 /**
- * Whether Glance is checking for mail right now: one the person asked for, or
+ * Whether Cleared is checking for mail right now: one the person asked for, or
  * a timed one. A mark older than a minute is a check whose worker went away.
  */
 export function useChecking(): boolean {

@@ -2,7 +2,7 @@ import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 
 /**
- * Glance's own tooltips, in place of the browser's slow grey ones.
+ * Cleared's own tooltips, in place of the browser's slow grey ones.
  *
  * Nothing in the UI needs to know about this: any element with a `title`
  * keeps writing one, and this layer moves it to `data-tip` the moment it

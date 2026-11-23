@@ -244,7 +244,7 @@ function wrap76(b64: string): string {
 
 /** Builds an RFC 2822 message from a draft, ready for messages.send. */
 export function buildRawMessage(draft: Draft, from: Person): string {
-  const boundary = `glance_${crypto.randomUUID().replace(/-/g, '')}`;
+  const boundary = `cleared_${crypto.randomUUID().replace(/-/g, '')}`;
   const toList = parseAddressList(draft.to);
   const ccList = parseAddressList(draft.cc);
   const bccList = parseAddressList(draft.bcc);

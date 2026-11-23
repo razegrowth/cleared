@@ -26,7 +26,7 @@ export interface Provider {
   modify(account: Account, threadIds: string[], action: ThreadAction): Promise<void>;
   /**
    * Marks every unread conversation the spec covers as read, not only the
-   * ones Glance has listed. Returns what it changed, for restoreUnread.
+   * ones Cleared has listed. Returns what it changed, for restoreUnread.
    */
   markAllRead(account: Account, spec: ListSpec): Promise<string[]>;
   restoreUnread(account: Account, ids: string[]): Promise<void>;

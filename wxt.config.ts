@@ -7,14 +7,17 @@ const KEY = 'MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA1sYDwamzy0dqAeg4u6bTWxu
 
 export default defineConfig({
   srcDir: 'src',
-  // build/glance is the unpacked extension to load; build/glance-<version>-chrome.zip
+  // build/glance is the unpacked extension to load; build/cleared-<version>-chrome.zip
   // sits beside it. `pnpm dev` writes build/glance-dev, so the two never collide.
+  // The folder keeps the old name on purpose: Quo derives an unpacked extension's
+  // ID from its folder, and the OAuth redirect URI registered with Google uses that ID.
   outDir: 'build',
   outDirTemplate: 'glance{{modeSuffix}}',
   modules: ['@wxt-dev/module-react'],
   manifest: {
-    name: 'Glance',
-    description: 'All your Gmail inboxes, one calm glance away.',
+    name: 'Cleared for Gmail™',
+    short_name: 'Cleared',
+    description: 'Every Gmail inbox in one calm, keyboard-first list. Read, reply and clear your mail without leaving the tab.',
     key: KEY,
     minimum_chrome_version: '116',
     permissions: ['storage', 'unlimitedStorage', 'alarms', 'notifications', 'identity', 'sidePanel', 'offscreen'],
@@ -23,15 +26,15 @@ export default defineConfig({
       'https://oauth2.googleapis.com/*',
       'https://openidconnect.googleapis.com/*',
     ],
-    action: { default_title: 'Glance' },
+    action: { default_title: 'Cleared' },
     commands: {
       _execute_action: {
         suggested_key: { default: 'Alt+Shift+G', mac: 'Alt+Shift+G' },
-        description: 'Open Glance',
+        description: 'Open Cleared',
       },
       'open-side-panel': {
         suggested_key: { default: 'Alt+Shift+P', mac: 'Alt+Shift+P' },
-        description: 'Open Glance in the side panel',
+        description: 'Open Cleared in the side panel',
       },
     },
   },

@@ -103,7 +103,7 @@ function Page({ accounts, settings }: { accounts: Account[]; settings: Settings 
       <header className="s-header">
         <Logo size={40} />
         <div>
-          <h1>Glance</h1>
+          <h1>Cleared</h1>
           <p>Settings</p>
         </div>
       </header>
@@ -160,7 +160,7 @@ function Page({ accounts, settings }: { accounts: Account[]; settings: Settings 
                 className="icon-btn"
                 title="Remove account"
                 onClick={() => {
-                  if (confirm(`Remove ${a.email} from Glance? Your mail in Gmail is not touched.`)) {
+                  if (confirm(`Remove ${a.email} from Cleared? Your mail in Gmail is not touched.`)) {
                     request({ type: 'removeAccount', accountId: a.id }).catch(fail);
                   }
                 }}
@@ -195,7 +195,7 @@ function Page({ accounts, settings }: { accounts: Account[]; settings: Settings 
             ]}
           />
         </Row>
-        <Row label="Check for mail" hint="Glance also checks whenever you open it.">
+        <Row label="Check for mail" hint="Cleared also checks whenever you open it.">
           <select value={settings.pollMinutes} onChange={(e) => set({ pollMinutes: Number(e.target.value) })}>
             {[
               [0.5, 'Every 30 seconds'],
@@ -243,7 +243,7 @@ function Page({ accounts, settings }: { accounts: Account[]; settings: Settings 
             ))}
           </select>
         </Row>
-        <Row label="Undo send" hint="How long Glance waits before a message really goes. Undo, or Z, in that time brings it back.">
+        <Row label="Undo send" hint="How long Cleared waits before a message really goes. Undo, or Z, in that time brings it back.">
           <select value={settings.undoSendSeconds} onChange={(e) => set({ undoSendSeconds: Number(e.target.value) })}>
             {[0, 5, 10, 20].map((s) => (
               <option key={s} value={s}>
@@ -269,7 +269,7 @@ function Page({ accounts, settings }: { accounts: Account[]; settings: Settings 
                 .then((result) =>
                   push(
                     result?.level === 'denied'
-                      ? { text: 'Your browser has notifications blocked for Glance.', error: true, ms: 8000 }
+                      ? { text: 'Your browser has notifications blocked for Cleared.', error: true, ms: 8000 }
                       : { text: 'Sent. Look at the top right of your screen.', ms: 4000 },
                   ),
                 )
@@ -279,7 +279,7 @@ function Page({ accounts, settings }: { accounts: Account[]; settings: Settings 
             Send a test notification
           </button>
         </Row>
-        <Row label="Only from VIPs" hint="Everyone else still shows up in Glance, just quietly.">
+        <Row label="Only from VIPs" hint="Everyone else still shows up in Cleared, just quietly.">
           <Toggle label="Only VIPs" checked={settings.vipOnly} onChange={(vipOnly) => set({ vipOnly })} />
         </Row>
         <Row label="VIPs" hint="One per line: an address, or a whole domain like client.com.">
@@ -317,7 +317,7 @@ function Page({ accounts, settings }: { accounts: Account[]; settings: Settings 
       </Section>
 
       <Section title="Appearance">
-        <Row label="Open Glance in" hint="What the toolbar button opens. In the side panel, pressing it again closes the panel.">
+        <Row label="Open Cleared in" hint="What the toolbar button opens. In the side panel, pressing it again closes the panel.">
           <Segmented
             value={settings.surface}
             onChange={(surface) => set({ surface })}
@@ -364,7 +364,7 @@ function Page({ accounts, settings }: { accounts: Account[]; settings: Settings 
             ['⇧R', 'Check for mail'],
             [`. or ${MOD}K`, 'Command palette'],
             [`${MOD}↵`, 'Send'],
-            ['⌥⇧G', 'Open Glance from anywhere'],
+            ['⌥⇧G', 'Open Cleared from anywhere'],
           ].map(([k, l]) => (
             <div key={k} className="s-key">
               <kbd>{k}</kbd>
@@ -378,7 +378,7 @@ function Page({ accounts, settings }: { accounts: Account[]; settings: Settings 
         title="Google connection"
         hint={
           <>
-            Glance talks to Gmail through your own Google Cloud OAuth client, so mail never passes through anyone else’s
+            Cleared talks to Gmail through your own Google Cloud OAuth client, so mail never passes through anyone else’s
             server. SETUP.md in the project walks through creating one.
           </>
         }
@@ -386,7 +386,7 @@ function Page({ accounts, settings }: { accounts: Account[]; settings: Settings 
         <Row label="Status">
           {configured ? (
             <span className="ok">
-              <Check size={14} /> {builtIn && !settings.clientId ? 'Built into this copy of Glance' : 'Using the client below'}
+              <Check size={14} /> {builtIn && !settings.clientId ? 'Built into this copy of Cleared' : 'Using the client below'}
             </span>
           ) : (
             <span className="warn">

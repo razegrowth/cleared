@@ -124,7 +124,7 @@ export function GroupHead({
         onMenu({ x: e.clientX, y: e.clientY, align: 'start' });
       }}
     >
-      <button className="gh-main" title={`Open ${email} in Gmail`} tabIndex={off} onClick={onOpen}>
+      <button className="gh-main" aria-label={`Open ${email} in Gmail`} tabIndex={off} onClick={onOpen}>
         <Avatar person={account} picture={account.picture} tint={account.color} size="xs" />
         <span className="addr">{email}</span>
         {primary && <span className="gh-tag">Primary</span>}

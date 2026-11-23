@@ -1,6 +1,6 @@
 {
-  "name": "glance",
-  "description": "All your Gmail inboxes, one calm glance away.",
+  "name": "cleared",
+  "description": "Every Gmail inbox in one calm, keyboard-first list. Read, reply and clear your mail without leaving the tab.",
   "private": true,
   "version": "0.1.0",
   "type": "module",

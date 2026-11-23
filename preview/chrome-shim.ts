@@ -1,5 +1,5 @@
 /**
- * Just enough of chrome.* for Glance to run in a normal tab. Storage is in
+ * Just enough of chrome.* for Cleared to run in a normal tab. Storage is in
  * memory, messages go straight to the background router in this page, and
  * anything that would leave the page (notifications, tabs, sign-in) logs instead.
  */

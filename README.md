@@ -1,6 +1,6 @@
-# Glance
+# Cleared
 
-Every Gmail inbox you use, one calm glance away. A Chrome extension (it also
+Every Gmail inbox you use, cleared at keyboard speed. A Chrome extension (it also
 runs in Quo) that shows the unread mail from all your Google accounts in one
 list, in a popup or the side panel, and lets you read, reply and clear it
 without opening Gmail.
@@ -21,9 +21,9 @@ without opening Gmail.
 
 ## How it works
 
-Glance uses the official **Gmail API** with OAuth, one refresh token per
+Cleared uses the official **Gmail API** with OAuth, one refresh token per
 account. Checker Plus scrapes Gmail's private feeds and internal endpoints,
-which break whenever Google changes them; Glance doesn't.
+which break whenever Google changes them; Cleared doesn't.
 
 - `src/background/`: the service worker. `auth.ts` handles OAuth (PKCE, refresh,
   silent re-auth), `gmail.ts` is the API client (backoff on rate limits, only
@@ -33,7 +33,7 @@ which break whenever Google changes them; Glance doesn't.
 - `src/ui/`: React for the popup, side panel and settings. The UI renders from
   `chrome.storage.local` and sends every change to the worker as a message,
   so closing the popup never loses an action.
-- Gmail's API has no snooze, so Glance keeps its own: the thread is archived,
+- Gmail's API has no snooze, so Cleared keeps its own: the thread is archived,
   then brought back to the inbox, unread, when it's due. That happens while the
   browser runs; anything due while it was closed returns at the next start.
 
@@ -53,7 +53,7 @@ pnpm install
 pnpm dev
 ```
 
-`pnpm dev` opens a Chrome with Glance loaded and reloading as you edit.
+`pnpm dev` opens a Chrome with Cleared loaded and reloading as you edit.
 
 ```bash
 pnpm preview

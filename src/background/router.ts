@@ -44,7 +44,7 @@ export async function handle(req: Request): Promise<unknown> {
       return;
     default:
       // A page newer than the worker: the browser reloaded the pages but kept the old worker.
-      throw new Error('Glance’s background is out of date. Quit and reopen your browser to finish updating.');
+      throw new Error('Cleared’s background is out of date. Quit and reopen your browser to finish updating.');
   }
 }
 
@@ -53,7 +53,7 @@ export async function respond(req: Request): Promise<Response> {
   try {
     return { ok: true, data: (await handle(req)) ?? null };
   } catch (e) {
-    console.warn('[glance]', req.type, e);
+    console.warn('[cleared]', req.type, e);
     return { ok: false, error: e instanceof Error ? e.message : String(e) };
   }
 }

@@ -1,4 +1,4 @@
-/** The Glance eye, in the ink that suits the current theme (styles.css shows one). */
+/** The Cleared mark, in the ink that suits the current theme (styles.css shows one). */
 export function Logo({ size, style }: { size: number; style?: React.CSSProperties }) {
   return (
     <>
